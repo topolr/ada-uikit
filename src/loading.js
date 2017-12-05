@@ -20,7 +20,7 @@ class Loading extends View {
         this[`show${defaultType[0].toUpperCase()}${defaultType.substring(1)}`]().then(() => {
             setTimeout(() => {
                 this.getElement().classList.add("loading-in");
-            }, 0);
+            }, 100);
         });
     }
 
