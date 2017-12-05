@@ -13,8 +13,6 @@ class Root extends StaticViewGroup {
             }
         }).then((loading) => {
             loading.showLoading();
-            console.log(loading)
-            window.loading = loading;
         });
     }
 }
