@@ -7,12 +7,9 @@ import Toast from "./toast";
 class Root extends StaticViewGroup {
     constructor(option) {
         super(option);
-        this.addChild(Loading, {
-            option: {
-                content: "xxxxxxxxxx"
-            }
-        }).then((loading) => {
-            loading.showLoading();
+        this.addChild(Loading).then((loading) => {
+            loading.showLoading("loading");
+            window.loading=loading;
         });
     }
 }

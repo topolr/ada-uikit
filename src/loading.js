@@ -17,7 +17,7 @@ class Loading extends View {
         if (!defaultType || ["loading", "error", "success"].indexOf(defaultType) === -1) {
             defaultType = "loading";
         }
-        this[`show${defaultType[0].toUpperCase()}${defaultType.substring(1)}`]().then(() => {
+        this[`show${defaultType[0].toUpperCase()}${defaultType.substring(1)}`](parameters.option.content).then(() => {
             setTimeout(() => {
                 this.getElement().classList.add("loading-in");
             }, 100);
@@ -25,32 +25,43 @@ class Loading extends View {
     }
 
     render(data) {
-        Object.assign(data, this.getOption());
-        return super.render(data);
+        return super.render(Object.assign({}, this.getOption(), data));
     }
 
-    showLoading() {
+    showLoading(content) {
         return this.render({
             icon: refreshCw,
             circle: true,
-            color: "black"
+            color: "black",
+            content
         });
     }
 
-    showSuccess() {
+    showSuccess(content) {
         return this.render({
             icon: checkCircle,
             circle: false,
-            color: "green"
+            color: "green",
+            content
         });
     }
 
-    showError() {
+    showError(content) {
         return this.render({
             icon: minusCircle,
             circle: false,
-            color: "red"
+            color: "red",
+            content
         });
+    }
+
+    close(delay = 2000) {
+        setTimeout(() => {
+            this.getElement().classList.remove("loading-in");
+            setTimeout(() => {
+                this.getParent() && this.getParent().removeChild(this);
+            }, 400);
+        }, delay);
     }
 }
 

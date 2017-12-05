@@ -1,6 +1,6 @@
 import {ajax} from "adajs";
 
-class file {
+class File {
     constructor(filex, type) {
         let _file = filex;
         this._uri = "";
@@ -9,7 +9,7 @@ class file {
                 _file = new Blob([filex], {type: type});
             } else {
                 this._url = filex;
-                _file = file.getBlobFromURI(filex);
+                _file = File.getBlobFromURI(filex);
             }
         } else if (Array.isArray(filex)) {
             _file = new Blob(filex, {type: (type || "text/plain")});
@@ -226,7 +226,7 @@ class file {
             cvs.width = a.width;
             cvs.height = a.height;
             cvs.getContext("2d").drawImage(a, 0, 0);
-            ps.resolve(new file(cvs.toDataURL(ths.file.type, quality / 100)));
+            ps.resolve(new File(cvs.toDataURL(ths.file.type, quality / 100)));
         }, function () {
             ps.reject();
         });
@@ -310,13 +310,13 @@ class file {
     };
 
     saveAs(filename) {
-        file.saveAs(this.file, filename);
+        File.saveAs(this.file, filename);
     };
 
     uploadAsForm(option) {
         option.file = this.file;
-        return file.uploadAsForm(option);
+        return File.uploadAsForm(option);
     };
 }
 
-export default file;
+export default File;
