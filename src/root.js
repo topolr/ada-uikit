@@ -1,11 +1,11 @@
 import {root, StaticViewGroup} from "adajs";
-import Hello from "./hello";
+import Phototcutter from "./photocutter";
 
 @root()
 class Root extends StaticViewGroup {
     constructor(option) {
         super(option);
-        this.addChild(Hello);
+        this.addChild(Phototcutter);
     }
 }
 

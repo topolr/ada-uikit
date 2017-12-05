@@ -1,0 +1,35 @@
+.loading {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    .mask {
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, .1);
+        display: -webkit-box;
+        -webkit-box-pack: center;
+        -webkit-box-align: center;
+        -webkit-box-orient: vertical;
+        z-index: 99999;
+        .loadingbox {
+            display: flex;
+            line-height: 30px;
+            background: white;
+            border-radius: 3px;
+            box-shadow: 3px 5px 10px #736d6d;
+            padding:10px 20px 10px 20px;
+            .icon {
+                width: 30px;
+                font-size: 18px;
+            }
+            .desc {
+                font-size: 12px;
+            }
+        }
+    }
+}

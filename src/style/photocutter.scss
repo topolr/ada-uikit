@@ -1,0 +1,67 @@
+.photocutter {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    .icon {
+        display: inline-block;
+        width: 1em;
+        height: 1em;
+        stroke-width: 0;
+        stroke: currentColor;
+        fill: currentColor;
+    }
+    .cutter {
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 30px;
+    }
+    .tools {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        line-height: 30px;
+        display: flex;
+        background: white;
+        border-top: 1px solid #D7D7D7;
+        .tool {
+            width: 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            font-size: 16px;
+            input {
+                display: block;
+                position: absolute;
+                left: 0;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                opacity: 0;
+            }
+            &:hover {
+                background: #F5F5F5;
+            }
+        }
+    }
+    .mask {
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        input {
+            display: block;
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0;
+        }
+    }
+}
