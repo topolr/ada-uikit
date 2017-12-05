@@ -1,15 +1,15 @@
 let app = {
-    name: "ada-template",
+    name: "ada-template-web",
     source_path: "./src/",
     dist_path: "./dist/",
     site_url: "/",
-    short_name: "HackerWeb",
+    short_name: "ada web",
     regist_service: false,
     start_url: ".",
     display: "standalone",
     background_color: "#fff",
     theme_color: "",
-    description: "A simply template of ada.",
+    description: "A simply web template of ada.",
     main: "./src/root.js",
     entry_path: "./src/view/pages",
     icons: [
@@ -32,6 +32,21 @@ let app = {
         },
         style: [],
         script: []
+    },
+    compiler: {
+        babel: {
+            presets: [["env", {
+                targets: {
+                    chrome: 59
+                }
+            }]],
+            plugins: ["transform-decorators-legacy", "transform-async-to-generator", "syntax-dynamic-import"]
+        },
+        uglify: {},
+        uglifycss: {},
+        autoprefixer: {},
+        sass: {},
+        minifier: {}
     },
     worker: {
         scope: "/",
@@ -71,20 +86,5 @@ let app = {
             }));
         }
     },
-    compiler: {
-        babel: {
-            presets: [["env", {
-                targets: {
-                    chrome: 59
-                }
-            }]],
-            plugins: ["transform-decorators-legacy", "transform-async-to-generator", "syntax-dynamic-import"]
-        },
-        uglify: {},
-        uglifycss: {},
-        autoprefixer: {},
-        sass: {},
-        minifier: {}
-    }
 };
 export default app;
