@@ -9,9 +9,19 @@ import baseCss from "./style/base.scss";
     template: "./template/loading.html",
     style: "./style/loading.scss"
 })
+
 class Loading extends View {
     constructor(parameters) {
         super(parameters);
+        let defaultType = parameters.option.defaultType;
+        if (!defaultType || ["loading", "error", "success"].indexOf(defaultType) === -1) {
+            defaultType = "loading";
+        }
+        this[`show${defaultType[0].toUpperCase()}${defaultType.substring(1)}`]().then(() => {
+            setTimeout(() => {
+                this.getElement().classList.add("loading-in");
+            }, 0);
+        });
     }
 
     render(data) {
@@ -20,25 +30,28 @@ class Loading extends View {
     }
 
     showLoading() {
-        this.render({
+        return this.render({
             icon: refreshCw,
-            circle: true
+            circle: true,
+            color: "black"
         });
     }
 
     showSuccess() {
-        this.render({
+        return this.render({
             icon: checkCircle,
-            circle: false
+            circle: false,
+            color: "green"
         });
     }
 
     showError() {
-        this.render({
+        return this.render({
             icon: minusCircle,
-            circle: false
+            circle: false,
+            color: "red"
         });
     }
 }
 
-export  default Loading;
+export default Loading;
