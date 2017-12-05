@@ -1,0 +1,28 @@
+{
+    "name": "ada-template",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "dev": "node tools/develop.js",
+        "publish": "node tools/publish.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/topolr/ada-template.git"
+    },
+    "dependencies": {
+        "adajs": "git+https://github.com/topolr/ada.git",
+        "body-parser": "^1.18.2",
+        "cookie-parser": "^1.4.3",
+        "express": "^4.16.2",
+        "express-session": "^1.15.6",
+        "formidable": "^1.1.1",
+        "http-proxy-middleware": "^0.17.4"
+    },
+    "devDependencies": {
+        "ada-pack": "git+https://github.com/topolr/ada-pack.git"
+    },
+    "author": "WangJinliang(hou80houzhu)",
+    "license": "MIT"
+}
