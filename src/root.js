@@ -12,6 +12,7 @@ class Root extends StaticViewGroup {
                 content: "xxxxxxxxxx"
             }
         }).then((loading) => {
+            loading.showLoading();
             console.log(loading)
             window.loading = loading;
         });
