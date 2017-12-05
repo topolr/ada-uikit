@@ -9,7 +9,7 @@ class Toast extends View {
     constructor(parameters) {
         super(parameters);
         this.render({
-            content: "toast"
+            content: parameters.option.content
         }).then(() => {
             this.getElement().style.marginLeft = `-${this.getElement().getBoundingClientRect().width / 2}px`;
             setTimeout(() => {
