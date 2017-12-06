@@ -1,5 +1,5 @@
 const util = {
-    uuid: function () {
+    uuid() {
         var chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'.split(''),
             uuid = new Array(36), rnd = 0, r;
         for (var i = 0; i < 36; i++) {
@@ -17,13 +17,13 @@ const util = {
         }
         return uuid.join('');
     },
-    randomid: function (len) {
+    randomid(len) {
         if (arguments.length === 0 || len <= 2) {
             len = 7;
         }
         return Math.random().toString(36).slice(2, len + 2);
     },
-    getDatasetName: function (a) {
+    getDatasetName(a) {
         var n = "";
         for (var i = 0; i < a.length; i++) {
             if (/^[A-Z]+$/.test(a.charAt(i))) {
@@ -34,15 +34,15 @@ const util = {
         }
         return "data-" + n;
     },
-    getDatasetReserve: function (a) {
+    getDatasetReserve(a) {
         return a.substring(4).replace(/-[a-zA-Z]{1}/g, function (a) {
             return a[1].toUpperCase();
         });
     },
-    escape: function (str) {
+    escape(str) {
         return ('' + str).replace(/&/g, '&').replace(/</g, '<').replace(/>/g, '>').replace(/"/g, '"').replace(/'/g, '\'').replace(/\//g, '/');
     },
-    hashCode: function (str) {
+    hashCode(str) {
         var hash = 0;
         if (str.length === 0) return hash;
         for (var i = 0, len = str.length; i < len; i++) {
@@ -50,17 +50,6 @@ const util = {
             hash = hash & hash;
         }
         return hash;
-    },
-    setReadOnlyProps: function (objn, obj) {
-        for (var i in obj) {
-            Object.defineProperty(objn, i, {
-                enumerable: false,
-                configurable: false,
-                writable: false,
-                value: obj[i]
-            });
-        }
-        return objn;
     }
 };
 
