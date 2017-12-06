@@ -4,7 +4,15 @@ class Observe {
         return Observe.setObserve.call(this, obj);
     }
 
-    static setunwritelet(obj, key, value) {
+    static isObject(obj) {
+        return typeof (obj) === "object" && Object.prototype.toString.call(obj).toLowerCase() === "[object object]" && !obj.length;
+    }
+
+    static isArray(obj) {
+        return Object.prototype.toString.call(obj) === '[object Array]';
+    }
+
+    static setunwrite(obj, key, value) {
         Object.defineProperty(obj, key, {
             enumerable: false,
             configurable: false,
@@ -13,16 +21,16 @@ class Observe {
         });
     };
 
-    static setwritelet(obj, key, value) {
+    static setwrite(obj, key, value) {
         let ths = this;
         let val = Observe.setObserve(value);
         Object.defineProperty(obj, key, {
             enumerable: true,
             configurable: true,
-            get: function () {
+            get() {
                 return val;
             },
-            set: function (value) {
+            set(value) {
                 if (value !== val) {
                     val = Observe.setObserve.call(ths, value);
                     ths.fn && ths.fn();
@@ -31,37 +39,38 @@ class Observe {
         });
     };
 
-    static setObservelet(obj) {
+    static setObserve(obj) {
         let ths = this;
-        if (Array.isArray(obj)) {
-            Observe.setunwrite(obj, "splice", function () {
+        if (Observe.isArray(obj)) {
+            Observe.setunwrite(obj, "splice", function (...args) {
                 ths.fn && ths.fn();
-                return Array.prototype.splice.apply(this, Array.prototype.slice.call(arguments));
+                return Array.prototype.splice.apply(this, args);
             });
-            Observe.setunwrite(obj, "pop", function () {
+            Observe.setunwrite(obj, "pop", function (...args) {
                 ths.fn && ths.fn();
-                return Array.prototype.pop.apply(this, Array.prototype.slice.call(arguments));
+                return Array.prototype.pop.apply(this, args);
             });
-            Observe.setunwrite(obj, "push", function (obj) {
+            Observe.setunwrite(obj, "push", function (...args) {
                 ths.fn && ths.fn();
-                return Array.prototype.push.apply(this, Array.prototype.slice.call(arguments));
+                return Array.prototype.push.apply(this, args);
             });
-            Observe.setunwrite(obj, "shift", function () {
+            Observe.setunwrite(obj, "shift", function (...args) {
                 ths.fn && ths.fn();
-                return Array.prototype.shift.apply(this, Array.prototype.slice.call(arguments));
+                return Array.prototype.shift.apply(this, args);
             });
-            Observe.setunwrite(obj, "unshift", function (obj) {
+            Observe.setunwrite(obj, "unshift", function (...args) {
                 ths.fn && ths.fn();
-                return Array.prototype.unshift.apply(this, Array.prototype.slice.call(arguments));
+                return Array.prototype.unshift.apply(this, args);
             });
-        } else if (is.isObject(obj)) {
-            let keys = Object.keys(obj);
-            for (let q = 0; q < keys.length; q++) {
-                Observe.setwrite.call(ths, obj, keys[q], obj[keys[q]])
-            }
+        } else if (Observe.isObject(obj)) {
+            Object.keys(obj).forEach(key => {
+                Observe.setwrite.call(ths, obj, key, obj[key])
+            });
         }
         return obj;
     };
 }
 
-export default Observe;
+export default function (obj, fn) {
+    return new Observe(obj, fn);
+};

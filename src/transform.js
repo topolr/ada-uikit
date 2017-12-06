@@ -1,4 +1,5 @@
 import Browser from "./browser";
+import is from "./is";
 
 const watcher = {
     translate: function () {
@@ -30,6 +31,7 @@ const watcher = {
         return this.values.rotate !== 0 ? "rotate(" + this.values.rotate + "deg)" : "";
     }
 };
+
 class Transform {
     constructor(element) {
         this.element = element;
@@ -40,7 +42,7 @@ class Transform {
 
     static parse() {
         let info = window.getComputedStyle(this.element, "");
-        let matrix = info(Browser.getFixedStylePropName("transform"));
+        let matrix = info[Browser.getFixedStylePropName("transform")];
         let a = matrix.match(/(-?[0-9\.]+)/g);
         if (a) {
             if (a.length > 6) {

@@ -5,6 +5,9 @@ import Toast from "./toast";
 import Tween from "./tween";
 import Browser from "./browser";
 import transition from "./transition";
+import transform from "./transform";
+import query from "./query";
+import observe from "./observe";
 
 @root()
 class Root extends StaticViewGroup {
@@ -16,11 +19,24 @@ class Root extends StaticViewGroup {
         });
         console.log(Browser)
 
-        transition(this.getElement()).set("opacity").when((element) => {
-            element.style.opacity = 0;
-        }).then(() => {
-            console.log("done")
+        // transition(this.getElement()).set("opacity").when((element) => {
+        //     // element.style.opacity = 0;
+        //     transform(element).x("200px");
+        // }).then(() => {
+        //     console.log("done")
+        // });
+        let a=observe({
+            aa:"aa",
+            bb:"cc",
+            cc:[
+                {aa:"aa"}
+            ]
+        },(a)=>{
+            console.log(a);
         });
+        console.log(a);
+        a.aa="ccccc";
+        a.cc.push({aa:"fff"});
     }
 }
 

@@ -1,41 +1,5 @@
-const is = {
-    isFunction(obj) {
-        return (typeof obj === 'function') && obj.constructor === window.Function;
-    },
-    isEmptyObject(obj) {
-        return Object.keys(obj).length === 0;
-    },
-    isUndefined(obj) {
-        return obj === undefined;
-    },
-    isWindow(obj) {
-        return obj !== undefined && obj !== null && obj === obj.window;
-    },
-    isDocument(obj) {
-        return obj !== null && obj.nodeType === obj.DOCUMENT_NODE;
-    },
-    isObject(obj) {
-        return typeof (obj) === "object" && Object.prototype.toString.call(obj).toLowerCase() === "[object object]" && !obj.length;
-    },
-    isString(obj) {
-        return (typeof obj === 'string') && obj.constructor === String;
-    },
-    isNumber(obj) {
-        return typeof obj === "number";
-    },
-    isNumeric(obj) {
-        return !isNaN(parseFloat(obj)) && isFinite(obj);
-    },
-    isAvalid(obj) {
-        return obj !== null && obj !== undefined;
-    },
-    isArray(obj) {
-        return Object.prototype.toString.call(obj) === '[object Array]';
-    },
-    isElement(e) {
-        return e && e.nodeType === 1 && e.nodeName;
-    },
-};
+import is from "./is";
+
 const dom = {
     regs: {
         root: /^(?:body|html)$/i,
@@ -198,29 +162,6 @@ class windoc {
         return window.innerHeight;
     }
 
-    bind(type, fn, capt) {
-        if (is.isWindow(this.obj)) {
-            if (!capt) {
-                capt = false;
-            }
-            window.addEventListener(type, fn, capt);
-        } else {
-            this.nodes = [this.obj];
-            event.util.bind(this, type, fn, capt);
-        }
-        return this;
-    }
-
-    unbind(type, fn) {
-        if (is.isWindow(this.obj)) {
-            window.removeEventListener(type, fn, false);
-        } else {
-            this.nodes = [this.obj];
-            event.util.bind(this, type, fn);
-        }
-        return this;
-    }
-
     scrollTop(top) {
         let a = this;
         if (arguments.length === 0) {
@@ -242,34 +183,11 @@ class windoc {
         return a;
     }
 }
+
 class query {
-    constructor(start) {
+    constructor() {
         this.nodes = [];
         this.length = 0;
-        if (arguments.length === 1 && is.isAvalid(start)) {
-            if (is.isString(start)) {
-                if (dom.util.isHTML(start)) {
-                    this.nodes = dom.util.parseHTML(start);
-                } else {
-                    this.nodes = dom.util.query(window.document, start);
-                }
-                this.length = this.nodes.length;
-            } else if (start instanceof query) {
-                this.nodes = start.nodes;
-                this.length = start.length;
-            } else if (is.isWindow(start) || is.isDocument(start)) {
-                return new windoc(start);
-            } else if (start.nodeType === 1) {
-                this.nodes = [start];
-                this.length = 1;
-            } else {
-                this.nodes = [];
-                this.length = 0;
-            }
-        } else if (arguments.length === 0) {
-            this.nodes = [];
-            this.length = 0;
-        }
     }
 
     get(a) {
@@ -1197,5 +1115,30 @@ class query {
 }
 
 export default function (start) {
-    return new query(start);
+    let result = new query();
+    if (arguments.length === 1 && is.isAvalid(start)) {
+        if (is.isString(start)) {
+            if (dom.util.isHTML(start)) {
+                result.nodes = dom.util.parseHTML(start);
+            } else {
+                result.nodes = dom.util.query(window.document, start);
+            }
+            result.length = result.nodes.length;
+        } else if (start instanceof query) {
+            result.nodes = start.nodes;
+            result.length = start.length;
+        } else if (is.isWindow(start) || is.isDocument(start)) {
+            result = new windoc(start);
+        } else if (start.nodeType === 1) {
+            result.nodes = [start];
+            result.length = 1;
+        } else {
+            result.nodes = [];
+            result.length = 0;
+        }
+    } else if (arguments.length === 0) {
+        result.nodes = [];
+        result.length = 0;
+    }
+    return result;
 }
