@@ -33,7 +33,7 @@ class Observe {
 
     static setObservelet(obj) {
         let ths = this;
-        if (is.isArray(obj)) {
+        if (Array.isArray(obj)) {
             Observe.setunwrite(obj, "splice", function () {
                 ths.fn && ths.fn();
                 return Array.prototype.splice.apply(this, Array.prototype.slice.call(arguments));
