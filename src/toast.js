@@ -8,17 +8,21 @@ import {view, View} from "adajs";
 class Toast extends View {
     constructor(parameters) {
         super(parameters);
-        this.render({
-            content: parameters.option.content
-        }).then(() => {
+        this.render(this.getOption()).then(() => {
             this.getElement().style.marginLeft = `-${this.getElement().getBoundingClientRect().width / 2}px`;
             setTimeout(() => {
-                this.getElement().classList.add("toast-out");
+                this.getElement().classList.add(this.getThisClass("out"));
                 setTimeout(() => {
                     this.getParent() && this.getParent().removeChild(this);
                 }, 1500);
             }, 2000);
         });
+    }
+
+    defaultOption() {
+        return {
+            content: "this is toast"
+        }
     }
 }
 

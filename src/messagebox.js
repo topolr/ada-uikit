@@ -17,7 +17,15 @@ class Text extends View {
 class Messagebox extends BondViewGroup {
     constructor(parameters) {
         super(parameters);
-        this.render(Object.assign({
+        this.render(this.getOption()).then(() => {
+            setTimeout(() => {
+                this.getElement().classList.add(this.getThisClass("in"));
+            }, 100);
+        });
+    }
+
+    defaultOption() {
+        return {
             title: "this is title",
             content: [
                 {type: Text, option: {}}
@@ -25,11 +33,7 @@ class Messagebox extends BondViewGroup {
             btns: [
                 {name: "close", action: "close"}
             ]
-        }, parameters.option)).then(() => {
-            setTimeout(() => {
-                this.getElement().classList.add("messagebox-in");
-            }, 100);
-        });
+        }
     }
 
     @binder("action")
@@ -39,7 +43,7 @@ class Messagebox extends BondViewGroup {
 
     @handler("close")
     close() {
-        this.getElement().classList.remove("messagebox-in");
+        this.getElement().classList.remove(this.getThisClass("in"));
         setTimeout(() => {
             this.getParent() && this.getParent().removeChild(this);
         }, 400);

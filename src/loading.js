@@ -19,7 +19,7 @@ class Loading extends View {
         }
         this[`show${defaultType[0].toUpperCase()}${defaultType.substring(1)}`](parameters.option.content).then(() => {
             setTimeout(() => {
-                this.getElement().classList.add("loading-in");
+                this.getElement().classList.add(this.getThisClass("in"));
             }, 100);
         });
     }
@@ -57,7 +57,7 @@ class Loading extends View {
 
     close(delay = 2000) {
         setTimeout(() => {
-            this.getElement().classList.remove("loading-in");
+            this.getElement().classList.remove(this.getThisClass("in"));
             setTimeout(() => {
                 this.getParent() && this.getParent().removeChild(this);
             }, 400);

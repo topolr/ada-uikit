@@ -40,8 +40,9 @@ class Root extends StaticViewGroup {
         // console.log(a);
         // a.aa = "ccccc";
         // a.cc.push({aa: "fff"});
-        // this.addChild(Alert);
-        this.addChild(Messagebox);
+        this.addChild(Alert);
+        // this.addChild(Messagebox);
+        // this.addChild(Toast)
 
     }
 }
