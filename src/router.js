@@ -203,7 +203,8 @@ let router = {
         }
     }
 };
-class _history {
+
+class History {
     constructor(url) {
         if (url) {
             if (url[url - 1] === "/") {
@@ -215,7 +216,7 @@ class _history {
         this._currentIndex = 0;
         this._handler = {};
         agent.onChange((e) => {
-            _history._run.call(this, e.state, e);
+            History._run.call(this, e.state, e);
         });
     }
 
@@ -292,7 +293,7 @@ class _history {
 
     run() {
         let page = window.location.href.substring(this.url.length);
-        _history._run.call(this, {__page__: page});
+        History._run.call(this, {__page__: page});
         return this;
     };
 
@@ -306,7 +307,7 @@ class _history {
         agent.add(data, title, this.url + url);
         this._stack.push(1);
         this._currentIndex = data.__index__;
-        _history._run.call(this, data);
+        History._run.call(this, data);
         return this;
     };
 
@@ -316,7 +317,7 @@ class _history {
         }
         data["__page__"] = url;
         agent.replace(data, title, this.url + url);
-        _history._run.call(this, data);
+        History._run.call(this, data);
         return this;
     };
 
@@ -337,12 +338,9 @@ class _history {
     };
 }
 
-const out = {
-    getRouter(option) {
-        if (!__history) {
-            __history = new _history(option);
-        }
-        return __history;
+export default function (option) {
+    if (!__history) {
+        __history = new History(option);
     }
+    return __history;
 };
-export default out;
