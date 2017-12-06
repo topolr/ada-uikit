@@ -1,23 +1,23 @@
 {
-  "name": "ada-uikit",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "dev": "node ./node_modules/ada-pack/dev/index.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/topolr/ada-template.git"
-  },
-  "dependencies": {
-    "adajs": "git+https://github.com/topolr/ada.git"
-  },
-  "devDependencies": {
-    "ada-pack": "git+https://github.com/topolr/ada-pack.git",
-    "express": "^4.16.2",
-    "http-proxy-middleware": "^0.17.4"
-  },
-  "author": "WangJinliang(hou80houzhu)",
-  "license": "MIT"
+    "name": "ada-uikit",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "dev": "node ./node_modules/ada-pack/bin/develop.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/topolr/ada-template.git"
+    },
+    "dependencies": {
+        "adajs": "git+https://github.com/topolr/ada.git"
+    },
+    "devDependencies": {
+        "ada-pack": "git+https://github.com/topolr/ada-pack.git",
+        "express": "^4.16.2",
+        "http-proxy-middleware": "^0.17.4"
+    },
+    "author": "WangJinliang(hou80houzhu)",
+    "license": "MIT"
 }
