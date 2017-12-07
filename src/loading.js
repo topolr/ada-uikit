@@ -13,19 +13,26 @@ import baseCss from "./style/base.scss";
 class Loading extends View {
     constructor(parameters) {
         super(parameters);
-        let defaultType = parameters.option.defaultType;
-        if (!defaultType || ["loading", "error", "success"].indexOf(defaultType) === -1) {
-            defaultType = "loading";
-        }
-        this[`show${defaultType[0].toUpperCase()}${defaultType.substring(1)}`](parameters.option.content).then(() => {
+        let defaultType = this.getOption().defaultType;
+        this[`show${defaultType[0].toUpperCase()}${defaultType.substring(1)}`]().then(() => {
             setTimeout(() => {
                 this.getElement().classList.add(this.getThisClass("in"));
             }, 100);
         });
     }
 
+    defaultOption() {
+        return {
+            defaultType: "loading"
+        };
+    }
+
     render(data) {
-        return super.render(Object.assign({}, this.getOption(), data));
+        let _data = Object.assign({}, this.getOption(), data || {});
+        if (!_data.content) {
+            _data.content = "loading...";
+        }
+        return super.render(_data);
     }
 
     showLoading(content) {
