@@ -114,15 +114,15 @@ class File {
             t = file.getFile();
         }
         return this.file.lastModified === t.lastModified && this.file.size === t.size && this.file.type === t.type && this.file.name === t.name;
-    };
+    }
 
     getFile() {
         return this.file;
-    };
+    }
 
     getFileName() {
         return this.file ? this.file.name : "";
-    };
+    }
 
     getFileSize(type, size) {
         let a = this.file.size;
@@ -137,7 +137,7 @@ class File {
             a = a.toFixed(size) / 1;
         }
         return a;
-    };
+    }
 
     getFileSizeAuto(radmon) {
         let v = 0, unit = "BYTE", byteSize = this.file.size;
@@ -156,11 +156,11 @@ class File {
             unit = "B";
         }
         return v + unit;
-    };
+    }
 
     getFileType() {
         return this.file ? this.file.type : "";
-    };
+    }
 
     getFileURI() {
         let ps = $.promise();
@@ -174,11 +174,11 @@ class File {
             reader.readAsDataURL(this.file);
         }
         return ps;
-    };
+    }
 
     getFileURL() {
         return window.URL.createObjectURL(this.file);
-    };
+    }
 
     getSuffix() {
         if (this.getFileName()) {
@@ -191,16 +191,16 @@ class File {
         } else {
             return "";
         }
-    };
+    }
 
     isSuffixWith(suffix) {
         return suffix === this.getSuffix();
-    };
+    }
 
     isTypeOf(type) {
         let typet = this.getFileType();
         return typet === type;
-    };
+    }
 
     getImageElement() {
         return new Promise((resolve, reject) => {
@@ -217,7 +217,7 @@ class File {
                 reject();
             }
         });
-    };
+    }
 
     compressImage(quality) {
         let ps = $.promise(), ths = this;
@@ -231,7 +231,7 @@ class File {
             ps.reject();
         });
         return ps;
-    };
+    }
 
     getImageCanvas(width, height) {
         return new Promise((resolve, reject) => {
@@ -307,16 +307,16 @@ class File {
                 reject();
             }
         });
-    };
+    }
 
     saveAs(filename) {
         File.saveAs(this.file, filename);
-    };
+    }
 
     uploadAsForm(option) {
         option.file = this.file;
         return File.uploadAsForm(option);
-    };
+    }
 }
 
 export default File;
