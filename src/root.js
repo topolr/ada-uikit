@@ -10,6 +10,7 @@ import query from "./query";
 import observe from "./observe";
 import Alert from "./alert";
 import Messagebox from "./messagebox";
+import Logo from "./logo";
 
 @root()
 class Root extends StaticViewGroup {
@@ -43,9 +44,10 @@ class Root extends StaticViewGroup {
         // this.addChild(Alert);
         // this.addChild(Messagebox);
         // this.addChild(Toast)
-        this.addChild(Loading).then((loading) => {
-            window.loading = loading;
-        });
+        // this.addChild(Loading).then((loading) => {
+        //     window.loading = loading;
+        // });
+        this.addChild(Logo)
     }
 }
 
