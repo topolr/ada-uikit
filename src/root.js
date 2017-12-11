@@ -44,10 +44,9 @@ class Root extends StaticViewGroup {
         // this.addChild(Alert);
         // this.addChild(Messagebox);
         // this.addChild(Toast)
-        // this.addChild(Loading).then((loading) => {
-        //     window.loading = loading;
-        // });
-        this.addChild(Logo)
+        this.addChild(Loading).then((loading) => {
+            window.loading = loading;
+        });
     }
 }
 
