@@ -1,12 +1,8 @@
 .logo {
-    transform: scale(0.2,0.2);
-    padding: 60px;
-    border: 1px solid #4F79AE;
-    border-radius: 50%;
+    transform: scale(0.2, 0.2);
+    padding: 80px;
     display: inline-block;
     position: relative;
-    //animation : rond 2s infinite;
-    //-webkit-animation : rond 2s infinite;
     .box {
         width: 140px;
         display: inline-block;
@@ -32,22 +28,43 @@
             background: #4F79AE;
         }
     }
-    .dot{
-        width:10px;
-        height:10px;
-        position : absolute;
-        background-color : black;
-        border-radius : 50%;
-        top : 0px;
-        left : 10px;
+    .circle {
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        border: 5px solid #4F79AE;
+        border-radius: 50%;
+        animation: rond 2s infinite;
+        -webkit-animation: rond 2s infinite;
+        &:after {
+            content:"";
+            display: block;
+            width: 30px;
+            height: 30px;
+            position: absolute;
+            background-color: #3D78A7;
+            border-radius: 50%;
+            top: 0px;
+            left: 70px;
+        }
     }
     @keyframes rond {
-        0% {transform : rotate(0deg) scale(0.2,0.2);}
-        100% {transform : rotate(360deg) scale(0.2,0.2);}
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
     }
 
     @-webkit-keyframes rond {
-        0% {-webkit-transform : rotate(0deg) scale(0.2,0.2);}
-        100% {-webkit-transform : rotate(360deg) scale(0.2,0.2);}
+        0% {
+            -webkit-transform: rotate(0deg);
+        }
+        100% {
+            -webkit-transform: rotate(360deg);
+        }
     }
 }
