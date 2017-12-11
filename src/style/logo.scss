@@ -1,8 +1,11 @@
 .logo {
-    transform: scale(0.2, 0.2);
+    transform: scale(0.1, 0.1);
     padding: 80px;
     display: inline-block;
     position: relative;
+    box-shadow: 0 0 10px #676767;
+    border-radius: 50%;
+    background: white;
     .box {
         width: 140px;
         display: inline-block;
@@ -34,19 +37,19 @@
         top: 0;
         right: 0;
         bottom: 0;
-        border: 5px solid #4F79AE;
+        border: 10px solid #4F79AE;
         border-radius: 50%;
         animation: rond 2s infinite;
         -webkit-animation: rond 2s infinite;
         &:after {
-            content:"";
+            content: "";
             display: block;
-            width: 30px;
-            height: 30px;
+            width: 40px;
+            height: 40px;
             position: absolute;
             background-color: #3D78A7;
             border-radius: 50%;
-            top: 0px;
+            top: -40px;
             left: 70px;
         }
     }
