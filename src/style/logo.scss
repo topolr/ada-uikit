@@ -4,6 +4,9 @@
     border: 1px solid #4F79AE;
     border-radius: 50%;
     display: inline-block;
+    position: relative;
+    //animation : rond 2s infinite;
+    //-webkit-animation : rond 2s infinite;
     .box {
         width: 140px;
         display: inline-block;
@@ -28,5 +31,23 @@
             border-radius: 0 0 60px 60px;
             background: #4F79AE;
         }
+    }
+    .dot{
+        width:10px;
+        height:10px;
+        position : absolute;
+        background-color : black;
+        border-radius : 50%;
+        top : 0px;
+        left : 10px;
+    }
+    @keyframes rond {
+        0% {transform : rotate(0deg) scale(0.2,0.2);}
+        100% {transform : rotate(360deg) scale(0.2,0.2);}
+    }
+
+    @-webkit-keyframes rond {
+        0% {-webkit-transform : rotate(0deg) scale(0.2,0.2);}
+        100% {-webkit-transform : rotate(360deg) scale(0.2,0.2);}
     }
 }
