@@ -4,11 +4,6 @@
     border: 1px solid #4F79AE;
     border-radius: 50%;
     display: inline-block;
-    border: dashed 1px #D0CE03;
-    animation-name: loader-spin;
-    animation-duration: 2s;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
     .box {
         width: 140px;
         display: inline-block;
@@ -33,9 +28,5 @@
             border-radius: 0 0 60px 60px;
             background: #4F79AE;
         }
-    }
-    @-webkit-keyframes loader-spin {
-        from   {  transform: rotate(0deg); }
-        to     {  transform: rotate(360deg); }
     }
 }
