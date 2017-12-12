@@ -31,43 +31,4 @@
             background: #4F79AE;
         }
     }
-    .circle {
-        position: absolute;
-        left: 0;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        border: 10px solid #4F79AE;
-        border-radius: 50%;
-        animation: rond 2s infinite;
-        -webkit-animation: rond 2s infinite;
-        &:after {
-            content: "";
-            display: block;
-            width: 40px;
-            height: 40px;
-            position: absolute;
-            background-color: #3D78A7;
-            border-radius: 50%;
-            top: -40px;
-            left: 70px;
-        }
-    }
-    @keyframes rond {
-        0% {
-            transform: rotate(0deg);
-        }
-        100% {
-            transform: rotate(360deg);
-        }
-    }
-
-    @-webkit-keyframes rond {
-        0% {
-            -webkit-transform: rotate(0deg);
-        }
-        100% {
-            -webkit-transform: rotate(360deg);
-        }
-    }
 }
