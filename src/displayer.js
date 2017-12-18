@@ -585,8 +585,15 @@ class Scene {
         };
         Object.assign(ops, option);
         let domInfo = ops.dom.getBoundingClientRect();
-        sceneDefault.offsetx = parseInt(domInfo.left);
-        sceneDefault.offsety = parseInt(domInfo.top);
+        let info = {left: 0, top: 0}, _a = ops.dom;
+        while (_a) {
+            info.left = info.left + _a.offsetLeft;
+            info.top = info.top + _a.offsetTop;
+            _a = _a.offsetParent;
+        }
+        sceneDefault.offsetx = parseInt(info.left);
+        sceneDefault.offsety = parseInt(info.top);
+
         let a = new Sprite({
             name: "root",
             width: domInfo.width,
@@ -606,9 +613,6 @@ class Scene {
             this._cast("click", e);
         });
         a.canvas.addEventListener("mousedown", (e) => {
-            let info = ops.dom.getBoundingClientRect();
-            sceneDefault.offsetx = parseInt(info.left);
-            sceneDefault.offsety = parseInt(info.top);
             this._cast("mousedown", e);
         });
         a.canvas.addEventListener("mousemove", (e) => {
