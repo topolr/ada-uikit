@@ -456,7 +456,7 @@ class query {
     each(fn) {
         if (fn) {
             for (let i = 0, len = this.nodes.length; i < len; i++) {
-                if (fn.call(this.nodes[i], this.nodes[i], i, this.nodes) === false) {
+                if (fn(this.nodes[i], i, this.nodes) === false) {
                     break;
                 }
             }
@@ -560,7 +560,7 @@ class query {
                 }
             } else if (is.isFunction(a)) {
                 for (let i = 0; i < this.nodes.length; i++) {
-                    let d = a.call(this.nodes[i], i, this.nodes[i].innerHTML);
+                    let d = a(this.nodes[i], i, this.nodes[i].innerHTML);
                     dom.util.isHTML(d) && this.nodes[i].appendChild(dom.util.parseFlagment(d));
                 }
             }
@@ -631,7 +631,7 @@ class query {
                 }
             } else if (is.isFunction(a)) {
                 for (let i = 0; i < this.nodes.length; i++) {
-                    let d = a.call(this.nodes[i], i, this.nodes[i].innerHTML);
+                    let d = a(this.nodes[i], i, this.nodes[i].innerHTML);
                     if (dom.util.isHTML(d)) {
                         if (this.nodes[i].childNodes.length > 0) {
                             this.nodes[i].insertBefore(dom.util.parseFlagment(d), this.nodes[i].firstChild);
@@ -1058,7 +1058,7 @@ class query {
             let val = this.nodes[i][name];
             if (val !== undefined) {
                 if (is.isFunction(value)) {
-                    this.nodes[i][name] = value.call(this.nodes[i], i, val);
+                    this.nodes[i][name] = value(this.nodes[i], i, val);
                 } else {
                     this.nodes[i][name] = value;
                 }
@@ -1106,7 +1106,7 @@ class query {
             return this.nodes.length === 0;
         } else {
             if (is.isFunction(fn)) {
-                fn.call(this, this.nodes.length === 0);
+                fn(this.nodes.length === 0);
                 return this;
             }
             return this;
