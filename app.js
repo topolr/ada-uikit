@@ -8,11 +8,10 @@ let app = {
     start_url: ".",
     display: "standalone",
     background_color: "#fff",
-    theme_color: "",
+    theme_color: "#fff",
     description: "A simply component template of ada.",
     main: "./src/root.js",
     icons: [],
-    related_applications: [{"platform": "web"}],
     page: {
         charset: "UTF-8",
         meta: {
