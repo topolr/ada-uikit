@@ -16,11 +16,8 @@ class Simpletree extends View {
     }
 
     render(data) {
-        console.time("aa")
         data.icons = {triangleRight};
-        return super.render(data).then(()=>{
-            console.timeEnd("aa");
-        });
+        return super.render(data);
     }
 
     @binder("toggle")
