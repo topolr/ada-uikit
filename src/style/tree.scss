@@ -1,5 +1,6 @@
 .simpletree {
-    font-size: 12px;
+    font-size: 13px;
+    cursor: default;
     .icon {
         display: inline-block;
         vertical-align: middle;
@@ -13,18 +14,24 @@
     .block {
         .item {
             >.head {
-                line-height: 30px;
-                position: relative;
+                line-height: 25px;
                 >.arrow {
+                    width:20px;
+                    height:25px;
                     text-align: center;
-                    position: absolute;
-                    left:0;
-                    top:0;
+                    display: inline-block;
+                    vertical-align: top;
                 }
-                .namecon {
-                    .name {
-                        padding:0 10px 0 15px;
-                    }
+                >.noarrow{
+                    width:20px;
+                    height:25px;
+                    display: inline-block;
+                    vertical-align: top;
+                    line-height: 25px;
+                }
+                >.name {
+                    display: inline-block;
+                    vertical-align: top;
                 }
             }
             >.body {

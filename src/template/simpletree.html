@@ -6,10 +6,10 @@
             <div class="arrow" onclick="{{toggle(item)}}">
                 <@icon class='icon' id="{{icons.triangleRight}}"/>
             </div>
+            {{else}}
+            <div class="noarrow"></div>
             {{/if}}
-            <div class="namecon">
-                <span class="name">{{item.name}}</span>
-            </div>
+            <div class="name">{{item.name}}</div>
         </div>
         <div class="body">
             <@self @data="{{ {list:item.list,icons:icons} }}"/>
