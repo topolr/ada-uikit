@@ -1,0 +1,19 @@
+<div class="block">
+    {{list list as item}}
+    <div class="{{item._opened?'item opened':'item'}}">
+        <div class="head">
+            {{if item.list.length>0}}
+            <div class="arrow" onclick="{{toggle(item)}}">
+                <@icon class='icon' id="{{icons.triangleRight}}"/>
+            </div>
+            {{/if}}
+            <div class="namecon">
+                <span class="name">{{item.name}}</span>
+            </div>
+        </div>
+        <div class="body">
+            <@self @data="{{ {list:item.list,icons:icons} }}"/>
+        </div>
+    </div>
+    {{/list}}
+</div>

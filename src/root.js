@@ -11,6 +11,7 @@ import observe from "./observe";
 import Alert from "./alert";
 import Messagebox from "./messagebox";
 import Logo from "./logo";
+import tree from "./tree";
 
 @root()
 class Root extends StaticViewGroup {
@@ -44,8 +45,35 @@ class Root extends StaticViewGroup {
         // this.addChild(Alert);
         // this.addChild(Messagebox);
         // this.addChild(Toast)
-        this.addChild(Loading).then((loading) => {
-            window.loading = loading;
+        // this.addChild(Loading).then((loading) => {
+        //     window.loading = loading;
+        // });
+        this.addChild(tree,{
+            option:{
+                list:[
+                    {name:"aa",list:[
+                        {name:"aaa",list:[]},
+                        {name:"bbb",list:[
+                            {name:"aaa",list:[]},
+                            {name:"bbb",list:[]},
+                            {name:"ccc",list:[]}
+                        ]},
+                        {name:"ccc",list:[]}
+                    ]},
+                    {name:"bb",list:[
+                        {name:"aaa",list:[]},
+                        {name:"bbb",list:[]},
+                        {name:"ccc",list:[
+                            {name:"aaa",list:[]},
+                            {name:"bbb",list:[]},
+                            {name:"ccc",list:[]}
+                        ]}
+                    ]},
+                    {name:"cc",list:[
+                        {name:"ccc",list:[]}
+                    ]}
+                ]
+            }
         });
     }
 }

@@ -42,7 +42,7 @@ let app = {
     },
     worker: {
         scope: "/",
-        regist(done) {},
+        beforeregist(done) {},
         oninstall(event) {},
         onfetch(event) {}
     },

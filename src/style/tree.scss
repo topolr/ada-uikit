@@ -1,0 +1,46 @@
+.simpletree {
+    font-size: 12px;
+    .icon {
+        display: inline-block;
+        vertical-align: middle;
+        width: 1em;
+        height: 1em;
+        stroke-width: 0;
+        stroke: currentColor;
+        fill: currentColor;
+        font-size: 14px;
+    }
+    .block {
+        .item {
+            >.head {
+                line-height: 30px;
+                position: relative;
+                >.arrow {
+                    text-align: center;
+                    position: absolute;
+                    left:0;
+                    top:0;
+                }
+                .namecon {
+                    .name {
+                        padding:0 10px 0 15px;
+                    }
+                }
+            }
+            >.body {
+                margin-left: 10px;
+                display: none;
+            }
+            &.opened {
+                >.head {
+                    >.arrow {
+                        transform:rotate(90deg);
+                    }
+                }
+                >.body {
+                    display: block;
+                }
+            }
+        }
+    }
+}
