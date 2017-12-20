@@ -55,8 +55,20 @@ class Root extends StaticViewGroup {
                         {name:"aaa",list:[]},
                         {name:"bbb",list:[
                             {name:"aaa",list:[]},
-                            {name:"bbb",list:[]},
-                            {name:"ccc",list:[]}
+                            {name:"bbb",list:[
+                                {name:"aaa",list:[]},
+                                {name:"bbb",list:[]},
+                                {name:"ccc",list:[]}
+                            ]},
+                            {name:"ccc",list:[
+                                {name:"aaa",list:[]},
+                                {name:"bbb",list:[]},
+                                {name:"ccc",list:[
+                                    {name:"aaa",list:[]},
+                                    {name:"bbb",list:[]},
+                                    {name:"ccc",list:[]}
+                                ]}
+                            ]}
                         ]},
                         {name:"ccc",list:[]}
                     ]},
