@@ -2,6 +2,13 @@
     font-size: 13px;
     cursor: default;
     background: #eeeeee;
+    position: absolute;
+    left:0;
+    top:0;
+    right:0;
+    bottom:0;
+    padding:10px;
+    overflow: auto;
     .icon {
         display: inline-block;
         vertical-align: middle;
