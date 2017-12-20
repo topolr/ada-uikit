@@ -3,9 +3,7 @@
     <div class="{{item._opened?'item opened':'item'}}">
         <div class="head">
             {{if item.list.length>0}}
-            <div class="arrow" onclick="{{toggle(item)}}">
-                <@icon class='icon' id="{{icons.triangleRight}}"/>
-            </div>
+            <div class="arrow" onclick="{{toggle(item)}}"><@icon class='icon' id="{{icons.triangleRight}}"/></div>
             {{else}}
             <div class="noarrow"></div>
             {{/if}}
