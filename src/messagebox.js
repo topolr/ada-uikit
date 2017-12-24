@@ -27,6 +27,7 @@ class Messagebox extends BondViewGroup {
     defaultOption() {
         return {
             title: "this is title",
+            width: "360px",
             content: [
                 {type: Text, option: {}}
             ],
