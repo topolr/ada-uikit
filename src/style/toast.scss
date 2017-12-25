@@ -4,12 +4,13 @@
     background: #24242C;
     color: white;
     border-radius: 15px;
-    position: absolute;
+    position: fixed;
     left: 50%;
     bottom: -100px;
     transform: translateY(-180px);
     transition: transform ease-out .3s;
     opacity: .9;
+    z-index:99999999;
     .content {
         font-size: 12px;
         white-space: nowrap;
