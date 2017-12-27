@@ -39,7 +39,7 @@ class Messagebox extends BondViewGroup {
 
     @binder("action")
     action({item}) {
-        this.dispatchEvent(item.action, item);
+        this[item.action] && this[item.action](item);
     }
 
     @handler("close")
