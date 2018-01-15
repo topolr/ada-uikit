@@ -13,6 +13,7 @@ import baseCss from "./style/base.scss";
 class Loading extends View {
     constructor(parameters) {
         super(parameters);
+        baseCss.active();
         let defaultType = this.getOption().defaultType;
         this[`show${defaultType[0].toUpperCase()}${defaultType.substring(1)}`]().then(() => {
             setTimeout(() => {
