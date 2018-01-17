@@ -1,4 +1,4 @@
-import {view, binder, View, Service} from "adajs";
+import {view, binder, View, service} from "adajs";
 import Treeservice from "./service/tree";
 import triangleRight from "./icons/triangle-right.icon";
 
@@ -8,11 +8,12 @@ import triangleRight from "./icons/triangle-right.icon";
     style: "./style/tree.scss"
 })
 class Simpletree extends View {
-    constructor(parameters) {
-        super(parameters);
-        let service = this.service = Service.getService(Treeservice, this.getOption());
-        service.connect(this);
-        service.trigger("get");
+
+    @service(Treeservice)
+    treeService;
+
+    oncreated() {
+        this.treeService.trigger("set", this.getOption());
     }
 
     render(data) {
@@ -22,7 +23,7 @@ class Simpletree extends View {
 
     @binder("toggle")
     toggle({item}) {
-        this.service.trigger("toggle", item);
+        this.treeService.trigger("toggle", item);
     }
 }
 

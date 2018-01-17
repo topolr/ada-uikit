@@ -1,11 +1,6 @@
 import {action, Service} from "adajs";
 
 class Treeservice extends Service {
-    constructor(parameters) {
-        super(parameters);
-        Treeservice.set(parameters.list);
-    }
-
     static set(data) {
         data.forEach(item => {
             item._opened = false;
@@ -13,9 +8,10 @@ class Treeservice extends Service {
         });
     }
 
-    @action("get")
-    get(old) {
-        return old;
+    @action("set")
+    set(old, data) {
+        Treeservice.set(data.list);
+        return data;
     }
 
     @action("toggle")
