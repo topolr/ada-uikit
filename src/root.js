@@ -12,6 +12,7 @@ import Alert from "./alert";
 import Messagebox from "./messagebox";
 import Logo from "./logo";
 import tree from "./tree";
+import {Text} from "./form";
 
 @root()
 class Root extends StaticViewGroup {
