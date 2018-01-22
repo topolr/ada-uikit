@@ -1,6 +1,6 @@
 import {view, View} from "adajs";
 
-interface Field {
+export interface Field {
     getValue(): any
     setValue(val: any): void
     check(): boolean
@@ -9,7 +9,7 @@ interface Field {
     disable(): void
     undisable(): void
 }
-interface Form {
+export interface Form {
     getValue(): any
     setValue(): void
     reset(): void

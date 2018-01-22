@@ -17,7 +17,8 @@ class Text extends View {
 class Messagebox extends BondViewGroup {
     constructor(parameters) {
         super(parameters);
-        this.render(this.getOption()).then(() => {
+        this.combine(this.getOption());
+        this.render().then(() => {
             setTimeout(() => {
                 this.getElement().classList.add(this.getThisClass("in"));
             }, 100);

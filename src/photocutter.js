@@ -307,7 +307,10 @@ class Cutter {
 class Photocutter extends View {
     constructor(paras) {
         super(paras);
-        this.render({none: true});
+        this.combine({
+            refreshCw, rotateCw, rotateCcw, zoomIn, zoomOut, folder
+        });
+        this._data = this.watch({none: true});
         let ops = Object.assign({
             picWidth: 100,
             picHeight: 100,
@@ -324,19 +327,12 @@ class Photocutter extends View {
         this.cutter = new Cutter(ops);
     }
 
-    render(data) {
-        Object.assign(data, {
-            refreshCw, rotateCw, rotateCcw, zoomIn, zoomOut, folder
-        });
-        return super.render(data);
-    }
-
     @binder("change")
     change({e}) {
         let files = e.target.files || e.dataTransfer.files;
         new File(files[0]).getImageElement().then(image => {
             this.cutter.setImage(image);
-            this.render({none: false});
+            this._data.none = false;
         });
     }
 

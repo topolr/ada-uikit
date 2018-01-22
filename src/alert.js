@@ -8,7 +8,8 @@ import {view, binder, handler, View} from "adajs";
 class Alert extends View {
     constructor(parameters) {
         super(parameters);
-        this.render(this.getOption());
+        this.combine(this.getOption());
+        this.render();
         setTimeout(() => {
             this.getElement().classList.add(this.getThisClass("in"));
         }, 100);

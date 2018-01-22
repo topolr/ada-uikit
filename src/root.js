@@ -12,12 +12,18 @@ import Alert from "./alert";
 import Messagebox from "./messagebox";
 import Logo from "./logo";
 import tree from "./tree";
-import {Text} from "./form";
+import {Text,Field} from "./form";
 
 @root()
 class Root extends StaticViewGroup {
     constructor(option) {
         super(option);
+        this.addChild(Text).then(text=>{
+            console.log(Field)
+            // console.log(text instanceof Field)
+        });
+        // let a=new Text();
+        // console.log(a instanceof Field)
         // this.addChild(Loading).then((loading) => {
         //     loading.showLoading("loading");
         //     window.loading = loading;
@@ -49,45 +55,45 @@ class Root extends StaticViewGroup {
         // this.addChild(Loading).then((loading) => {
         //     window.loading = loading;
         // });
-        this.addChild(tree,{
-            option:{
-                list:[
-                    {name:"aa",list:[
-                        {name:"aaa",list:[]},
-                        {name:"bbb",list:[
-                            {name:"aaa",list:[]},
-                            {name:"bbb",list:[
-                                {name:"aaa",list:[]},
-                                {name:"bbb",list:[]},
-                                {name:"ccc",list:[]}
-                            ]},
-                            {name:"ccc",list:[
-                                {name:"aaa",list:[]},
-                                {name:"bbb",list:[]},
-                                {name:"ccc",list:[
-                                    {name:"aaa",list:[]},
-                                    {name:"bbb",list:[]},
-                                    {name:"ccc",list:[]}
-                                ]}
-                            ]}
-                        ]},
-                        {name:"ccc",list:[]}
-                    ]},
-                    {name:"bb",list:[
-                        {name:"aaa",list:[]},
-                        {name:"bbb",list:[]},
-                        {name:"ccc",list:[
-                            {name:"aaa",list:[]},
-                            {name:"bbb",list:[]},
-                            {name:"ccc",list:[]}
-                        ]}
-                    ]},
-                    {name:"cc",list:[
-                        {name:"ccc",list:[]}
-                    ]}
-                ]
-            }
-        });
+        // this.addChild(tree,{
+        //     option:{
+        //         list:[
+        //             {name:"aa",list:[
+        //                 {name:"aaa",list:[]},
+        //                 {name:"bbb",list:[
+        //                     {name:"aaa",list:[]},
+        //                     {name:"bbb",list:[
+        //                         {name:"aaa",list:[]},
+        //                         {name:"bbb",list:[]},
+        //                         {name:"ccc",list:[]}
+        //                     ]},
+        //                     {name:"ccc",list:[
+        //                         {name:"aaa",list:[]},
+        //                         {name:"bbb",list:[]},
+        //                         {name:"ccc",list:[
+        //                             {name:"aaa",list:[]},
+        //                             {name:"bbb",list:[]},
+        //                             {name:"ccc",list:[]}
+        //                         ]}
+        //                     ]}
+        //                 ]},
+        //                 {name:"ccc",list:[]}
+        //             ]},
+        //             {name:"bb",list:[
+        //                 {name:"aaa",list:[]},
+        //                 {name:"bbb",list:[]},
+        //                 {name:"ccc",list:[
+        //                     {name:"aaa",list:[]},
+        //                     {name:"bbb",list:[]},
+        //                     {name:"ccc",list:[]}
+        //                 ]}
+        //             ]},
+        //             {name:"cc",list:[
+        //                 {name:"ccc",list:[]}
+        //             ]}
+        //         ]
+        //     }
+        // });
     }
 
     onchildremoved(view){
