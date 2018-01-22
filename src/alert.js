@@ -8,7 +8,6 @@ import {view, binder, handler, View} from "adajs";
 class Alert extends View {
     constructor(parameters) {
         super(parameters);
-        this.combine(this.getOption());
         this.render();
         setTimeout(() => {
             this.getElement().classList.add(this.getThisClass("in"));
@@ -22,6 +21,10 @@ class Alert extends View {
                 {name: "close", action: "close"}
             ]
         };
+    }
+
+    computed() {
+        return this.getOption();
     }
 
     @binder("action")

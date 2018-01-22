@@ -307,9 +307,6 @@ class Cutter {
 class Photocutter extends View {
     constructor(paras) {
         super(paras);
-        this.combine({
-            refreshCw, rotateCw, rotateCcw, zoomIn, zoomOut, folder
-        });
         this._data = this.watch({none: true});
         let ops = Object.assign({
             picWidth: 100,
@@ -325,6 +322,12 @@ class Photocutter extends View {
         ops.sceneWidth = boxInfo.width;
         ops.size = ops.size * 1024 * 1024;
         this.cutter = new Cutter(ops);
+    }
+
+    computed(data) {
+        return Object.assign(data, {
+            refreshCw, rotateCw, rotateCcw, zoomIn, zoomOut, folder
+        });
     }
 
     @binder("change")

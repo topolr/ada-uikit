@@ -8,7 +8,6 @@ import {view, View} from "adajs";
 class Toast extends View {
     constructor(parameters) {
         super(parameters);
-        this.combine(this.getOption());
         this.render().then(() => {
             this.getElement().style.marginLeft = `-${this.getElement().getBoundingClientRect().width / 2}px`;
             setTimeout(() => {
@@ -24,6 +23,10 @@ class Toast extends View {
         return {
             content: "this is toast"
         }
+    }
+
+    computed() {
+        return this.getOption();
     }
 }
 

@@ -17,7 +17,6 @@ class Text extends View {
 class Messagebox extends BondViewGroup {
     constructor(parameters) {
         super(parameters);
-        this.combine(this.getOption());
         this.render().then(() => {
             setTimeout(() => {
                 this.getElement().classList.add(this.getThisClass("in"));
@@ -36,6 +35,10 @@ class Messagebox extends BondViewGroup {
                 {name: "close", action: "close"}
             ]
         }
+    }
+
+    computed() {
+        return this.getOption();
     }
 
     @binder("action")

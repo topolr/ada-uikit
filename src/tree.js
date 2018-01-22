@@ -13,8 +13,11 @@ class Simpletree extends View {
     treeService;
 
     oncreated() {
-        this.combine({icons:{triangleRight}});
         this.treeService.trigger("set", this.getOption());
+    }
+
+    computed(data) {
+        return Object.assign(data, {icons: {triangleRight}});
     }
 
     @binder("toggle")
