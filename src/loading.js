@@ -14,12 +14,6 @@ class Loading extends View {
     constructor(parameters) {
         super(parameters);
         baseCss.active();
-        this.data = this.watch({
-            icon: refreshCw,
-            circle: true,
-            color: "black",
-            content: "loading..."
-        });
         let defaultType = this.getOption().defaultType;
         this[`show${defaultType[0].toUpperCase()}${defaultType.substring(1)}`]().then(() => {
             setTimeout(() => {
@@ -34,8 +28,16 @@ class Loading extends View {
         };
     }
 
+    render(data) {
+        let _data = Object.assign({}, this.getOption(), data || {});
+        if (!_data.content) {
+            _data.content = "loading...";
+        }
+        return super.render(_data);
+    }
+
     showLoading(content) {
-        Object.assign(this.data, {
+        return this.render({
             icon: refreshCw,
             circle: true,
             color: "black",
@@ -44,7 +46,7 @@ class Loading extends View {
     }
 
     showSuccess(content) {
-        Object.assign(this.data, {
+        return this.render({
             icon: checkCircle,
             circle: false,
             color: "green",
@@ -53,7 +55,7 @@ class Loading extends View {
     }
 
     showError(content) {
-        Object.assign(this.data, {
+        return this.render({
             icon: minusCircle,
             circle: false,
             color: "red",
