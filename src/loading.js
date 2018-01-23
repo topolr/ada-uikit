@@ -14,6 +14,12 @@ class Loading extends View {
     constructor(parameters) {
         super(parameters);
         baseCss.active();
+        this._data = this.watch({
+            icon: refreshCw,
+            circle: true,
+            color: "black",
+            content: content || "loading..."
+        });
         let defaultType = this.getOption().defaultType;
         this[`show${defaultType[0].toUpperCase()}${defaultType.substring(1)}`]().then(() => {
             setTimeout(() => {
@@ -28,47 +34,44 @@ class Loading extends View {
         };
     }
 
-    render(data) {
-        let _data = Object.assign({}, this.getOption(), data || {});
-        if (!_data.content) {
-            _data.content = "loading...";
-        }
-        return super.render(_data);
-    }
-
     showLoading(content) {
-        return this.render({
+        Object.assign(this._data, {
             icon: refreshCw,
             circle: true,
             color: "black",
-            content
+            content: content || "loading..."
         });
+        return this.render();
     }
 
     showSuccess(content) {
-        return this.render({
+        Object.assign(this._data, {
             icon: checkCircle,
             circle: false,
             color: "green",
-            content
+            content: content || "Success done"
         });
+        return this.render();
     }
 
     showError(content) {
-        return this.render({
+        Object.assign(this._data, {
             icon: minusCircle,
             circle: false,
             color: "red",
-            content
+            content: content || "Error occur"
         });
+        return this.render();
     }
 
     close(delay = 2000) {
         setTimeout(() => {
-            this.getElement().classList.remove(this.getThisClass("in"));
-            setTimeout(() => {
-                this.getParent() && this.getParent().removeChild(this);
-            }, 400);
+            if (!this.isRemoved()) {
+                this.getElement().classList.remove(this.getThisClass("in"));
+                setTimeout(() => {
+                    this.getParent() && this.getParent().removeChild(this);
+                }, 400);
+            }
         }, delay);
     }
 }
