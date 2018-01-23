@@ -18,7 +18,7 @@ class Loading extends View {
             icon: refreshCw,
             circle: true,
             color: "black",
-            content: content || "loading..."
+            content: "loading..."
         });
         let defaultType = this.getOption().defaultType;
         this[`show${defaultType[0].toUpperCase()}${defaultType.substring(1)}`]().then(() => {
