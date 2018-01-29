@@ -2,7 +2,7 @@ import {view, View} from "adajs";
 import refreshCw from "./icons/refresh-cw.icon";
 import checkCircle from "./icons/check-circle.icon";
 import minusCircle from "./icons/minus-circle.icon";
-import baseCss from "./style/base.scss";
+import "./style/base.scss";
 
 @view({
     className: "loading",
@@ -13,7 +13,6 @@ import baseCss from "./style/base.scss";
 class Loading extends View {
     constructor(parameters) {
         super(parameters);
-        baseCss.active();
         this._data = this.watch({
             icon: refreshCw,
             circle: true,
