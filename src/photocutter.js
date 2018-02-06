@@ -305,10 +305,12 @@ class Cutter {
     style: "./style/photocutter.scss"
 })
 class Photocutter extends View {
-    constructor(paras) {
-        super(paras);
-        this._data = this.watch({none: true});
-        let ops = this.getOption();
+    oncreated() {
+        this.state = Object.assign({
+            none: true,
+            refreshCw, rotateCw, rotateCcw, zoomIn, zoomOut, folder
+        }, this.option);
+        let ops = this.option;
         this.render().then(() => {
             let box = this.getDDM().finder("cutter").getElement();
             let boxInfo = box.getBoundingClientRect();
@@ -330,18 +332,13 @@ class Photocutter extends View {
         };
     }
 
-    computed(data) {
-        return Object.assign(data, {
-            refreshCw, rotateCw, rotateCcw, zoomIn, zoomOut, folder
-        }, this.getOption());
-    }
-
     @binder("change")
     change({e}) {
         let files = e.target.files || e.dataTransfer.files;
         new File(files[0]).getImageElement().then(image => {
             this.cutter.setImage(image);
-            this._data.none = false;
+            this.state.none = false;
+            this.render();
         });
     }
 

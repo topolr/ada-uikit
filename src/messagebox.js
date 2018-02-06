@@ -2,8 +2,7 @@ import {view, binder, handler, BondViewGroup, View} from "adajs";
 
 @view()
 class Text extends View {
-    constructor(parameters) {
-        super(parameters);
+    oncreated() {
         this.render();
         this.getElement().innerHTML = "this is content";
     }
@@ -15,8 +14,8 @@ class Text extends View {
     style: "./style/messagebox.scss"
 })
 class Messagebox extends BondViewGroup {
-    constructor(parameters) {
-        super(parameters);
+    oncreated() {
+        this.state = this.option;
         this.render().then(() => {
             setTimeout(() => {
                 this.getElement().classList.add(this.getThisClass("in"));
@@ -35,10 +34,6 @@ class Messagebox extends BondViewGroup {
                 {name: "close", action: "close"}
             ]
         }
-    }
-
-    computed() {
-        return this.getOption();
     }
 
     @binder("action")

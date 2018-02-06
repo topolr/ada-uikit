@@ -11,15 +11,14 @@ import "./style/base.scss";
 })
 
 class Loading extends View {
-    constructor(parameters) {
-        super(parameters);
-        this._data = this.watch({
+    oncreated() {
+        this.state = {
             icon: refreshCw,
             circle: true,
             color: "black",
             content: "loading..."
-        });
-        let defaultType = this.getOption().defaultType;
+        };
+        let defaultType = this.option.defaultType;
         this[`show${defaultType[0].toUpperCase()}${defaultType.substring(1)}`]().then(() => {
             setTimeout(() => {
                 this.getElement().classList.add(this.getThisClass("in"));
@@ -34,7 +33,7 @@ class Loading extends View {
     }
 
     showLoading(content) {
-        Object.assign(this._data, {
+        Object.assign(this.state, {
             icon: refreshCw,
             circle: true,
             color: "black",
@@ -44,7 +43,7 @@ class Loading extends View {
     }
 
     showSuccess(content) {
-        Object.assign(this._data, {
+        Object.assign(this.state, {
             icon: checkCircle,
             circle: false,
             color: "green",
@@ -54,7 +53,7 @@ class Loading extends View {
     }
 
     showError(content) {
-        Object.assign(this._data, {
+        Object.assign(this.state, {
             icon: minusCircle,
             circle: false,
             color: "red",

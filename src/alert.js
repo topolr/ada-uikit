@@ -6,11 +6,11 @@ import {view, binder, handler, View} from "adajs";
     style: "./style/alert.scss"
 })
 class Alert extends View {
-    constructor(parameters) {
-        super(parameters);
+    oncreated() {
+        this.state = this.option;
         this.render();
         setTimeout(() => {
-            this.getElement().classList.add(this.getThisClass("in"));
+            this.getElement().classList.add(this.getThisClassName("in"));
         }, 100);
     }
 
@@ -21,10 +21,6 @@ class Alert extends View {
                 {name: "close", action: "close"}
             ]
         };
-    }
-
-    computed() {
-        return this.getOption();
     }
 
     @binder("action")

@@ -6,8 +6,7 @@ import {view, View} from "adajs";
     style: "./style/logo.scss"
 })
 class Logo extends View {
-    constructor(parameters) {
-        super(parameters);
+    oncreated() {
         this.render();
     }
 }
