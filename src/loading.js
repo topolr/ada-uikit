@@ -21,7 +21,7 @@ class Loading extends View {
         let defaultType = this.option.defaultType;
         this[`show${defaultType[0].toUpperCase()}${defaultType.substring(1)}`]().then(() => {
             setTimeout(() => {
-                this.getElement().classList.add(this.getThisClass("in"));
+                this.getElement().classList.add(this.getThisClassName("in"));
             }, 100);
         });
     }
@@ -65,7 +65,7 @@ class Loading extends View {
     close(delay = 2000) {
         setTimeout(() => {
             if (!this.isRemoved()) {
-                this.getElement().classList.remove(this.getThisClass("in"));
+                this.getElement().classList.remove(this.getThisClassName("in"));
                 setTimeout(() => {
                     this.getParent() && this.getParent().removeChild(this);
                 }, 400);

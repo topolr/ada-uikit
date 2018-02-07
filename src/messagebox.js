@@ -18,7 +18,7 @@ class Messagebox extends BondViewGroup {
         this.state = this.option;
         this.render().then(() => {
             setTimeout(() => {
-                this.getElement().classList.add(this.getThisClass("in"));
+                this.getElement().classList.add(this.getThisClassName("in"));
             }, 100);
         });
     }
@@ -43,7 +43,7 @@ class Messagebox extends BondViewGroup {
 
     @handler("close")
     close() {
-        this.getElement().classList.remove(this.getThisClass("in"));
+        this.getElement().classList.remove(this.getThisClassName("in"));
         setTimeout(() => {
             this.getParent() && this.getParent().removeChild(this);
         }, 400);

@@ -30,7 +30,7 @@ class Alert extends View {
 
     @handler("close")
     close() {
-        this.getElement().classList.remove(this.getThisClass("in"));
+        this.getElement().classList.remove(this.getThisClassName("in"));
         setTimeout(() => {
             this.getParent() && this.getParent().removeChild(this);
         }, 400);
