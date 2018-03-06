@@ -46,7 +46,7 @@ class Text extends mix(View).with(Field) {
 
 @view({
     className: "form",
-    template: "./template/listform.text",
+    template: "./template/listform.html",
     style: "./style/listform.scss"
 })
 class ListForm extends mix(ViewGroup).with(Form) {
