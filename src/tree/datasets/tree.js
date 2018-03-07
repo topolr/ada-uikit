@@ -27,13 +27,4 @@ class TreeService extends Service {
     }
 }
 
-class TreeDataSet extends DataSet {
-    defaultService() {
-        return TreeService;
-    }
-}
-
-export {
-    TreeService,
-    TreeDataSet
-};
+export default TreeService;

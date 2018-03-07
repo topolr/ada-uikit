@@ -1,5 +1,5 @@
-import {view, binder, View, context} from "adajs";
-import {TreeDataSet} from "./datasets/tree";
+import {view, binder, View, pipein} from "adajs";
+import TreeService from "./datasets/tree";
 import triangleRight from "./icons/triangle-right.icon";
 
 @view({
@@ -9,7 +9,7 @@ import triangleRight from "./icons/triangle-right.icon";
 })
 class SimpleTree extends View {
 
-    @context(TreeDataSet)
+    @pipein(TreeService)
     treeDataSet;
 
     oncreated() {
