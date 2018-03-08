@@ -4,8 +4,8 @@ import triangleRight from "./icons/triangle-right.icon";
 
 @view({
     className: "simpletree",
-    template: "./simple.html",
-    style: "./simple.scss"
+    template: "./template/simple.html",
+    style: "./style/simple.scss"
 })
 class SimpleTree extends View {
 

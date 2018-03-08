@@ -7,8 +7,8 @@ import triangleRight from "./icons/triangle-right.icon";
 
 @view({
     className: "selectree",
-    template: "./selecttree.html",
-    style: "./selecttree.scss"
+    template: "./template/select.html",
+    style: "./style/select.scss"
 })
 class SelectTree extends SimpleTree {
     @pipe(SelectService)
