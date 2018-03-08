@@ -1,68 +1,32 @@
-import {root, StaticViewGroup, dataset} from "adajs";
-import TreeService from "./tree/datasets/simple";
-import SimpleTree from "./tree/simple";
-import SelectTree from "./tree/select";
-import SelectService from "./tree/datasets/select";
+import {dataset, root, StaticViewGroup} from "adajs";
+import SimpleTableService from "./table/datasets/simple";
+import SimpleTable from "./table/simple";
 
 @root()
 class Root extends StaticViewGroup {
-    @dataset(SelectService)
-    treeDataSet;
+    @dataset(SimpleTableService)
+    tableDataSet;
 
     oncreated() {
         this.render().then(() => {
-            this.addChild(SelectTree).then(() => {
-                this.treeDataSet.commit("set", [
-                    {
-                        name: "aa", list: [
-                        {name: "aaa", list: []},
-                        {
-                            name: "bbb", list: [
-                            {name: "aaa", list: []},
-                            {
-                                name: "bbb", list: [
-                                {name: "aaa", list: []},
-                                {name: "bbb", list: []},
-                                {name: "ccc", list: []}
-                            ]
-                            },
-                            {
-                                name: "ccc", list: [
-                                {name: "aaa", list: []},
-                                {name: "bbb", list: []},
-                                {
-                                    name: "ccc", list: [
-                                    {name: "aaa", list: []},
-                                    {name: "bbb", list: []},
-                                    {name: "ccc", list: []}
-                                ]
-                                }
-                            ]
-                            }
+            this.addChild(SimpleTable).then(() => {
+                this.tableDataSet.setOption(() => {
+                    return {
+                        rows: [
+                            {name: "AA", key: "aa", width: 120, align: "center"},
+                            {name: "BB", key: "bb", width: 120, align: "center"},
+                            {name: "CC", key: "cc", width: 120, align: "center"}
                         ]
-                        },
-                        {name: "ccc", list: []}
-                    ]
-                    },
-                    {
-                        name: "bb", list: [
-                        {name: "aaa", list: []},
-                        {name: "bbb", list: []},
-                        {
-                            name: "ccc", list: [
-                            {name: "aaa", list: []},
-                            {name: "bbb", list: []},
-                            {name: "ccc", list: []}
-                        ]
-                        }
-                    ]
-                    },
-                    {
-                        name: "cc", list: [
-                        {name: "ccc", list: []}
-                    ]
                     }
-                ]);
+                });
+                this.tableDataSet.commit("set", [
+                    {aa:"aa1",bb:"bb1",cc:"cc1"},
+                    {aa:"aa2",bb:"bb2",cc:"cc2"},
+                    {aa:"aa3",bb:"bb3",cc:"cc3"},
+                    {aa:"aa4",bb:"bb4",cc:"cc4"},
+                    {aa:"aa5",bb:"bb5",cc:"cc5"},
+                    {aa:"aa6",bb:"bb6",cc:"cc6"}
+                ])
             });
         });
     }
