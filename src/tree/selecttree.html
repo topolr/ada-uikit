@@ -7,6 +7,13 @@
             {{else}}
             <div class="noarrow"></div>
             {{/if}}
+            <div class="checkbox" onclick="{{toggleselect(item)}}">
+                {{if item._selected}}
+                <@icon class='icon' id="{{icons.checkBoxIcon}}"/>
+                {{else}}
+                <@icon class='icon' id="{{icons.checkBoxOutline}}"/>
+                {{/if}}
+            </div>
             <div class="name" onclick="{{active(item)}}">{{item.name}}</div>
         </div>
         <div class="body">

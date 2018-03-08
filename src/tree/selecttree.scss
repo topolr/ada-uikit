@@ -1,4 +1,4 @@
-.simpletree {
+.selectree {
     font-size: 13px;
     cursor: default;
     background: #eeeeee;
@@ -36,6 +36,14 @@
                     height: 25px;
                     display: inline-block;
                     vertical-align: top;
+                }
+                >.checkbox{
+                    width: 15px;
+                    height: 25px;
+                    text-align: center;
+                    display: inline-block;
+                    vertical-align: top;
+                    line-height: 22px;
                 }
                 >.name {
                     display: inline-block;

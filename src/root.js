@@ -1,15 +1,17 @@
 import {root, StaticViewGroup, dataset} from "adajs";
-import TreeService from "./tree/datasets/tree";
+import TreeService from "./tree/datasets/simple";
 import SimpleTree from "./tree/simple";
+import SelectTree from "./tree/selecttree";
+import SelectService from "./tree/datasets/select";
 
 @root()
 class Root extends StaticViewGroup {
-    @dataset(TreeService)
+    @dataset(SelectService)
     treeDataSet;
 
     oncreated() {
         this.render().then(() => {
-            this.addChild(SimpleTree).then(() => {
+            this.addChild(SelectTree).then(() => {
                 this.treeDataSet.commit("set", [
                     {
                         name: "aa", list: [

@@ -4,6 +4,7 @@ let app = {
     dist_path: "./dist/",
     description: "A simply component template of ada.",
     main: "./src/root.js",
+    ada_autobundle: false,
     compiler: {
         babel: {
             presets: [

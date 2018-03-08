@@ -1,5 +1,5 @@
 import {view, binder, View, pipe} from "adajs";
-import TreeService from "./datasets/tree";
+import TreeService from "./datasets/simple";
 import triangleRight from "./icons/triangle-right.icon";
 
 @view({
@@ -19,6 +19,11 @@ class SimpleTree extends View {
     @binder("toggle")
     toggle({item}) {
         this.treeDataSet.commit("toggle", item);
+    }
+
+    @binder("active")
+    active({item}){
+        this.treeDataSet.commit("active",item);
     }
 }
 

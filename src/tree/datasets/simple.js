@@ -1,20 +1,14 @@
 import {DataSet, Service, action} from "adajs";
+import util from "./util";
 
 class TreeService extends Service {
-    static set(data) {
-        data.forEach(item => {
-            item._opened = false;
-            TreeService.set(item.list);
-        });
-    }
-
     defaultData() {
         return [];
     }
 
     @action("set")
     set(old, data) {
-        TreeService.set(data);
+        util.initAll(data);
         return {
             list: data
         };
@@ -24,6 +18,13 @@ class TreeService extends Service {
     toggle(old, item) {
         item._opened = item._opened ? false : true;
         return old;
+    }
+
+    @action("active")
+    active(current, item) {
+        util.unactiveAll(current.list);
+        item._actived = true;
+        return current;
     }
 }
 
