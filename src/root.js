@@ -1,10 +1,10 @@
-import {root, StaticViewGroup, pipe} from "adajs";
+import {root, StaticViewGroup, dataset} from "adajs";
 import TreeService from "./tree/datasets/tree";
 import SimpleTree from "./tree/simple";
 
 @root()
 class Root extends StaticViewGroup {
-    @pipe(TreeService)
+    @dataset(TreeService)
     treeDataSet;
 
     oncreated() {
