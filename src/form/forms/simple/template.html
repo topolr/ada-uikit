@@ -1,0 +1,7 @@
+<div>
+    {{list fields as field}}
+    <div class="field">
+        <@module @type="{{ field.type }}" @data="{{ field }}"/>
+    </div>
+    {{/list}}
+</div>

@@ -1,8 +1,8 @@
 import {root, StaticViewGroup, dataset} from "adajs";
-import TreeService from "./tree/datasets/simple";
-import SimpleTree from "./tree/simple";
-import SelectTree from "./tree/select";
-import SelectService from "./tree/datasets/select";
+import TreeService from "./../tree/datasets/simple";
+import SimpleTree from "./../tree/simple";
+import SelectTree from "./../tree/select";
+import SelectService from "./../tree/datasets/select";
 
 @root()
 class Root extends StaticViewGroup {

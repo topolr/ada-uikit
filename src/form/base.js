@@ -1,65 +1,85 @@
-import {view, View, ViewGroup} from "adajs";
-import {Mixin, mix} from "mixwith";
+import {View, ViewGroup, BondViewGroup, dataset} from "adajs";
+import FormService from "./datasets/form";
 
-let Field = Mixin(base => class extends base {
-    setValue() {
+let mixField = (superclass) => class extends superclass {
+    defaultOption() {
+        return {
+            name: "",
+            label: ""
+        };
+    }
+
+    getFieldName() {
+        return this.state.name;
     }
 
     getValue() {
+        return "";
+    }
+
+    disabled() {
+        return this;
+    }
+
+    undisabled() {
+        return this;
+    }
+
+    check() {
+        return true;
+    }
+
+    onchange(data) {
+        this.state = Object.assign({}, data);
+        this.render();
+    }
+
+    isField() {
+        return true;
+    }
+};
+let mixForm = (superClass) => class extends superClass {
+    getValue() {
+        let result = {};
+        return this.getChildren().reduce((a, b) => {
+            return a.then((value) => {
+                Object.assign(result, value);
+                let _result = b.getValue();
+                if (_result.then) {
+                    return _result;
+                } else {
+                    return Promise.resolve({[b.getFieldName()], _result});
+                }
+            });
+        }, Promise.resolve(result)).then(() => result);
+    }
+
+    setValue(name, value) {
     }
 
     check() {
     }
 
-    getFieldName() {
+    disabled() {
     }
 
-    disable() {
+    undisabled() {
     }
+};
 
-    undisable() {
-    }
-});
-let Form = Mixin(base => class extends base {
-    getValue() {
-        return Promise.resolve({});
-    }
-
-    setValue() {
-    }
-
-    submit() {
-    }
-});
-
-@view({
-    className: "text",
-    template: "./template/text.html",
-    style: "./style/text.scss"
-})
-class Text extends mix(View).with(Field) {
-    oncreated() {
-        this.watch(this.getOption());
-        this.render();
-    }
+class Field extends mixField(View) {
 }
 
-@view({
-    className: "form",
-    template: "./template/listform.html",
-    style: "./style/listform.scss"
-})
-class ListForm extends mix(ViewGroup).with(Form) {
-    oncreated() {
-        this.watch(this.getOption());
-        this.render();
-    }
-
-    defaultOption() {
-        return {
-            fields: []
-        }
-    }
+class FieldGroup extends mixField(ViewGroup) {
 }
 
-export {Field, Form, Text};
+class BondFieldGroup extends mixField(BondFieldGroup) {
+}
+
+class Form extends mixForm(ViewGroup) {
+}
+
+class BondForm extends mixForm(BondViewGroup) {
+}
+
+export {Field, FieldGroup, BondFieldGroup, Form, BondForm, mixForm, mixField};
