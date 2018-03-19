@@ -1,7 +1,8 @@
 import {dataset, root, StaticViewGroup} from "adajs";
-import SimpleForm from "./../form/forms/simple";
+import SimpleForm from "../form/simpleform";
 import FormService from "./../form/datasets/form";
-import Text from "./../form/fields/text/base";
+import Input from "../form/input";
+import Textarea from "../form/textarea";
 
 @root()
 class Root extends StaticViewGroup {
@@ -11,8 +12,10 @@ class Root extends StaticViewGroup {
     oncreated() {
         this.render().then(() => {
             this.addChild(SimpleForm).then(() => {
-                this.tableDataSet.commit("set", [
-                    {type: Text, name: "aa", value: "aa", label: "aa"}
+                this.formDataSet.commit("set", [
+                    {type: Input, name: "aa", value: "aa", label: "aa",required:true},
+                    {type: Input, name: "bb", value: "bb", label: "bb"},
+                    {type: Textarea, name: "cc", value: "cc", label: "cc"}
                 ]);
             });
         });

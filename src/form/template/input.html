@@ -4,3 +4,6 @@
 <div class="field">
     <input type="{{ textType }}" value="{{ value }}" placeholder="{{ placeholder }}" onkeyup="{{ keyup() }}"/>
 </div>
+{{if iserror}}
+<div class="error">{{ errormsg }}</div>
+{{/if}}

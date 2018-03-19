@@ -1,12 +1,16 @@
-import {view, binder} from "adajs";
-import {Field} from "../../base";
+import {binder, pipe, view} from "adajs";
+import {Field} from "./base";
+import FormService from "./datasets/form";
 
 @view({
-    className: "formtext",
-    template: "./template.html",
-    style: "./style.scss"
+    className: "forminput",
+    template: "./template/input.html",
+    style: "./style/input.scss"
 })
 class Text extends Field {
+    @pipe(FormService)
+    formDataSet;
+
     oncreated() {
         this.state = Object.assign({
             label: "text",
@@ -16,18 +20,25 @@ class Text extends Field {
             placeholder: "",
             required: false,
             validate: {
-                mix: 0,
+                min: 0,
                 max: 100,
-                reg: "*"
+                reg: ".*"
             },
             iserror: false,
             errormsg: ""
         }, this.data);
+        this.render();
     }
 
     @binder("keyup")
     keyUp({e}) {
         this.state.value = e.target.value;
+        this.check();
+    }
+
+    setValue(value) {
+        this.formDataSet.commit("setvalue", {name: this.getFieldName(), value});
+        return this;
     }
 
     getValue() {
@@ -39,6 +50,7 @@ class Text extends Field {
         let result = true;
         if (this.state.required && value.length === 0) {
             result = false;
+            this.state.errormsg = `field can not empty`;
         }
         if (result) {
             let reg = new RegExp(this.state.validate.reg);
@@ -49,7 +61,7 @@ class Text extends Field {
                 }
             } else {
                 result = false;
-                this.state.errormsg = "reg error";
+                this.state.errormsg = `reg error`;
             }
         }
         if (!result) {
