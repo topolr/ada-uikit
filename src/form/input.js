@@ -7,7 +7,7 @@ import FormService from "./datasets/form";
     template: "./template/input.html",
     style: "./style/input.scss"
 })
-class Text extends Field {
+class Input extends Field {
     @pipe(FormService)
     formDataSet;
 
@@ -75,4 +75,4 @@ class Text extends Field {
     }
 }
 
-export default Text;
+export default Input;
