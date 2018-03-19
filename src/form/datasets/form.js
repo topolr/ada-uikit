@@ -15,15 +15,7 @@ class FormService extends Service {
 
     @action("set")
     set(current, fields) {
-        return info.fields.reduce((a, b) => {
-            return a.then(() => {
-                return import(b.type).then((c) => {
-                    b.type = c;
-                });
-            });
-        }, Promise.resolve()).then(() => {
-            return {fields};
-        });
+        return {fields};
     }
 }
 

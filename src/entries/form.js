@@ -1,6 +1,7 @@
 import {dataset, root, StaticViewGroup} from "adajs";
 import SimpleForm from "./../form/forms/simple";
 import FormService from "./../form/datasets/form";
+import Text from "./../form/fields/text/base";
 
 @root()
 class Root extends StaticViewGroup {
@@ -11,8 +12,8 @@ class Root extends StaticViewGroup {
         this.render().then(() => {
             this.addChild(SimpleForm).then(() => {
                 this.tableDataSet.commit("set", [
-                    {type: "form/fields/text/base.js", name: "aa", value: "aa", label: "aa"}
-                ])
+                    {type: Text, name: "aa", value: "aa", label: "aa"}
+                ]);
             });
         });
     }
