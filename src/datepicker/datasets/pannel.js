@@ -1,4 +1,4 @@
-import {Service, action} from "adajs";
+import {action, Service} from "adajs";
 import util from "./util";
 
 class PannelService extends Service {
@@ -10,7 +10,7 @@ class PannelService extends Service {
     prevMonth(current) {
         let year = current.current.year, month = current.current.month;
         if (month - 1 <= 0) {
-            month = 1;
+            month = 12;
             year = year - 1;
         } else {
             month = month - 1;
@@ -27,13 +27,27 @@ class PannelService extends Service {
         } else {
             month = month + 1;
         }
-        console.log(year, month);
         return util.getFinalPannelDates(new Date(`${year}/${month}/1 0:0:0`), current.selectDates, current.range);
+    }
+
+    @action("gotoyear")
+    gotoYear(current, year) {
+        return util.getFinalPannelDates(new Date(`${year}/${current.current.month}/1 0:0:0`), current.selectDates, current.range);
+    }
+
+    @action("gotomonth")
+    gotoMonth(current, month) {
+        return util.getFinalPannelDates(new Date(`${current.current.year}/${month}/1 0:0:0`), current.selectDates, current.range);
     }
 
     @action("gotodate")
     gotoDate(current, date) {
         return util.getFinalPannelDates(date, current.selectDates, current.range);
+    }
+
+    @action("today")
+    today(current) {
+        return util.getFinalPannelDates(current.now, current.selectDates, current.range);
     }
 
     @action("select")

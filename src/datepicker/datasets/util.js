@@ -121,6 +121,12 @@ const util = {
         result.pop();
         return {
             now,
+            isToday: (now_year === year && now_month === month),
+            today: {
+                year: now_year,
+                month: now_month,
+                day: now_day
+            },
             current: {
                 year,
                 month
@@ -176,14 +182,42 @@ const util = {
             });
         }
     },
+    setHeader(result) {
+        let years = [[]], months = [[]];
+        let yc = 1, mc = 1;
+        for (let i = 1940; i < 2032; i++) {
+            years[years.length - 1].push({
+                year: i,
+                current: (i === result.today.year),
+                selected: (i === result.current.year)
+            });
+            if (yc % 4 === 0) {
+                years.push([]);
+            }
+            yc++;
+        }
+        for (let i = 1; i <= 12; i++) {
+            months[months.length - 1].push({
+                month: i,
+                current: (i === result.today.month),
+                selected: (i === result.current.month)
+            });
+            if (mc % 2 === 0) {
+                months.push([]);
+            }
+            mc++;
+        }
+        result.pannel = {years, months};
+        return result;
+    },
     getFinalPannelDates(dateObject, selectDates = [], range = {before: null, after: null}) {
         let result = this.getPannelDates(dateObject);
         this.setSelected(result.current.year, result.current.month, result.days, selectDates);
         this.setRange(result.current.year, result.current.month, result.days, range);
-        return Object.assign({
+        return this.setHeader(Object.assign({
             selectDates,
             range
-        }, result);
+        }, result));
     }
 };
 
