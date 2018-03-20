@@ -10,9 +10,6 @@ import FormService from "./datasets/form";
 class SimpleForm extends Form {
     @pipe(FormService)
     formDataSet;
-
-    oncreated(){
-    }
 }
 
 export default SimpleForm;

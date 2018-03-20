@@ -1,0 +1,24 @@
+<div class="header">
+    {{list header as top}}
+    <div class="cell">{{ top }}</div>
+    {{/list}}
+</div>
+{{list days as day}}
+<div class="row">
+    {{list day as item}}
+        {{if item.type==='current'}}
+        <div class="{{ item.selected?'col selected':'col' }}" onclick="{{ select(item) }}">
+            <div class="{{item.current?'inner current':'inner'}}">{{ item.day }}</div>
+        </div>
+        {{elseif item.type==='prev'}}
+        <div class="disablecol" onclick="{{ prev() }}">
+            <div class="{{item.current?'inner current':'inner'}}">{{ item.day }}</div>
+        </div>
+        {{else}}
+        <div class="disablecol" onclick="{{ next() }}">
+            <div class="{{item.current?'inner current':'inner'}}">{{ item.day }}</div>
+        </div>
+        {{/if}}
+    {{/list}}
+</div>
+{{/list}}
