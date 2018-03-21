@@ -64,7 +64,7 @@ class Pannel extends View {
     focusScroll() {
         let target = this.finder("scroll").getElement().querySelector(`.${this.getThisClassName("selected")}`);
         if (target) {
-            this.finder("scroll").getElement().scrollTop = target.offsetTop;
+            this.finder("scroll").getElement().scrollTop = target.offsetTop-30;
         }
     }
 

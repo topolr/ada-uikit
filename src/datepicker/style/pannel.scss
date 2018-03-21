@@ -93,6 +93,22 @@
         left: 0;
         right: 0;
         bottom: 0;
+        .top{
+            line-height:30px;
+            display: flex;
+            font-size: 12px;
+            background:white;
+            border-bottom: 1px solid #E9EEEE;
+            color:#D7D7D7;
+            .left{
+                flex-grow: 1;
+                text-align: center;
+            }
+            .right{
+                width:60px;
+                text-align: center;
+            }
+        }
         .inner {
             display: flex;
             line-height: 30px;
@@ -102,7 +118,7 @@
             .left {
                 flex-grow: 1;
                 overflow: auto;
-                border-right: 1px solid #d7d7d7;
+                border-right: 1px solid #E9EEEE;
             }
             .right {
                 width: 60px;
