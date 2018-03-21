@@ -2,8 +2,8 @@ import {view, binder, handler, View} from "adajs";
 
 @view({
     className: "alert",
-    template: "./template/alert.html",
-    style: "./style/alert.scss"
+    template: "./alert/template.html",
+    style: "./alert/style.scss"
 })
 class Alert extends View {
     oncreated() {

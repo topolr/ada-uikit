@@ -1,13 +1,13 @@
 import {view, View} from "adajs";
-import refreshCw from "./icons/refresh-cw.icon";
-import checkCircle from "./icons/check-circle.icon";
-import minusCircle from "./icons/minus-circle.icon";
+import refreshCw from "./loading/icons/refresh-cw.icon";
+import checkCircle from "./loading/icons/check-circle.icon";
+import minusCircle from "./loading/icons/minus-circle.icon";
 import "./style/base.scss";
 
 @view({
     className: "loading",
-    template: "./template/loading.html",
-    style: "./style/loading.scss"
+    template: "./loading/template.html",
+    style: "./loading/style.scss"
 })
 
 class Loading extends View {

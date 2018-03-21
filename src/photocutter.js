@@ -1,12 +1,12 @@
 import {view, View, binder} from "adajs";
 import {Sprite, Scene} from "./displayer";
 import File from "./file";
-import refreshCw from "./icons/refresh-cw.icon";
-import rotateCcw from "./icons/rotate-ccw.icon";
-import rotateCw from "./icons/rotate-cw.icon";
-import zoomIn from "./icons/zoom-in.icon";
-import zoomOut from "./icons/zoom-out.icon";
-import folder from "./icons/folder.icon";
+import refreshCw from "./photocutter/icons/refresh-cw.icon";
+import rotateCcw from "./photocutter/icons/rotate-ccw.icon";
+import rotateCw from "./photocutter/icons/rotate-cw.icon";
+import zoomIn from "./photocutter/icons/zoom-in.icon";
+import zoomOut from "./photocutter/icons/zoom-out.icon";
+import folder from "./photocutter/icons/folder.icon";
 
 class Cutter {
     constructor(ops) {
@@ -301,8 +301,8 @@ class Cutter {
 
 @view({
     className: "photocutter",
-    template: "./template/photocutter.html",
-    style: "./style/photocutter.scss"
+    template: "./photocutter/template.html",
+    style: "./photocutter/style.scss"
 })
 class Photocutter extends View {
     oncreated() {

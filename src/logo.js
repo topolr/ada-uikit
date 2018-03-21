@@ -2,8 +2,8 @@ import {view, View} from "adajs";
 
 @view({
     className: "logo",
-    template: "./template/logo.html",
-    style: "./style/logo.scss"
+    template: "./logo/template.html",
+    style: "./logo/style.scss"
 })
 class Logo extends View {
     oncreated() {

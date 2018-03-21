@@ -10,8 +10,8 @@ class Text extends View {
 
 @view({
     className: "messagebox",
-    template: "./template/messagebox.html",
-    style: "./style/messagebox.scss"
+    template: "./messagebox/template.html",
+    style: "./messagebox/style.scss"
 })
 class Messagebox extends BondViewGroup {
     oncreated() {
