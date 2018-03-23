@@ -14,11 +14,6 @@ class SimpleForm extends ViewGroup {
         this.render();
     }
 
-    render() {
-        console.log("--->form", this.isRenderingBy(this.formDataSet));
-        return super.render();
-    }
-
     @binder("getValue")
     getValue() {
         console.log(this.formDataSet.getData());
