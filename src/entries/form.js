@@ -20,10 +20,6 @@ class Root extends StaticViewGroup {
             });
         });
     }
-
-    onchildremoved(view) {
-        console.log(view);
-    }
 }
 
 export default Root;
