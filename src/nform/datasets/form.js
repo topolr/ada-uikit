@@ -28,6 +28,10 @@ class FormService extends Service {
     @action("setstate")
     setState(current, info) {
         current = this.setFieldStateByName(current, info.name, info);
+        current = this.setFieldStateByName(current, "bb", {value: info.value});
+        // return this.getDispatcher(current, (view) => {
+        //     return !view.state.name;
+        // });
         return current;
     }
 }

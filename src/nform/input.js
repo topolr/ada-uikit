@@ -27,6 +27,11 @@ class Input extends View {
             value: e.target.value
         });
     }
+
+    render(){
+        console.log("----->", this.state.name,this.isRenderingBy(this.formDataSet))
+        return super.render();
+    }
 }
 
 export default Input;
