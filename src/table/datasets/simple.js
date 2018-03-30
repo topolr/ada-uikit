@@ -1,4 +1,5 @@
 import {action, Service} from "adajs";
+import util from "./../util/util";
 
 class SimpleService extends Service {
 
@@ -19,21 +20,7 @@ class SimpleService extends Service {
 
     @action("set")
     set(current, data) {
-        let head = this.option.rows.map(op => {
-            return {name: op.name, width: op.width, align: op.align};
-        });
-        let rows = data.map(item => {
-            let r = [];
-            this.option.rows.forEach(row => {
-                r.push({
-                    value: item[row.key],
-                    width: row.width,
-                    align: row.align
-                });
-            });
-            return r;
-        });
-        return {head, rows};
+        return util.simple(data,this.option);
     }
 }
 

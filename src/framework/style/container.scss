@@ -1,0 +1,61 @@
+@import "variable";
+
+.pagecontainer {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  .left {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: $leftPannelWith;
+    background-color:$leftPannelBg;
+    .head {
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      height: $leftHeadHeight;
+      background-color:$leftHeadBg;
+    }
+    .body {
+      position: absolute;
+      top: $leftHeadHeight;
+      right: 0;
+      bottom: $leftFootHeight;
+      left: 0;
+      color:$leftBodyFontColor;
+    }
+    .foot {
+      line-height: $leftFootHeight;
+    }
+  }
+  .right {
+    position: absolute;
+    left: $rightPannelMarginLeft;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color:$rightPannelBg;
+    .head {
+      position: absolute;
+      left:0;
+      right:0;
+      height:$leftHeadHeight;
+      line-height: $leftHeadHeight;
+      border-bottom: 1px solid $rightPannelHeadBorder;
+      z-index: 99;
+    }
+    .body {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      top: $leftHeadHeight;
+      background-color:$rightPannelBodyBg;
+    }
+  }
+}
