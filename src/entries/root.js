@@ -7,7 +7,7 @@ import Photocutter from "./../photocutter";
 @root
 class Root extends StaticViewGroup {
     oncreated() {
-        // this.addChild(Photocutter);
+        this.addChild(Photocutter);
     }
 }
 
