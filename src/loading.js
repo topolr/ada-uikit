@@ -12,18 +12,21 @@ import "./style/base.scss";
 
 class Loading extends View {
     oncreated() {
-        this.state = {
-            icon: refreshCw,
-            circle: true,
-            color: "black",
-            content: "loading..."
-        };
         let defaultType = this.option.defaultType;
         this[`show${defaultType[0].toUpperCase()}${defaultType.substring(1)}`]().then(() => {
             setTimeout(() => {
                 this.getElement().classList.add(this.getThisClassName("in"));
             }, 100);
         });
+    }
+
+    defaultState() {
+        return {
+            icon: refreshCw,
+            circle: true,
+            color: "black",
+            content: "loading..."
+        };
     }
 
     defaultOption() {
@@ -39,7 +42,7 @@ class Loading extends View {
             color: "black",
             content: content || "loading..."
         });
-        return this.render();
+        return this.update();
     }
 
     showSuccess(content) {
@@ -49,7 +52,7 @@ class Loading extends View {
             color: "green",
             content: content || "Success done"
         });
-        return this.render();
+        return this.update();
     }
 
     showError(content) {
@@ -59,7 +62,7 @@ class Loading extends View {
             color: "red",
             content: content || "Error occur"
         });
-        return this.render();
+        return this.update();
     }
 
     close(delay = 2000) {

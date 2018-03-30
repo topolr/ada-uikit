@@ -9,10 +9,6 @@ import SimpleService from "./datasets/simple";
 class SimpleTable extends View {
     @pipe(SimpleService)
     tableDataSet;
-
-    oncreated() {
-        this.state = {};
-    }
 }
 
 export default SimpleTable;

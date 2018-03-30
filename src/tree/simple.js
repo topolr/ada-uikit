@@ -12,8 +12,8 @@ class SimpleTree extends View {
     @pipe(TreeService)
     treeDataSet;
 
-    oncreated() {
-        this.state = {icons: {triangleRight}};
+    defaultState(){
+        return {icons: {triangleRight}};
     }
 
     @binder("toggle")

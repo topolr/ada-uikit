@@ -7,8 +7,6 @@ import {view, binder, handler, View} from "adajs";
 })
 class Alert extends View {
     oncreated() {
-        this.state = this.option;
-        this.render();
         setTimeout(() => {
             this.getElement().classList.add(this.getThisClassName("in"));
         }, 100);

@@ -3,7 +3,6 @@ import {view, binder, handler, BondViewGroup, View} from "adajs";
 @view()
 class Text extends View {
     oncreated() {
-        this.render();
         this.getElement().innerHTML = "this is content";
     }
 }
@@ -15,12 +14,9 @@ class Text extends View {
 })
 class Messagebox extends BondViewGroup {
     oncreated() {
-        this.state = this.option;
-        this.render().then(() => {
-            setTimeout(() => {
-                this.getElement().classList.add(this.getThisClassName("in"));
-            }, 100);
-        });
+        setTimeout(() => {
+            this.getElement().classList.add(this.getThisClassName("in"));
+        }, 100);
     }
 
     defaultOption() {

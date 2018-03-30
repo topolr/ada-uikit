@@ -306,20 +306,21 @@ class Cutter {
 })
 class Photocutter extends View {
     oncreated() {
-        this.state = Object.assign({
+        let ops = this.option;
+        let box = this.getDDM().finder("cutter").getElement();
+        let boxInfo = box.getBoundingClientRect();
+        ops.dom = box;
+        ops.sceneHeight = boxInfo.height;
+        ops.sceneWidth = boxInfo.width;
+        ops.size = ops.size * 1024 * 1024;
+        this.cutter = new Cutter(ops);
+    }
+
+    defaultState() {
+        return Object.assign({
             none: true,
             refreshCw, rotateCw, rotateCcw, zoomIn, zoomOut, folder
         }, this.option);
-        let ops = this.option;
-        this.render().then(() => {
-            let box = this.getDDM().finder("cutter").getElement();
-            let boxInfo = box.getBoundingClientRect();
-            ops.dom = box;
-            ops.sceneHeight = boxInfo.height;
-            ops.sceneWidth = boxInfo.width;
-            ops.size = ops.size * 1024 * 1024;
-            this.cutter = new Cutter(ops);
-        });
     }
 
     defaultOption() {

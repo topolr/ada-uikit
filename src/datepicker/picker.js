@@ -10,7 +10,7 @@ class Picker extends StaticViewGroup {
     pannelDataSet;
 
     oncreated() {
-        this.render().then(() => this.addChild(Pannel));
+        this.addChild(Pannel);
     }
 }
 

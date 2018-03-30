@@ -13,11 +13,10 @@ class Pannel extends View {
     @pipe(PannelService)
     pannelDataset;
 
-    oncreated() {
-        this.state = {
+    defaultState() {
+        return {
             icons: {leftIcon, rightIcon, backIcon}
         };
-        this.render();
     }
 
     @binder("select")
@@ -64,7 +63,7 @@ class Pannel extends View {
     focusScroll() {
         let target = this.finder("scroll").getElement().querySelector(`.${this.getThisClassName("selected")}`);
         if (target) {
-            this.finder("scroll").getElement().scrollTop = target.offsetTop-30;
+            this.finder("scroll").getElement().scrollTop = target.offsetTop - 30;
         }
     }
 

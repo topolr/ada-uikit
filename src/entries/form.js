@@ -10,14 +10,12 @@ class Root extends StaticViewGroup {
     formDataSet;
 
     oncreated() {
-        this.render().then(() => {
-            this.addChild(SimpleForm).then(() => {
-                this.formDataSet.commit("set", [
-                    {type: Input, name: "aa", value: "aa", label: "aa",required:true},
-                    {type: Input, name: "bb", value: "bb", label: "bb"},
-                    {type: Textarea, name: "cc", value: "cc", label: "cc"}
-                ]);
-            });
+        this.addChild(SimpleForm).then(() => {
+            this.formDataSet.commit("set", [
+                {type: Input, name: "aa", value: "aa", label: "aa", required: true},
+                // {type: Input, name: "bb", value: "bb", label: "bb"},
+                {type: Textarea, name: "cc", value: "cc", label: "cc"}
+            ]);
         });
     }
 }

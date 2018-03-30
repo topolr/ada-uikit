@@ -10,65 +10,59 @@ class Root extends StaticViewGroup {
     treeDataSet;
 
     oncreated() {
-        this.render().then(() => {
-            this.addChild(SelectTree).then(() => {
-                this.treeDataSet.commit("set", [
-                    {
-                        name: "aa", list: [
-                            {name: "aaa", list: []},
-                            {
-                                name: "bbb", list: [
-                                    {name: "aaa", list: []},
-                                    {
-                                        name: "bbb", list: [
-                                            {name: "aaa", list: []},
-                                            {name: "bbb", list: []},
-                                            {name: "ccc", list: []}
-                                        ]
-                                    },
-                                    {
-                                        name: "ccc", list: [
-                                            {name: "aaa", list: []},
-                                            {name: "bbb", list: []},
-                                            {
-                                                name: "ccc", list: [
-                                                    {name: "aaa", list: []},
-                                                    {name: "bbb", list: []},
-                                                    {name: "ccc", list: []}
-                                                ]
-                                            }
-                                        ]
-                                    }
-                                ]
-                            },
-                            {name: "ccc", list: []}
-                        ]
-                    },
-                    {
-                        name: "bb", list: [
-                            {name: "aaa", list: []},
-                            {name: "bbb", list: []},
-                            {
-                                name: "ccc", list: [
-                                    {name: "aaa", list: []},
-                                    {name: "bbb", list: []},
-                                    {name: "ccc", list: []}
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: "cc", list: [
-                            {name: "ccc", list: []}
-                        ]
-                    }
-                ]);
-            });
+        this.addChild(SelectTree).then(() => {
+            this.treeDataSet.commit("set", [
+                {
+                    name: "aa", list: [
+                        {name: "aaa", list: []},
+                        {
+                            name: "bbb", list: [
+                                {name: "aaa", list: []},
+                                {
+                                    name: "bbb", list: [
+                                        {name: "aaa", list: []},
+                                        {name: "bbb", list: []},
+                                        {name: "ccc", list: []}
+                                    ]
+                                },
+                                {
+                                    name: "ccc", list: [
+                                        {name: "aaa", list: []},
+                                        {name: "bbb", list: []},
+                                        {
+                                            name: "ccc", list: [
+                                                {name: "aaa", list: []},
+                                                {name: "bbb", list: []},
+                                                {name: "ccc", list: []}
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {name: "ccc", list: []}
+                    ]
+                },
+                {
+                    name: "bb", list: [
+                        {name: "aaa", list: []},
+                        {name: "bbb", list: []},
+                        {
+                            name: "ccc", list: [
+                                {name: "aaa", list: []},
+                                {name: "bbb", list: []},
+                                {name: "ccc", list: []}
+                            ]
+                        }
+                    ]
+                },
+                {
+                    name: "cc", list: [
+                        {name: "ccc", list: []}
+                    ]
+                }
+            ]);
         });
-    }
-
-    onchildremoved(view) {
-        console.log(view);
     }
 }
 

@@ -14,8 +14,8 @@ class SelectTree extends SimpleTree {
     @pipe(SelectService)
     treeDataSet;
 
-    oncreated() {
-        this.state = {icons: {triangleRight, checkBoxIcon, checkBoxOutline}};
+    defaultState(){
+        return {icons: {triangleRight, checkBoxIcon, checkBoxOutline},list:[]};
     }
 
     @binder("toggleselect")

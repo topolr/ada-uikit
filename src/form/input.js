@@ -11,8 +11,8 @@ class Input extends Field {
     @pipe(FormService)
     formDataSet;
 
-    oncreated() {
-        this.state = Object.assign({
+    defaultOption() {
+        return {
             label: "text",
             name: "text",
             textType: "text",
@@ -26,14 +26,26 @@ class Input extends Field {
             },
             iserror: false,
             errormsg: ""
-        }, this.data);
-        this.render();
+        };
+    }
+
+    onupdate(updater) {
+        if (updater.isOption()) {
+            if(!updater.option.equals(this.option)) {
+                this.option = updater.option.get();
+            }
+            console.log(this.getFieldName(), "==> parent")
+        } else {
+            console.log(this.getFieldName(), "==> service");
+        }
+        return true;
     }
 
     @binder("keyup")
     keyUp({e}) {
         this.state.value = e.target.value;
         this.check();
+        this.setValue(this.state.value);
     }
 
     setValue(value) {
@@ -70,7 +82,7 @@ class Input extends Field {
             this.state.iserror = false;
             this.state.errormsg = "";
         }
-        this.render();
+        // this.render();
         return result;
     }
 }
