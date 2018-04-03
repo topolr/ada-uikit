@@ -71,7 +71,10 @@
         border-right: 1px solid #e5e5e5;
         background: white;
         &:nth-of-type(odd){
-          background: #eaeaea;
+          background: #F2F7F7;
+        }
+        &.active{
+          background:#E7F3F9;
         }
       }
     }
@@ -94,7 +97,10 @@
           }
         }
         &:nth-of-type(odd){
-          background: #eaeaea;
+          background: #F2F7F7;
+        }
+        &.active{
+          background:#E7F3F9;
         }
       }
     }
@@ -130,7 +136,10 @@
           }
         }
         &:nth-of-type(odd){
-          background: #eaeaea;
+          background: #F2F7F7;
+        }
+        &.active{
+          background:#E7F3F9;
         }
       }
     }

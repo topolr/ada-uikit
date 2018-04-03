@@ -19,19 +19,15 @@ const util = {
     mix(data, option) {
         let result = {
             head: {
-                left: [],
-                middle: [],
-                right: []
+                left: [], middle: [], right: []
             },
             rows: {
-                left: [],
-                middle: [],
-                right: []
+                left: [], middle: [], right: []
             }
         };
         if (option.checkbox && option.checkbox.display) {
-            option.checkbox.type = "checkbox";
-            result.head.left.push(option.checkbox);
+            let _checkbox = Object.assign({type: "checkbox", checked: false}, option.checkbox);
+            result.head.left.push(_checkbox);
         }
         option.rows.forEach(op => {
             if (op.append === 'left') {
@@ -45,13 +41,12 @@ const util = {
             }
         });
         if (option.tools && option.tools.display) {
-            option.tools.type = "tools";
-            result.head.right.push(option.tools);
+            result.head.right.push(Object.assign({type: "tools"}, option.tools));
         }
         data.forEach(item => {
             if (option.checkbox && option.checkbox.display) {
-                option.checkbox.checked = false;
-                result.rows.left.push(option.checkbox);
+                let _checkbox = Object.assign({type: "checkbox", checked: false}, option.checkbox);
+                result.rows.left.push(_checkbox);
             }
             let k = [];
             option.rows.forEach(row => {
@@ -81,7 +76,7 @@ const util = {
             });
             result.rows.middle.push(k);
             if (option.tools && option.tools.display) {
-                result.rows.right.push(option.tools);
+                result.rows.right.push(Object.assign({type: "tools"}, option.tools));
             }
         });
         result.widths = {

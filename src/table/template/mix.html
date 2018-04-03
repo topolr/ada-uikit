@@ -2,7 +2,7 @@
     <div class="left" style="width:{{ widths.left }}px">
         {{list head.left as item}}
             {{if item.type==='checkbox'}}
-                <div class="cell" style="width:{{ item.width }}px">
+                <div class="cell" style="width:{{ item.width }}px" onclick="{{ toggleAll() }}">
                     {{if item.checked}}
                     <@icon id="{{ item.checkedIcon }}" class="icon"/>
                     {{else}}
@@ -14,7 +14,7 @@
             {{/if}}
         {{/list}}
     </div>
-    <div class="middle" style="left:{{ widths.left }}px;right:{{ widths.right }}px">
+    <div class="middle" style="left:{{ widths.left }}px;right:{{ widths.right }}px" data-find="middle">
         {{list head.middle as item}}
         <div class="cell" style="width:{{ item.width }}px">{{ item.name }}</div>
         {{/list}}
@@ -26,10 +26,10 @@
     </div>
 </div>
 <div class="body">
-    <div class="left" style="width:{{ widths.left }}px">
+    <div class="left" style="width:{{ widths.left }}px" data-find="left">
         {{list rows.left as item}}
             {{if item.type==='checkbox'}}
-                <div class="cell" style="width:{{ item.width }}px;text-align:{{ item.align }}">
+                <div class="{{ item._active?'cell active':'cell' }}" style="width:{{ item.width }}px;text-align:{{ item.align }}">
                     {{if item.checked}}
                     <@icon id="{{ item.checkedIcon }}" class="icon"/>
                     {{else}}
@@ -37,23 +37,23 @@
                     {{/if}}
                 </div>
             {{else}}
-                <div class="cell" style="width:{{ item.width }}px;text-align:{{ item.align }}">{{ item.value }}</div>
+                <div class="{{ item._active?'cell active':'cell' }}" style="width:{{ item.width }}px;text-align:{{ item.align }}">{{ item.value }}</div>
             {{/if}}
         {{/list}}
     </div>
-    <div class="middle" style="left:{{ widths.left }}px;right:{{ widths.right }}px">
+    <div class="middle" style="left:{{ widths.left }}px;right:{{ widths.right }}px" data-find="body">
         {{list rows.middle as t}}
-        <div class="row" style="min-width:{{ widths.middle }}px">
+        <div class="{{ t._active?'row active':'row' }}" style="min-width:{{ widths.middle }}px" onclick="{{ toggle(t as row) }}">
             {{list t as item}}
             <div class="cell" style="width:{{ item.width }}px;text-align:{{ item.align }}">{{ item.value }}</div>
             {{/list}}
         </div>
         {{/list}}
     </div>
-    <div class="right" style="width:{{ widths.right }}px">
+    <div class="right" style="width:{{ widths.right }}px" data-find="right">
         {{list rows.right as item}}
             {{if item.type==='tools'}}
-            <div class="cell" style="width:{{ item.width }}px;text-align:{{ item.align }}">
+            <div class="{{ item._active?'cell active':'cell' }}" style="width:{{ item.width }}px;text-align:{{ item.align }}">
                 <div class="toolicon"><@icon id="{{ item.icon }}" class="icon"/></div>
                 <div class="list">
                     {{list item.items as tool}}
