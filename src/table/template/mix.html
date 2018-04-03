@@ -1,0 +1,69 @@
+<div class="head">
+    <div class="left" style="width:{{ widths.left }}px">
+        {{list head.left as item}}
+            {{if item.type==='checkbox'}}
+                <div class="cell" style="width:{{ item.width }}px">
+                    {{if item.checked}}
+                    <@icon id="{{ item.checkedIcon }}" class="icon"/>
+                    {{else}}
+                    <@icon id="{{ item.uncheckedIcon }}" class="icon"/>
+                    {{/if}}
+                </div>
+            {{else}}
+                <div class="cell" style="width:{{ item.width }}px">{{ item.value }}</div>
+            {{/if}}
+        {{/list}}
+    </div>
+    <div class="middle" style="left:{{ widths.left }}px;right:{{ widths.right }}px">
+        {{list head.middle as item}}
+        <div class="cell" style="width:{{ item.width }}px">{{ item.name }}</div>
+        {{/list}}
+    </div>
+    <div class="right" style="width:{{ widths.right }}px">
+        {{list head.right as item}}
+        <div class="cell" style="width:{{ item.width }}px">{{ item.value }}</div>
+        {{/list}}
+    </div>
+</div>
+<div class="body">
+    <div class="left" style="width:{{ widths.left }}px">
+        {{list rows.left as item}}
+            {{if item.type==='checkbox'}}
+                <div class="cell" style="width:{{ item.width }}px;text-align:{{ item.align }}">
+                    {{if item.checked}}
+                    <@icon id="{{ item.checkedIcon }}" class="icon"/>
+                    {{else}}
+                    <@icon id="{{ item.uncheckedIcon }}" class="icon"/>
+                    {{/if}}
+                </div>
+            {{else}}
+                <div class="cell" style="width:{{ item.width }}px;text-align:{{ item.align }}">{{ item.value }}</div>
+            {{/if}}
+        {{/list}}
+    </div>
+    <div class="middle" style="left:{{ widths.left }}px;right:{{ widths.right }}px">
+        {{list rows.middle as t}}
+        <div class="row" style="min-width:{{ widths.middle }}px">
+            {{list t as item}}
+            <div class="cell" style="width:{{ item.width }}px;text-align:{{ item.align }}">{{ item.value }}</div>
+            {{/list}}
+        </div>
+        {{/list}}
+    </div>
+    <div class="right" style="width:{{ widths.right }}px">
+        {{list rows.right as item}}
+            {{if item.type==='tools'}}
+            <div class="cell" style="width:{{ item.width }}px;text-align:{{ item.align }}">
+                <div class="toolicon"><@icon id="{{ item.icon }}" class="icon"/></div>
+                <div class="list">
+                    {{list item.items as tool}}
+                    <div class="listitem">{{ tool.name }}</div>
+                    {{/list}}
+                </div>
+            </div>
+            {{else}}
+            <div class="cell" style="width:{{ item.width }}px;text-align:{{ item.align }}">{{ item.value }}</div>
+            {{/if}}
+        {{/list}}
+    </div>
+</div>

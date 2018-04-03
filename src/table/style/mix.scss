@@ -1,0 +1,138 @@
+.mixtable {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  line-height: 30px;
+  background: #F8F9F7;
+  .icon {
+    display: inline-block;
+    vertical-align: middle;
+    width: 1em;
+    height: 1em;
+    stroke-width: 0;
+    stroke: currentColor;
+    fill: currentColor;
+    font-size: 14px;
+  }
+  .head {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    line-height: 40px;
+    white-space: nowrap;
+    border-bottom: 1px solid #D7D7D7;
+    z-index: 11;
+    height: 40px;
+    .left {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      text-align: center;
+    }
+    .middle {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      overflow: hidden;
+      .cell {
+        padding: 0 10px 0 10px;
+        box-sizing: border-box;
+        text-align: center;
+      }
+    }
+    .right {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+    }
+    .cell {
+      display: inline-block;
+    }
+  }
+  .body {
+    position: absolute;
+    left: 0;
+    top: 40px;
+    right: 0;
+    bottom: 0;
+    .left {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      z-index: 10;
+      .cell {
+        border-bottom: 1px solid #e5e5e5;
+        border-right: 1px solid #e5e5e5;
+        background: white;
+        &:nth-of-type(odd){
+          background: #eaeaea;
+        }
+      }
+    }
+    .middle {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      overflow: auto;
+      .row {
+        white-space: nowrap;
+        background: white;
+        border-bottom: 1px solid #e5e5e5;
+        .cell {
+          display: inline-block;
+          border-right: 1px solid #e5e5e5;
+          padding: 0 10px 0 10px;
+          box-sizing: border-box;
+          &:last-child {
+            border-right: 0;
+          }
+        }
+        &:nth-of-type(odd){
+          background: #eaeaea;
+        }
+      }
+    }
+    .right {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      .cell {
+        position: relative;
+        border-bottom: 1px solid #e5e5e5;
+        border-left: 1px solid #e5e5e5;
+        background: white;
+        .toolicon {
+        }
+        .list {
+          display: none;
+          background: white;
+          position: absolute;
+          top: 100%;
+          right: 50%;
+          box-shadow: 0 0 10px #D7D7D7;
+          .listitem {
+            line-height: 20px;
+            padding: 0 20px 0 20px;
+            font-size: 12px;
+          }
+        }
+        &:hover {
+          .list {
+            display: block;
+            z-index: 99;
+          }
+        }
+        &:nth-of-type(odd){
+          background: #eaeaea;
+        }
+      }
+    }
+  }
+}

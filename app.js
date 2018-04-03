@@ -3,7 +3,7 @@ let app = {
     source_path: "./src/",
     dist_path: "./dist/",
     description: "A simply component template of ada.",
-    main: "./src/entries/tree.js",
+    main: "./src/entries/mixtable.js",
     ada_autobundle: false,
     compiler: {
         babel: {
