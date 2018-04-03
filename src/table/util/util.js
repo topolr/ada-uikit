@@ -18,12 +18,8 @@ const util = {
     },
     mix(data, option) {
         let result = {
-            head: {
-                left: [], middle: [], right: []
-            },
-            rows: {
-                left: [], middle: [], right: []
-            }
+            head: {left: [], middle: [], right: []},
+            rows: {left: [], middle: [], right: []}
         };
         if (option.checkbox && option.checkbox.display) {
             let _checkbox = Object.assign({type: "checkbox", checked: false}, option.checkbox);
@@ -84,7 +80,6 @@ const util = {
             middle: result.head.middle.reduce((a, b) => a + b.width, 0),
             right: result.head.right.reduce((a, b) => a + b.width, 0)
         };
-        console.log(result)
         return result;
     }
 };
