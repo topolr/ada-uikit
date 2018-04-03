@@ -1,10 +1,11 @@
-import {view, dataset, ViewGroup} from "adajs";
+import {binder, dataset, view, ViewGroup} from "adajs";
 import MixTable from "./mix";
 import MixService from "./datasets/mix";
 import FlipService from "./datasets/flip";
+import {navigateBeforeIcon, navigateNextIcon} from "./icons/icon";
 
 @view({
-    className: "table",
+    className: "filptable",
     template: "./template/fliptable.html",
     style: "./style/fliptable.scss"
 })
@@ -16,15 +17,13 @@ class Table extends ViewGroup {
     @dataset(FlipService)
     flipDataSet;
 
-    constructor(parameters) {
-        super(parameters);
-        let {pageSize, pagesizeName, pageName, url} = this.option;
-        this.tableDataSet.setOption(this.option.tableOption);
-        this.flipDataSet.setOption({pageSize, pagesizeName, pageName, url});
-        this.tableDataSet.commit("set", []);
-    }
-
     oncreated() {
+        let {pageSize, pagesizeName, pageName, url} = this.option;
+        this.tableDataSet.setOption(() => this.option.tableOption);
+        this.flipDataSet.setOption(() => {
+            return {pageSize, pagesizeName, pageName, url}
+        });
+        this.tableDataSet.commit("set", []);
         this.gotoPage(1);
     }
 
@@ -41,16 +40,23 @@ class Table extends ViewGroup {
 
     defaultState() {
         let {btns} = this.option;
-        return {btns};
+        return {
+            btns, icons: {
+                navigateBeforeIcon,
+                navigateNextIcon
+            }
+        };
     }
 
-    onupdate(updater) {
-        return updater.isOption();
+    computed(a) {
+        console.log(a);
+        return a;
     }
 
     gotoPage(page) {
         this.flipDataSet.commit("goto", page).then(() => {
-            this.tableDataSet.commit("set", this.flipDataSet.getData());
+            console.log("=>", this.flipDataSet.getData());
+            this.tableDataSet.commit("set", this.flipDataSet.getData().list);
         });
     }
 
@@ -58,6 +64,19 @@ class Table extends ViewGroup {
         return {
             thistable: MixTable
         }
+    }
+
+    @binder("nextpage")
+    nextPage() {
+    }
+
+    @binder("prevpage")
+    prevPage() {
+    }
+
+    @binder("goto")
+    goto({page}) {
+        this.gotoPage(page.num);
     }
 }
 
