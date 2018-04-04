@@ -36,15 +36,16 @@
       bottom: 0;
       text-align: center;
       border-right: 1px solid #e5e5e5;
+      box-sizing: border-box;
     }
     .middle {
       position: absolute;
       top: 0;
       bottom: 0;
       overflow: hidden;
+      box-sizing: border-box;
       .cell {
         padding: 0 10px 0 10px;
-        box-sizing: border-box;
         text-align: center;
         border-right: 1px solid #e5e5e5;
         &:last-child {
@@ -57,6 +58,7 @@
       top: 0;
       right: 0;
       bottom: 0;
+      box-sizing: border-box;
       .cell {
         border-left: 1px solid #e5e5e5;
         text-align: center;
@@ -64,6 +66,7 @@
     }
     .cell {
       display: inline-block;
+      box-sizing: border-box;
     }
   }
   .body {
@@ -79,6 +82,7 @@
       top: 0;
       bottom: 0;
       z-index: 10;
+      overflow: hidden;
       .cell {
         border-bottom: 1px solid #e5e5e5;
         border-right: 1px solid #e5e5e5;
@@ -122,6 +126,7 @@
       top: 0;
       right: 0;
       bottom: 0;
+      overflow: hidden;
       .cell {
         position: relative;
         border-bottom: 1px solid #e5e5e5;
@@ -169,6 +174,9 @@
           background: #E7F3F9;
         }
       }
+    }
+    .cell {
+      box-sizing: border-box;
     }
   }
 }
