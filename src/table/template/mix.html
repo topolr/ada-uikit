@@ -57,7 +57,10 @@
                 <div class="toolicon"><@icon id="{{ item.icon }}" class="icon"/></div>
                 <div class="list">
                     {{list item.items as tool}}
-                    <div class="listitem">{{ tool.name }}</div>
+                    <div class="listitem">
+                        <div class="iconc"><@icon id="{{ tool.icon }}" class="icon"/></div>
+                        <div class="name">{{ tool.name }}</div>
+                    </div>
                     {{/list}}
                 </div>
             </div>

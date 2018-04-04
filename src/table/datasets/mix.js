@@ -65,7 +65,7 @@ class MixService extends Service {
         current.rows.left[index]._active = current.rows.left[index]._active ? false : true;
         current.rows.right[index]._active = current.rows.right[index]._active ? false : true;
         row._active = row._active ? false : true;
-        let k = current.rows.left.filter(item => item._active === false);
+        let k = current.rows.left.filter(item => item._active === false || item._active === undefined);
         if (k.length > 0) {
             let e = current.head.left.filter(item => item.type === "checkbox");
             if (e.length > 0) {

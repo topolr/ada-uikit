@@ -5,6 +5,9 @@ import {addIcon, closeIcon} from "./../table/icons/icon";
 @root()
 class Root extends StaticViewGroup {
     oncreated() {
+        let con=document.createElement("div");
+        con.style.cssText="position:absolute;left:50px;top:50px;right:50px;bottom:100px;";
+        document.body.appendChild(con);
         this.addChild(FlipTable, {
             option: {
                 url: "test.json",
@@ -19,7 +22,8 @@ class Root extends StaticViewGroup {
                         {name: "Age", key: "age", width: 120, align: "center", append: "middle"}
                     ]
                 }
-            }
+            },
+            container:con
         });
     }
 }

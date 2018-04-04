@@ -6,6 +6,8 @@
   bottom: 0;
   line-height: 30px;
   background: #F8F9F7;
+  border-top: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e5e5e5;
   .icon {
     display: inline-block;
     vertical-align: middle;
@@ -25,13 +27,15 @@
     white-space: nowrap;
     border-bottom: 1px solid #D7D7D7;
     z-index: 11;
-    height: 40px;
+    height: 35px;
+    font-size: 13px;
     .left {
       position: absolute;
       left: 0;
       top: 0;
       bottom: 0;
       text-align: center;
+      border-right: 1px solid #e5e5e5;
     }
     .middle {
       position: absolute;
@@ -42,6 +46,10 @@
         padding: 0 10px 0 10px;
         box-sizing: border-box;
         text-align: center;
+        border-right: 1px solid #e5e5e5;
+        &:last-child {
+          border-right: 0;
+        }
       }
     }
     .right {
@@ -49,6 +57,10 @@
       top: 0;
       right: 0;
       bottom: 0;
+      .cell {
+        border-left: 1px solid #e5e5e5;
+        text-align: center;
+      }
     }
     .cell {
       display: inline-block;
@@ -57,9 +69,10 @@
   .body {
     position: absolute;
     left: 0;
-    top: 40px;
+    top: 35px;
     right: 0;
     bottom: 0;
+    font-size: 12px;
     .left {
       position: absolute;
       left: 0;
@@ -70,11 +83,11 @@
         border-bottom: 1px solid #e5e5e5;
         border-right: 1px solid #e5e5e5;
         background: white;
-        &:nth-of-type(odd){
+        &:nth-of-type(odd) {
           background: #F2F7F7;
         }
-        &.active{
-          background:#E7F3F9;
+        &.active {
+          background: #E7F3F9;
         }
       }
     }
@@ -96,11 +109,11 @@
             border-right: 0;
           }
         }
-        &:nth-of-type(odd){
+        &:nth-of-type(odd) {
           background: #F2F7F7;
         }
-        &.active{
-          background:#E7F3F9;
+        &.active {
+          background: #E7F3F9;
         }
       }
     }
@@ -125,8 +138,22 @@
           box-shadow: 0 0 10px #D7D7D7;
           .listitem {
             line-height: 20px;
-            padding: 0 20px 0 20px;
             font-size: 12px;
+            display: flex;
+            padding:5px;
+            cursor: default;
+            .iconc {
+              width: 20px;
+              text-align: center;
+            }
+            .name {
+              flex-grow: 1;
+              padding:0 10px 0 5px;
+              text-align: left;
+            }
+            &:hover{
+              background: #e9e9e9;
+            }
           }
         }
         &:hover {
@@ -135,11 +162,11 @@
             z-index: 99;
           }
         }
-        &:nth-of-type(odd){
+        &:nth-of-type(odd) {
           background: #F2F7F7;
         }
-        &.active{
-          background:#E7F3F9;
+        &.active {
+          background: #E7F3F9;
         }
       }
     }
