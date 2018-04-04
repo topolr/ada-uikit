@@ -10,7 +10,7 @@ class MixTable extends View {
     @pipe(MixService)
     mixDataSet;
 
-    oncreated() {
+    onready() {
         this.finder("body").getElement().addEventListener("scroll", (e) => {
             let target = e.target;
             this.finder("middle").getElement().scrollLeft = target.scrollLeft;
