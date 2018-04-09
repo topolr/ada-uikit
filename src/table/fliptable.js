@@ -81,6 +81,11 @@ class Table extends ViewGroup {
     goto({page}) {
         this.gotoPage(page.num);
     }
+
+    computed(a){
+        console.log(a)
+        return a;
+    }
 }
 
 export default Table;

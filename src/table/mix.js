@@ -28,11 +28,6 @@ class MixTable extends View {
     toggleAll(){
         this.mixDataSet.commit("toggleAll");
     }
-
-    computed(a){
-        console.log(a)
-        return a;
-    }
 }
 
 export default MixTable;

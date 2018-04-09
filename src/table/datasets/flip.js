@@ -153,7 +153,6 @@ class FlipService extends Service {
             } else {
                 end = true;
             }
-            console.log(data.list)
             return this.tableDataSet[0].commit("set", data.list).then(() => {
                 return {
                     list: data.list,
@@ -164,11 +163,12 @@ class FlipService extends Service {
                     pages: this.getPagesData(current, total)
                 };
             });
-        }).catch(e=> console.log(e));
+        });
     }
 
-    onupdate() {
+    onupdate(a) {
         console.log("------>>")
+        return a;
     }
 }
 
