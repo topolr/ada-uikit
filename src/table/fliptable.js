@@ -1,8 +1,20 @@
-import {binder, dataset, view, ViewGroup} from "adajs";
+import {binder, dataset, view, ViewGroup, StaticViewGroup} from "adajs";
 import MixTable from "./mix";
 import MixService from "./datasets/mix";
 import FlipService from "./datasets/flip";
 import {navigateBeforeIcon, navigateNextIcon} from "./icons/icon";
+
+class AppendTable extends StaticViewGroup {
+    @dataset(MixService)
+    tableDataSet;
+
+    oncreated() {
+        this.tableDataSet.setOption(() => this.option);
+        this.addChild(MixTable, {
+            container: this.getElement()
+        });
+    }
+}
 
 @view({
     className: "filptable",
@@ -11,19 +23,18 @@ import {navigateBeforeIcon, navigateNextIcon} from "./icons/icon";
 })
 class Table extends ViewGroup {
 
-    @dataset(MixService)
-    tableDataSet;
-
     @dataset(FlipService)
     flipDataSet;
 
     oncreated() {
+        this.state.tableOption = this.option.tableOption;
         let {pageSize, pagesizeName, pageName, url} = this.option;
-        this.tableDataSet.setOption(() => this.option.tableOption);
         this.flipDataSet.setOption(() => {
             return {pageSize, pagesizeName, pageName, url}
         });
-        this.tableDataSet.commit("set", []);
+    }
+
+    onready() {
         this.gotoPage(1);
     }
 
@@ -48,21 +59,13 @@ class Table extends ViewGroup {
         };
     }
 
-    computed(a) {
-        console.log(a);
-        return a;
-    }
-
     gotoPage(page) {
-        this.flipDataSet.commit("goto", page).then(() => {
-            console.log("=>", this.flipDataSet.getData());
-            this.tableDataSet.commit("set", this.flipDataSet.getData().list);
-        });
+        this.flipDataSet.commit("goto", page);
     }
 
     tags() {
         return {
-            thistable: MixTable
+            thistable: AppendTable
         }
     }
 

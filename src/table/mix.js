@@ -1,4 +1,4 @@
-import {pipe, view, View, binder} from "adajs";
+import {refer, view, View, binder} from "adajs";
 import MixService from "./datasets/mix";
 
 @view({
@@ -7,7 +7,7 @@ import MixService from "./datasets/mix";
     style: "./style/mix.scss"
 })
 class MixTable extends View {
-    @pipe(MixService)
+    @refer(MixService)
     mixDataSet;
 
     onready() {
@@ -27,6 +27,11 @@ class MixTable extends View {
     @binder("toggleAll")
     toggleAll(){
         this.mixDataSet.commit("toggleAll");
+    }
+
+    computed(a){
+        console.log(a)
+        return a;
     }
 }
 

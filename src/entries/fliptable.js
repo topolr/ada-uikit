@@ -1,13 +1,9 @@
-import {dataset, root, StaticViewGroup, pipein} from "adajs";
+import {dataset, root, StaticViewGroup} from "adajs";
 import FlipTable from "./../table/fliptable";
 import {addIcon, closeIcon} from "./../table/icons/icon";
-import FlipService from "./../table/datasets/flip";
 
 @root()
 class Root extends StaticViewGroup {
-    @pipein(FlipService)
-    flipDataSet = [];
-
     oncreated() {
         let con = document.createElement("div");
         con.style.cssText = "position:absolute;left:100px;top:100px;right:100px;bottom:400px;border:1px solid #D7D7D7";
@@ -29,10 +25,6 @@ class Root extends StaticViewGroup {
             },
             container: con
         });
-    }
-
-    onpipein(dataset) {
-        console.log("====>", this.flipDataSet)
     }
 }
 

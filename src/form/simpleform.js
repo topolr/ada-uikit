@@ -1,4 +1,4 @@
-import {pipe, view} from "adajs";
+import {refer, view} from "adajs";
 import {Form,mixForm} from "./base";
 import FormService from "./datasets/form";
 
@@ -8,7 +8,7 @@ import FormService from "./datasets/form";
     style: "./style/simpleform.scss"
 })
 class SimpleForm extends Form {
-    @pipe(FormService)
+    @refer(FormService)
     formDataSet;
 }
 

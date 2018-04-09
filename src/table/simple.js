@@ -1,4 +1,4 @@
-import {pipe, View, view} from "adajs";
+import {refer, View, view} from "adajs";
 import SimpleService from "./datasets/simple";
 
 @view({
@@ -7,7 +7,7 @@ import SimpleService from "./datasets/simple";
     style: "./style/simple.scss"
 })
 class SimpleTable extends View {
-    @pipe(SimpleService)
+    @refer(SimpleService)
     tableDataSet;
 }
 

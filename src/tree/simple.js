@@ -1,4 +1,4 @@
-import {view, binder, View, pipe} from "adajs";
+import {view, binder, View,refer} from "adajs";
 import TreeService from "./datasets/simple";
 import triangleRight from "./icons/triangle-right.icon";
 
@@ -9,7 +9,7 @@ import triangleRight from "./icons/triangle-right.icon";
 })
 class SimpleTree extends View {
 
-    @pipe(TreeService)
+    @refer(TreeService)
     treeDataSet;
 
     defaultState(){

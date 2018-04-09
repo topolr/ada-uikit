@@ -1,4 +1,4 @@
-import {binder, pipe, view} from "adajs";
+import {binder, refer, view} from "adajs";
 import {Field} from "./base";
 import FormService from "./datasets/form";
 
@@ -8,7 +8,7 @@ import FormService from "./datasets/form";
     style: "./style/input.scss"
 })
 class Input extends Field {
-    @pipe(FormService)
+    @refer(FormService)
     formDataSet;
 
     defaultOption() {

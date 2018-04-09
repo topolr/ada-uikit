@@ -1,4 +1,4 @@
-import {view, View, pipe, binder} from "adajs";
+import {view, View, refer, binder} from "adajs";
 import SimpleTree from "./simple";
 import SelectService from "./datasets/select";
 import checkBoxIcon from "./icons/check-box.icon";
@@ -11,7 +11,7 @@ import triangleRight from "./icons/triangle-right.icon";
     style: "./style/select.scss"
 })
 class SelectTree extends SimpleTree {
-    @pipe(SelectService)
+    @refer(SelectService)
     treeDataSet;
 
     defaultState(){
