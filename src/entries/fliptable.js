@@ -6,7 +6,7 @@ import {addIcon, closeIcon} from "./../table/icons/icon";
 class Root extends StaticViewGroup {
     oncreated() {
         let con = document.createElement("div");
-        con.style.cssText = "position:absolute;left:100px;top:100px;right:100px;bottom:400px;border:1px solid #D7D7D7";
+        con.style.cssText = "position:absolute;left:10px;top:100px;right:100px;bottom:400px;border:1px solid #D7D7D7";
         document.body.appendChild(con);
         this.addChild(FlipTable, {
             option: {

@@ -1,8 +1,8 @@
-import {action, get, Service, DataSet} from "adajs";
+import {action, get, Service, DataSet, refer} from "adajs";
 import MixService from "./mix";
 
 class FlipService extends Service {
-    @DataSet.fromChild(MixService)
+    @refer.child(MixService)
     tableDataSet;
 
     defaultOption() {
@@ -153,7 +153,18 @@ class FlipService extends Service {
             } else {
                 end = true;
             }
-            return this.tableDataSet[0].commit("set", data.list).then(() => {
+            if (this.tableDataSet.length > 0) {
+                return this.tableDataSet[0].commit("set", data.list).then(() => {
+                    return {
+                        list: data.list,
+                        totalPage,
+                        current,
+                        end,
+                        total,
+                        pages: this.getPagesData(current, total)
+                    };
+                });
+            } else {
                 return {
                     list: data.list,
                     totalPage,
@@ -162,7 +173,7 @@ class FlipService extends Service {
                     total,
                     pages: this.getPagesData(current, total)
                 };
-            });
+            }
         });
     }
 
