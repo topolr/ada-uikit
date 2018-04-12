@@ -1,4 +1,4 @@
-import {dataset, root, StaticViewGroup} from "adajs";
+import {dataset, root, StaticViewGroup, handler} from "adajs";
 import FlipTable from "./../table/fliptable";
 import {addIcon, closeIcon} from "./../table/icons/icon";
 
@@ -25,6 +25,12 @@ class Root extends StaticViewGroup {
             },
             container: con
         });
+    }
+
+    @handler("action")
+    rowAction(e) {
+        let {row, rowIndex, action} = e.data;
+        console.log(row, rowIndex, action)
     }
 }
 

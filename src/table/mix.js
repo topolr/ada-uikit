@@ -21,12 +21,21 @@ class MixTable extends View {
 
     @binder("toggle")
     toggle({row}) {
-        this.mixDataSet.commit("toggle",row);
+        this.mixDataSet.commit("toggle", row);
     }
 
     @binder("toggleAll")
-    toggleAll(){
+    toggleAll() {
         this.mixDataSet.commit("toggleAll");
+    }
+
+    @binder("action")
+    doAction({index, action}) {
+        this.dispatchEvent("action", {
+            row: this.mixDataSet.getComputeData("rowdata", index),
+            rowIndex: index,
+            action
+        });
     }
 }
 

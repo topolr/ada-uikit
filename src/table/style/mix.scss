@@ -137,40 +137,20 @@
         border-bottom: 1px solid #e5e5e5;
         border-left: 1px solid #e5e5e5;
         background: white;
-        .toolicon {
+        &:nth-of-type(odd) {
+          background: #F2F7F7;
         }
-        .list {
-          display: none;
-          background: white;
-          position: absolute;
-          top: 100%;
-          right: 50%;
-          box-shadow: 0 0 10px #D7D7D7;
-          .listitem {
-            line-height: 20px;
-            font-size: 12px;
-            display: flex;
-            padding:5px;
-            cursor: default;
-            .iconc {
-              width: 20px;
-              text-align: center;
-            }
-            .name {
-              flex-grow: 1;
-              padding:0 10px 0 5px;
-              text-align: left;
-            }
-            &:hover{
-              background: #e9e9e9;
-            }
-          }
+        &.active {
+          background: #E7F3F9;
         }
-        &:hover {
-          .list {
-            display: block;
-            z-index: 99;
-          }
+      }
+      .actions {
+        background: white;
+        .action {
+          border-bottom: 1px solid #e5e5e5;
+          border-left: 1px solid #e5e5e5;
+          display: inline-block;
+          box-sizing: border-box;
         }
         &:nth-of-type(odd) {
           background: #F2F7F7;

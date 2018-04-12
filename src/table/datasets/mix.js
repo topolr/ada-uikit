@@ -1,4 +1,4 @@
-import {Service, action} from "adajs";
+import {Service, action,compute} from "adajs";
 import util from "../util/util";
 import {
     addIcon,
@@ -32,17 +32,22 @@ class MixService extends Service {
     defaultOption() {
         return {
             rows: [],
-            tools: {
-                display: true,
-                width: 40,
-                icon: moreVertIcon,
-                value: "tool",
-                align: "center",
-                items: [
-                    {name: "remove", icon: closeIcon},
-                    {name: "edit", icon: modeEditIcon}
-                ]
-            },
+            actions: [
+                {
+                    display: true,
+                    width: 40,
+                    align: "center",
+                    name: "remove",
+                    icon: closeIcon
+                },
+                {
+                    display: true,
+                    width: 40,
+                    align: "center",
+                    name: "edit",
+                    icon: modeEditIcon
+                }
+            ],
             checkbox: {
                 display: true,
                 width: 40,
@@ -93,6 +98,15 @@ class MixService extends Service {
             current.rows.right.forEach(item => item._active = e[0].checked);
         }
         return current;
+    }
+
+    @compute("rowdata")
+    getRowData(current,index){
+        let row={};
+        current.rows.middle[index].forEach(info=>{
+            row[info.key]=info.value;
+        });
+        return row;
     }
 }
 

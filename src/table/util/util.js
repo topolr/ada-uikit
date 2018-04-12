@@ -1,3 +1,5 @@
+import {closeIcon} from "../icons/icon";
+
 const util = {
     simple(data, option) {
         let head = option.rows.map(op => {
@@ -36,8 +38,23 @@ const util = {
                 result.head.right.push({type: "text", name: op.name, width: op.width, align: op.align});
             }
         });
-        if (option.tools && option.tools.display) {
-            result.head.right.push(Object.assign({type: "tools"}, option.tools));
+        let actionHead = {
+            display: true,
+            width: 0,
+            align: "center",
+            name: "action",
+            icon: closeIcon,
+            type: "action"
+        };
+        option.actions.forEach(action => {
+            if (action.display === true) {
+                actionHead.display = true;
+                actionHead.width = actionHead.width + action.width;
+                action.type = "action";
+            }
+        });
+        if (actionHead.display) {
+            result.head.right.push(actionHead);
         }
         data.forEach(item => {
             if (option.checkbox && option.checkbox.display) {
@@ -51,14 +68,17 @@ const util = {
                         value: item[row.key],
                         width: row.width,
                         align: row.align,
-                        type: "text"
+                        type: "text",
+                        key:row.key
                     });
                 }
                 if (row.append === "middle") {
                     k.push({
                         value: item[row.key],
                         width: row.width,
-                        align: row.align
+                        align: row.align,
+                        type: "text",
+                        key:row.key
                     });
                 }
                 if (row.append === "right") {
@@ -66,14 +86,22 @@ const util = {
                         value: item[row.key],
                         width: row.width,
                         align: row.align,
-                        type: "text"
+                        type: "text",
+                        key:row.key
                     });
                 }
             });
             result.rows.middle.push(k);
-            if (option.tools && option.tools.display) {
-                result.rows.right.push(Object.assign({type: "tools"}, option.tools));
-            }
+            let _actions = [];
+            option.actions.forEach(action => {
+                if (action.display === true) {
+                    _actions.push(Object.assign({}, action));
+                }
+            });
+            result.rows.right.push({
+                type: "action",
+                actions: _actions
+            });
         });
         result.widths = {
             left: result.head.left.reduce((a, b) => a + b.width, 0),

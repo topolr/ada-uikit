@@ -21,7 +21,13 @@
     </div>
     <div class="right" style="width:{{ widths.right }}px">
         {{list head.right as item}}
-        <div class="cell" style="width:{{ item.width }}px">{{ item.value }}</div>
+            {{if item.type==='action'}}
+            <div class="cell" style="width:{{ item.width }}px">
+                <@icon id="{{ item.icon }}" class="icon"/>
+            </div>
+            {{else}}
+            <div class="cell" style="width:{{ item.width }}px">{{ item.name }}</div>
+            {{/if}}
         {{/list}}
     </div>
 </div>
@@ -51,21 +57,17 @@
         {{/list}}
     </div>
     <div class="right" style="width:{{ widths.right }}px" data-find="right">
-        {{list rows.right as item}}
-            {{if item.type==='tools'}}
-            <div class="{{ item._active?'cell active':'cell' }}" style="width:{{ item.width }}px;text-align:{{ item.align }}">
-                <div class="toolicon"><@icon id="{{ item.icon }}" class="icon"/></div>
-                <div class="list">
-                    {{list item.items as tool}}
-                    <div class="listitem">
-                        <div class="iconc"><@icon id="{{ tool.icon }}" class="icon"/></div>
-                        <div class="name">{{ tool.name }}</div>
-                    </div>
-                    {{/list}}
+        {{list rows.right as item index}}
+            {{if item.type==='action'}}
+            <div class="{{ item._active?'actions active':'actions' }}" onclick="{{ action(action,index) }}">
+                {{list item.actions as action}}
+                <div class="action" style="width:{{ action.width }}px;text-align:{{ action.align }}" title="{{ item.value }}">
+                    <@icon id="{{ action.icon }}" class="icon"/>
                 </div>
+                {{/list}}
             </div>
             {{else}}
-            <div class="cell" style="width:{{ item.width }}px;text-align:{{ item.align }}">{{ item.value }}</div>
+            <div class="{{ item._active?'cell active':'cell' }}" style="width:{{ item.width }}px;text-align:{{ item.align }}">{{ item.value }}</div>
             {{/if}}
         {{/list}}
     </div>
