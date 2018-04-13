@@ -178,7 +178,12 @@ class FlipService extends Service {
     }
 
     onupdate(a) {
-        console.log("------>>")
+        console.log("------>>",this.isReferChildDataSet(a))
+        return false;
+    }
+
+    onupdatecompute(a){
+        console.log("--->compute")
         return a;
     }
 }

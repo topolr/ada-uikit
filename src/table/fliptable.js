@@ -86,6 +86,10 @@ class Table extends ViewGroup {
         console.log(a)
         return a;
     }
+
+    render(){
+        return super.render().then(()=> console.log("render fliptable"));
+    }
 }
 
 export default Table;
