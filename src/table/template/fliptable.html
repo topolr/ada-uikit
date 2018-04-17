@@ -21,7 +21,7 @@
         <div class="page" onclick="{{ goto(page) }}">
             <div class="{{ page.iscurrent?'current inner':'inner' }}">{{ page.num }}</div>
         </div>
-        {{elseif page.name==='dot'}}
+        {{elseif page.name==='dot'&&page.none===false}}
         <div class="dot">...</div>
         {{else}}
         <div class="page" onclick="{{ nextpage() }}">
