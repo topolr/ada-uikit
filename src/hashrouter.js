@@ -89,12 +89,16 @@ let serialize = {
 let agent = {
     add(data, title, url) {
         window.location.href = url;
-        title && window.document.title = title;
+        if(title) {
+            window.document.title = title;
+        }
         return this;
     },
     replace(data, title, url) {
         window.location.href = url;
-        title && window.document.title = title;
+        if(title) {
+            window.document.title = title;
+        }
         return this;
     },
     onChange(fn) {
