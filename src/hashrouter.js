@@ -88,15 +88,13 @@ let serialize = {
 };
 let agent = {
     add(data, title, url) {
-        // window.history.pushState(data, title, url);
         window.location.href = url;
-        window.document.title = title;
+        title && window.document.title = title;
         return this;
     },
     replace(data, title, url) {
-        // window.history.replaceState(data, title, url);
         window.location.href = url;
-        window.document.title = title;
+        title && window.document.title = title;
         return this;
     },
     onChange(fn) {
