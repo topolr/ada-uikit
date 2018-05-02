@@ -89,14 +89,14 @@ let serialize = {
 let agent = {
     add(data, title, url) {
         window.location.href = url;
-        if(title) {
+        if (title) {
             window.document.title = title;
         }
         return this;
     },
     replace(data, title, url) {
         window.location.href = url;
-        if(title) {
+        if (title) {
             window.document.title = title;
         }
         return this;
@@ -313,7 +313,7 @@ class History {
         data["__page__"] = url;
         data["__title__"] = title;
         data["__index__"] = this._stack.length;
-        agent.add(data, title, this.url + "#" + url);
+        agent.add(data, title, window.location.href.split("#")[0] + "#" + url);
         this._stack.push(1);
         this._currentIndex = data.__index__;
         History._run.call(this, data);
@@ -329,7 +329,7 @@ class History {
             url = url.substring(1, url.length);
         }
         data["__page__"] = url;
-        agent.replace(data, title, this.url + "#" + url);
+        agent.replace(data, title, window.location.href.split("#")[0] + "#" + url);
         History._run.call(this, data);
         return this;
     };
