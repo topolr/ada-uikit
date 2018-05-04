@@ -1,4 +1,4 @@
-import {binder, pipe, view, View} from "adajs";
+import {binder, refer, view, View} from "adajs";
 import PannelService from "./datasets/pannel";
 import leftIcon from "./icons/left.icon";
 import rightIcon from "./icons/right.icon";
@@ -10,7 +10,7 @@ import backIcon from "./icons/back.icon";
     style: "./style/pannel.scss"
 })
 class Pannel extends View {
-    @pipe(PannelService)
+    @refer(PannelService)
     pannelDataset;
 
     defaultState() {
