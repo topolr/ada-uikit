@@ -15,7 +15,9 @@ class Loading extends View {
         let defaultType = this.option.defaultType;
         this[`show${defaultType[0].toUpperCase()}${defaultType.substring(1)}`]().then(() => {
             setTimeout(() => {
-                this.getElement().classList.add(this.getThisClassName("in"));
+                if(!this.isRemoved()) {
+                    this.getElement().classList.add(this.getThisClassName("in"));
+                }
             }, 100);
         });
     }
