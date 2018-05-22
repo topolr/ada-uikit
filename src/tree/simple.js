@@ -1,30 +1,24 @@
-import {view, binder, View,refer} from "adajs";
+import {view, binder, View} from "adajs";
 import TreeService from "./datasets/simple";
-import triangleRight from "./icons/triangle-right.icon";
 
 @view({
-    className: "simpletree",
-    template: "./template/simple.html",
-    style: "./style/simple.scss"
+	className: "simpletree",
+	template: "./template/simple.html",
+	style: "./style/simple.scss",
+	dataset: {
+		service: TreeService
+	}
 })
 class SimpleTree extends View {
+	@binder("toggle")
+	toggle({item}) {
+		this.getDataSet().commit("toggle", item);
+	}
 
-    @refer(TreeService)
-    treeDataSet;
-
-    defaultState(){
-        return {icons: {triangleRight}};
-    }
-
-    @binder("toggle")
-    toggle({item}) {
-        this.treeDataSet.commit("toggle", item);
-    }
-
-    @binder("active")
-    active({item}){
-        this.treeDataSet.commit("active",item);
-    }
+	@binder("active")
+	active({item}) {
+		this.getDataSet().commit("active", item);
+	}
 }
 
 

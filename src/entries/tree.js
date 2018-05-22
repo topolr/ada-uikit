@@ -6,11 +6,8 @@ import SelectService from "./../tree/datasets/select";
 
 @root()
 class Root extends StaticViewGroup {
-    @dataset(SelectService)
-    treeDataSet;
-
     oncreated() {
-        this.addChild(SelectTree).then(() => {
+        this.addChild(SimpleTree).then(() => {
             this.treeDataSet.commit("set", [
                 {
                     name: "aa", list: [

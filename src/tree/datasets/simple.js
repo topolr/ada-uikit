@@ -1,31 +1,40 @@
-import {DataSet, Service, action} from "adajs";
+import {Service, action} from "adajs";
 import util from "./util";
+import triangleRight from "./../icons/triangle-right.icon";
 
 class TreeService extends Service {
-    defaultData() {
-        return [];
-    }
+	defaultData() {
+		return {
+			list: [],
+			icons: {triangleRight}
+		};
+	}
 
-    @action("set")
-    set(old, data) {
-        util.initAll(data);
-        return {
-            list: data
-        };
-    }
+	update(current, list) {
+		current.list = list;
+		return current;
+	}
 
-    @action("toggle")
-    toggle(old, item) {
-        item._opened = item._opened ? false : true;
-        return old;
-    }
+	@action("set")
+	set(old, data) {
+		util.initAll(data);
+		return {
+			list: data
+		};
+	}
 
-    @action("active")
-    active(current, item) {
-        util.unactiveAll(current.list);
-        item._actived = true;
-        return current;
-    }
+	@action("toggle")
+	toggle(current, item) {
+		item._opened = item._opened ? false : true;
+		return current;
+	}
+
+	@action("active")
+	active(current, item) {
+		util.unactiveAll(current.list);
+		item._actived = true;
+		return current;
+	}
 }
 
 export default TreeService;

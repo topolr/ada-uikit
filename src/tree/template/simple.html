@@ -1,16 +1,16 @@
 <div class="block">
-    {{list list as item}}
+    {{list data.list as item}}
     <div class="{{item._opened?'item opened':'item'}}">
         <div class="{{ item._actived?'head active':'head' }}">
             {{if item.list.length>0}}
-            <div class="arrow" onclick="{{toggle(item)}}"><@icon class='icon' id="{{icons.triangleRight}}"/></div>
+            <div class="arrow" onclick="{{ toggle(item) }}"><@icon class='icon' id="{{ data.icons.triangleRight }}"/></div>
             {{else}}
             <div class="noarrow"></div>
             {{/if}}
-            <div class="name" onclick="{{active(item)}}">{{item.name}}</div>
+            <div class="name" onclick="{{ active(item) }}">{{ item.name }}</div>
         </div>
         <div class="body">
-            <@self @data="{{ {list:item.list,icons:icons} }}"/>
+            <@self @data="{{ {list:item.list,icons:data.icons} }}"/>
         </div>
     </div>
     {{/list}}
