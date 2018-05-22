@@ -1,15 +1,15 @@
 <div class="cutter" data-find="cutter"></div>
 <div class="tools">
     <div class="tool">
-        <input type="file" onchange="{{change()}}">
-        <@icon id="{{folder}}" class="icon"/>
+        <input type="file" onchange="{{ change() }}">
+        <@icon id="{{ data.folder }}" class="icon"/>
     </div>
-    <div class="tool" onclick="{{rotateleft()}}"><@icon id="{{rotateCcw}}" class="icon"/></div>
-    <div class="tool" onclick="{{rotateright()}}"><@icon id="{{rotateCw}}" class="icon"/></div>
-    <div class="tool" onclick="{{zoomin()}}"><@icon id="{{zoomIn}}" class="icon"/></div>
-    <div class="tool" onclick="{{zoomout()}}"><@icon id="{{zoomOut}}" class="icon"/></div>
-    <div class="tool" onclick="{{reset()}}"><@icon id="{{refreshCw}}" class="icon"/></div>
+    <div class="tool" onclick="{{ rotateleft() }}"><@icon id="{{ data.rotateCcw }}" class="icon"/></div>
+    <div class="tool" onclick="{{ rotateright() }}"><@icon id="{{ data.rotateCw }}" class="icon"/></div>
+    <div class="tool" onclick="{{ zoomin() }}"><@icon id="{{ data.zoomIn }}" class="icon"/></div>
+    <div class="tool" onclick="{{ zoomout() }}"><@icon id="{{ data.zoomOut }}" class="icon"/></div>
+    <div class="tool" onclick="{{ reset() }}"><@icon id="{{ data.refreshCw }}" class="icon"/></div>
 </div>
-{{if none===true}}
-<div class="mask"><input type="file" onchange="{{change()}}"></div>
+{{if data.none===true}}
+<div class="mask"><input type="file" onchange="{{ change() }}"></div>
 {{/if}}

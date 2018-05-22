@@ -1,6 +1,6 @@
 import {dataset, root, StaticViewGroup} from "adajs";
 import PannelService from "./../datepicker/datasets/pannel";
-import Picker from "./../datepicker/picker";
+import Picker from "../datepicker/index";
 
 @root()
 class Root extends StaticViewGroup {

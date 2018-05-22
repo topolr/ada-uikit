@@ -1,9 +1,9 @@
 <div class="mask"></div>
 <div class="box">
-    <div class="content">{{content}}</div>
+    <div class="content">{{ data.content }}</div>
     <div class="btns">
-        {{list btns as item}}
-        <div class="btn" onclick="{{action(item)}}">{{item.name}}</div>
+        {{list data.btns as item}}
+        <div class="btn" onclick="{{ action(item) }}">{{ item.name }}</div>
         {{/list}}
     </div>
 </div>

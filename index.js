@@ -1,7 +1,7 @@
-import Loading from "./src/loading";
-import Toast from "./src/toast";
+import Loading from "./src/loading/index";
+import Toast from "./src/toast/index";
 import File from "./src/file";
-import Photocutter from "./src/photocutter";
+import Photocutter from "./src/photocutter/index";
 import Router from "./src/router";
 import {Sprite, Scene} from "./src/displayer";
 import Tween from "./src/tween";
