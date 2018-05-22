@@ -1,75 +1,66 @@
-import {binder, refer, view, View} from "adajs";
+import {binder, view, View} from "adajs";
 import PannelService from "./datasets/pannel";
-import leftIcon from "./icons/left.icon";
-import rightIcon from "./icons/right.icon";
-import backIcon from "./icons/back.icon";
 
 @view({
-    className: "datepannel",
-    template: "./template/pannel.html",
-    style: "./style/pannel.scss"
+	className: "datepannel",
+	template: "./template/pannel.html",
+	style: "./style/pannel.scss",
+	dataset: {
+		service: PannelService
+	}
 })
 class Pannel extends View {
-    @refer(PannelService)
-    pannelDataset;
+	@binder("select")
+	select({item}) {
+		this.getDataSet().commit("select", new Date(`${item.year}/${item.month + 1}/${item.day} 0:0:0`));
+	}
 
-    defaultState() {
-        return {
-            icons: {leftIcon, rightIcon, backIcon}
-        };
-    }
+	@binder("prev")
+	prev() {
+		this.getDataSet().commit("prevmonth");
+	}
 
-    @binder("select")
-    select({item}) {
-        this.pannelDataset.commit("select", new Date(`${item.year}/${item.month + 1}/${item.day} 0:0:0`));
-    }
+	@binder("next")
+	next() {
+		this.getDataSet().commit("nextmonth");
+	}
 
-    @binder("prev")
-    prev() {
-        this.pannelDataset.commit("prevmonth");
-    }
+	@binder("gotoyear")
+	gotoYear({item}) {
+		this.getDataSet().commit("gotoyear", item.year);
+	}
 
-    @binder("next")
-    next() {
-        this.pannelDataset.commit("nextmonth");
-    }
+	@binder("gotomonth")
+	gotoMonth({item}) {
+		this.getDataSet().commit("gotomonth", item.month);
+	}
 
-    @binder("gotoyear")
-    gotoYear({item}) {
-        this.pannelDataset.commit("gotoyear", item.year);
-    }
+	@binder("showpannel")
+	showPannel() {
+		this.getElement().classList.toggle(this.getThisClassName("showpannel"));
+		this.focusScroll();
+	}
 
-    @binder("gotomonth")
-    gotoMonth({item}) {
-        this.pannelDataset.commit("gotomonth", item.month);
-    }
+	@binder("closepannel")
+	closePannel() {
+		this.getElement().classList.remove(this.getThisClassName("showpannel"));
+	}
 
-    @binder("showpannel")
-    showPannel() {
-        this.getElement().classList.toggle(this.getThisClassName("showpannel"));
-        this.focusScroll();
-    }
+	@binder("today")
+	today() {
+		this.getDataSet().commit("today");
+	}
 
-    @binder("closepannel")
-    closePannel() {
-        this.getElement().classList.remove(this.getThisClassName("showpannel"));
-    }
+	focusScroll() {
+		let target = this.finder("scroll").getElement().querySelector(`.${this.getThisClassName("selected")}`);
+		if (target) {
+			this.finder("scroll").getElement().scrollTop = target.offsetTop - 30;
+		}
+	}
 
-    @binder("today")
-    today() {
-        this.pannelDataset.commit("today");
-    }
-
-    focusScroll() {
-        let target = this.finder("scroll").getElement().querySelector(`.${this.getThisClassName("selected")}`);
-        if (target) {
-            this.finder("scroll").getElement().scrollTop = target.offsetTop - 30;
-        }
-    }
-
-    render() {
-        return super.render().then(() => this.focusScroll());
-    }
+	render() {
+		return super.render().then(() => this.focusScroll());
+	}
 }
 
 export default Pannel;

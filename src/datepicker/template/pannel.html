@@ -1,17 +1,17 @@
 <div class="info">
-    <div class="btn" onclick="{{ prev() }}"><@icon class='icon' id="{{icons.leftIcon}}"/></div>
-    <div class="desc" onclick="{{ showpannel() }}">{{ current.year }}/{{ current.month }}</div>
-    <div class="btn" onclick="{{ next() }}"><@icon class='icon' id="{{icons.rightIcon}}"/></div>
-    {{if !isToday}}
-    <div class="btnin" onclick="{{ today() }}"><@icon class='icon' id="{{icons.backIcon}}"/></div>
+    <div class="btn" onclick="{{ prev() }}"><@icon class='icon' id="{{ data.icons.leftIcon }}"/></div>
+    <div class="desc" onclick="{{ showpannel() }}">{{ data.current.year }}/{{ data.current.month }}</div>
+    <div class="btn" onclick="{{ next() }}"><@icon class='icon' id="{{ data.icons.rightIcon }}"/></div>
+    {{if !data.isToday}}
+    <div class="btnin" onclick="{{ today() }}"><@icon class='icon' id="{{ data.icons.backIcon }}"/></div>
     {{/if}}
 </div>
 <div class="header">
-    {{list header as top}}
+    {{list data.header as top}}
     <div class="cell">{{ top }}</div>
     {{/list}}
 </div>
-{{list days as day}}
+{{list data.days as day}}
 <div class="row">
     {{list day as item}}
         {{if item.type==='current'}}
@@ -37,7 +37,7 @@
     </div>
     <div class="inner">
         <div class="left" data-find="scroll">
-            {{list pannel.years as year}}
+            {{list data.pannel.years as year}}
             <div class="row">
                 {{list year as item}}
                 <div class="{{ item.selected?'col selected':'col' }}">
@@ -48,7 +48,7 @@
             {{/list}}
         </div>
         <div class="right">
-            {{list pannel.months as month}}
+            {{list data.pannel.months as month}}
             <div class="row">
                 {{list month as item}}
                 <div class="{{ item.selected?'col selected':'col' }}">
