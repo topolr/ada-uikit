@@ -7,7 +7,7 @@ import SelectService from "./../tree/datasets/select";
 @root()
 class Root extends StaticViewGroup {
     oncreated() {
-        this.addChild(SimpleTree,{
+        this.addChild(SelectTree,{
             parameter:[
 				{
 					name: "aa", list: [
