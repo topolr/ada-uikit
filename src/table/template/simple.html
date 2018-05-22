@@ -1,10 +1,10 @@
 <div class="head">
-    {{list head as item}}
+    {{list data.head as item}}
     <div class="cell" style="width:{{ item.width }}px">{{ item.name }}</div>
     {{/list}}
 </div>
 <div class="body">
-    {{list rows as item}}
+    {{list data.rows as item}}
     <div class="row">
         {{list item as cell}}
         <div class="cell" style="width:{{ cell.width }}px">{{ cell.value }}</div>
