@@ -7,58 +7,58 @@ import SelectService from "./../tree/datasets/select";
 @root()
 class Root extends StaticViewGroup {
     oncreated() {
-        this.addChild(SimpleTree).then(() => {
-            this.treeDataSet.commit("set", [
-                {
-                    name: "aa", list: [
-                        {name: "aaa", list: []},
-                        {
-                            name: "bbb", list: [
-                                {name: "aaa", list: []},
-                                {
-                                    name: "bbb", list: [
-                                        {name: "aaa", list: []},
-                                        {name: "bbb", list: []},
-                                        {name: "ccc", list: []}
-                                    ]
-                                },
-                                {
-                                    name: "ccc", list: [
-                                        {name: "aaa", list: []},
-                                        {name: "bbb", list: []},
-                                        {
-                                            name: "ccc", list: [
-                                                {name: "aaa", list: []},
-                                                {name: "bbb", list: []},
-                                                {name: "ccc", list: []}
-                                            ]
-                                        }
-                                    ]
-                                }
-                            ]
-                        },
-                        {name: "ccc", list: []}
-                    ]
-                },
-                {
-                    name: "bb", list: [
-                        {name: "aaa", list: []},
-                        {name: "bbb", list: []},
-                        {
-                            name: "ccc", list: [
-                                {name: "aaa", list: []},
-                                {name: "bbb", list: []},
-                                {name: "ccc", list: []}
-                            ]
-                        }
-                    ]
-                },
-                {
-                    name: "cc", list: [
-                        {name: "ccc", list: []}
-                    ]
-                }
-            ]);
+        this.addChild(SimpleTree,{
+            parameter:[
+				{
+					name: "aa", list: [
+						{name: "aaa", list: []},
+						{
+							name: "bbb", list: [
+								{name: "aaa", list: []},
+								{
+									name: "bbb", list: [
+										{name: "aaa", list: []},
+										{name: "bbb", list: []},
+										{name: "ccc", list: []}
+									]
+								},
+								{
+									name: "ccc", list: [
+										{name: "aaa", list: []},
+										{name: "bbb", list: []},
+										{
+											name: "ccc", list: [
+												{name: "aaa", list: []},
+												{name: "bbb", list: []},
+												{name: "ccc", list: []}
+											]
+										}
+									]
+								}
+							]
+						},
+						{name: "ccc", list: []}
+					]
+				},
+				{
+					name: "bb", list: [
+						{name: "aaa", list: []},
+						{name: "bbb", list: []},
+						{
+							name: "ccc", list: [
+								{name: "aaa", list: []},
+								{name: "bbb", list: []},
+								{name: "ccc", list: []}
+							]
+						}
+					]
+				},
+				{
+					name: "cc", list: [
+						{name: "ccc", list: []}
+					]
+				}
+			]
         });
     }
 }
