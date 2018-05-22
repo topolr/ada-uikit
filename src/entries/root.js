@@ -9,7 +9,7 @@ import Datapicker from "./../datepicker";
 @root
 class Root extends StaticViewGroup {
 	oncreated() {
-		this.addChild(Datapicker);
+		this.addChild(Loading);
 	}
 }
 
