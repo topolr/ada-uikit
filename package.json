@@ -11,6 +11,8 @@
     "url": "https://github.com/topolr/ada-template.git"
   },
   "dependencies": {
+    "adajs": "file:../ada",
+    "mixwith": "^0.1.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0-beta.47",
@@ -37,8 +39,7 @@
     "less": "^3.0.1",
     "node-sass": "^4.7.2",
     "uglify-es": "^3.3.9",
-    "uglifycss": "0.0.28",
-    "mixwith": "^0.1.1"
+    "uglifycss": "0.0.28"
   },
   "author": "WangJinliang(hou80houzhu)",
   "license": "MIT"
