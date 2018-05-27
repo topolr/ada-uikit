@@ -1,4 +1,4 @@
-import {action, Service, tool} from "adajs";
+import {action, Service, util as tool} from "adajs";
 import util from "./util";
 
 class PannelService extends Service {
