@@ -5,7 +5,6 @@ import PannelService from "./datasets/pannel";
     className: "datepannel",
     template: "./template/pannel.html",
     style: "./style/pannel.scss",
-    watch: false,
     dataset: {
         service: PannelService
     }
