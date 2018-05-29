@@ -1,4 +1,4 @@
-import {Service, view, View} from "adajs";
+import {Service, view, View, util} from "adajs";
 
 @view()
 class Text extends View {
@@ -20,6 +20,11 @@ class MessageboxService extends Service {
 			]
 		}
 	}
+
+	update(current, info) {
+		util.extend(current, info);
+		return current;
+	};
 }
 
 export default MessageboxService;
