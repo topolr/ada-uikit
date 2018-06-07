@@ -21,7 +21,7 @@ class MessageboxService extends Service {
 		}
 	}
 
-	update(current, info) {
+	onupdate(current, info) {
 		util.extend(current, info);
 		return current;
 	};

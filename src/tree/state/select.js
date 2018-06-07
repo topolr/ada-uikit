@@ -14,7 +14,7 @@ class SelectService extends SimpleService {
 		};
 	}
 
-	update(current, list) {
+	onupdate(current, list) {
 		current.list = list;
 		return current;
 	}

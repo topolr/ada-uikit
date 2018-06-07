@@ -6,6 +6,11 @@ class ToaseService extends Service{
 			content: "this is toast"
 		}
 	}
+
+	onupdate(current,info){
+		current.content=info.content;
+		return current;
+	}
 }
 
 export default ToaseService;

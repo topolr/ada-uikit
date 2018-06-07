@@ -10,23 +10,18 @@ class TreeService extends Service {
 		};
 	}
 
-	update(current, list) {
+	onupdate(current, list) {
+		util.initAll(list);
 		current.list = list;
 		return current;
 	}
 
-	@action("set")
-	set(old, data) {
-		util.initAll(data);
-		return {
-			list: data
-		};
-	}
-
 	@action("toggle")
 	toggle(current, item) {
-		console.log(item)
-		item._opened = item._opened ? false : true;
+		console.log("====>", item._id)
+		let _item = util.findItem(current, item);
+		console.log("---->", _item._id)
+		_item._opened = !_item._opened;
 		return current;
 	}
 
