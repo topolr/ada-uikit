@@ -19,15 +19,6 @@ class SelectService extends SimpleService {
 		return current;
 	}
 
-	@action("set")
-	set(current, data) {
-		util.initSelectAll(data);
-		return {
-			list: data,
-			icons: {triangleRight, checkBoxIcon, checkBoxOutline}
-		};
-	}
-
 	@action("toggleselect")
 	toggleSelect(current, item) {
 		util.selectCascade(current.list, item);
