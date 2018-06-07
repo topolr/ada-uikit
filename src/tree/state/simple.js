@@ -18,9 +18,7 @@ class TreeService extends Service {
 
 	@action("toggle")
 	toggle(current, item) {
-		console.log("====>", item._id)
 		let _item = util.findItem(current, item);
-		console.log("---->", _item._id)
 		_item._opened = !_item._opened;
 		return current;
 	}
