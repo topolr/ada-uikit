@@ -1,6 +1,6 @@
 import {view, binder} from "adajs";
 import SimpleTree from "./simple";
-import SelectService from "./datasets/select";
+import SelectService from "./state/select";
 
 @view({
 	className: "selectree",

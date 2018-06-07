@@ -1,5 +1,5 @@
 import {view, binder, View} from "adajs";
-import TreeService from "./datasets/simple";
+import TreeService from "./state/simple";
 
 @view({
 	className: "simpletree",

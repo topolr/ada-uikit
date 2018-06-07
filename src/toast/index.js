@@ -1,5 +1,5 @@
 import {view, View} from "adajs";
-import ToastService from "./dataset";
+import ToastService from "./state";
 
 @view({
 	className: "toast",

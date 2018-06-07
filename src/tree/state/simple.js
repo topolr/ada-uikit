@@ -25,6 +25,7 @@ class TreeService extends Service {
 
 	@action("toggle")
 	toggle(current, item) {
+		console.log(item)
 		item._opened = item._opened ? false : true;
 		return current;
 	}

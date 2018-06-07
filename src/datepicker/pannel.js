@@ -1,5 +1,5 @@
 import {binder, view, View} from "adajs";
-import PannelService from "./datasets/pannel";
+import PannelService from "./state/pannel";
 
 @view({
     className: "datepannel",

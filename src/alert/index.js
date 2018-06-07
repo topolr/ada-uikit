@@ -1,5 +1,5 @@
 import {view, binder, handler, View} from "adajs";
-import AlertService from "./dataset";
+import AlertService from "./state";
 
 @view({
 	className: "alert",

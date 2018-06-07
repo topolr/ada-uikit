@@ -1,5 +1,5 @@
 import {view, binder, handler, BondViewGroup, View} from "adajs";
-import MessageboxService from "./dataset";
+import MessageboxService from "./state";
 
 @view({
 	className: "messagebox",

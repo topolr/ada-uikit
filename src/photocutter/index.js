@@ -1,7 +1,7 @@
 import {view, View, binder} from "adajs";
 import {Sprite, Scene} from "../displayer";
 import File from "../file";
-import PhotocutterService from "./dataset";
+import PhotocutterService from "./state";
 
 class Cutter {
 	constructor(ops) {

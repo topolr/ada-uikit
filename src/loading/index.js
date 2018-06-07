@@ -2,7 +2,7 @@ import {view, View} from "adajs";
 import refreshCw from "./icons/refresh-cw.icon";
 import checkCircle from "./icons/check-circle.icon";
 import minusCircle from "./icons/minus-circle.icon";
-import LoadingService from "./dataset";
+import LoadingService from "./state";
 import "../style/base.scss";
 
 @view({
