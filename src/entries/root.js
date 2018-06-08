@@ -9,7 +9,15 @@ import Datapicker from "./../datepicker";
 @root
 class Root extends StaticViewGroup {
 	oncreated() {
-		this.addChild(Loading);
+		this.addChild(Messagebox,{
+			parameter:{
+                title: "this is title22222",
+                width: "360px",
+                btns: [
+                    {name: "close", action: "close"}
+                ]
+			}
+		});
 	}
 }
 

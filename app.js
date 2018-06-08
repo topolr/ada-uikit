@@ -3,7 +3,7 @@ let app = {
 	source_path: "./src/",
 	dist_path: "./dist/",
 	description: "A simply component template of ada.",
-	main: "./src/entries/tree.js",
+	main: "./src/entries/root.js",
 	ada_autobundle: false,
 	entry_path: "./test/",
 	entry_auto: false

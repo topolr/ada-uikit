@@ -3,7 +3,7 @@
     <div class="title">{{ data.title }}</div>
     <div class="content">
         {{list data.content as item}}
-        <@module @type="{{ item.type }}" @option="{{ item.option }}"/>
+        <@module @type="{{ item.type }}" @parameter="{{ item.option }}"/>
         {{/list}}
     </div>
     <div class="btns">
