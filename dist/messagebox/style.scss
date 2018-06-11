@@ -1,0 +1,67 @@
+.messagebox {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    cursor: default;
+    display: -webkit-box;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+    -webkit-box-orient: vertical;
+    z-index:999999;
+    .mask {
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0);
+        transition: background ease-out 1s;
+    }
+    .box {
+        background: white;
+        border-radius: 3px;
+        box-shadow: 3px 5px 10px #736d6d;
+        transition: all ease-out .3s;
+        opacity: 0;
+        transform: translateY(50px);
+        background: white;
+        min-width: 360px;
+        z-index: 99999;
+        padding: 10px 0 0 0;
+        .title {
+            line-height: 40px;
+            padding: 0 20px 0 20px;
+            font-size: 15px;
+        }
+        .content {
+            font-size: 13px;
+            padding: 10px 20px 10px 20px;
+            max-height: calc(100% - 150px);
+        }
+        .btns {
+            text-align: right;
+            line-height: 30px;
+            padding: 0 10px 10px 10px;
+            .btn {
+                display: inline-block;
+                vertical-align: top;
+                padding: 0 10px 0 10px;
+                font-size: 12px;
+                &:hover {
+                    color: blue;
+                }
+            }
+        }
+    }
+    &.in {
+        .mask {
+            background: rgba(0, 0, 0, 0.1);
+        }
+        .box {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+}

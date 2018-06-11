@@ -1,0 +1,93 @@
+.filptable {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    .icon {
+        display: inline-block;
+        vertical-align: middle;
+        width: 1em;
+        height: 1em;
+        stroke-width: 0;
+        stroke: currentColor;
+        fill: currentColor;
+        font-size: 14px;
+    }
+    .btns {
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        line-height: 40px;
+        z-index: 9;
+        .btn {
+            display: inline-block;
+            font-size: 12px;
+            margin: 0 5px 0 5px;
+            cursor: default;
+            .iconc {
+                width: 30px;
+                display: inline-block;
+                vertical-align: top;
+                text-align: center;
+            }
+            .name {
+                display: inline-block;
+                vertical-align: top;
+                padding: 0 10px 0 0;
+            }
+            &:hover {
+                color: #3878D8;
+            }
+        }
+    }
+    .body {
+        position: absolute;
+        left: 0;
+        top: 40px;
+        right: 0;
+        bottom: 35px;
+    }
+    .foot {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        line-height: 35px;
+        display: flex;
+        font-size: 12px;
+        cursor: default;
+        .info {
+            padding: 0 10px 0 10px;
+        }
+        .pages {
+            flex-grow: 1;
+            text-align: right;
+            .page {
+                display: inline-block;
+                vertical-align: top;
+                padding: 0 5px 0 5px;
+                &:hover {
+                    color: #3878D8;
+                }
+                .inner {
+                    line-height:20px;
+                    display: inline-block;
+                    text-align: center;
+                    padding:0 8px 0 8px;
+                    &.current {
+                        color: green;
+                        background: cornflowerblue;
+                        border-radius: 10px;
+                        color: white;
+                    }
+                }
+            }
+            .dot {
+                display: inline-block;
+                vertical-align: top;
+            }
+        }
+    }
+}
