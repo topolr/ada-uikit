@@ -64,10 +64,10 @@ class MixService extends Service {
 	@action("toggle")
 	toggle(current, row) {
 		let index = current.rows.middle.indexOf(row);
-		current.rows.left[index].checked = current.rows.left[index].checked ? false : true;
-		current.rows.left[index]._active = current.rows.left[index]._active ? false : true;
-		current.rows.right[index]._active = current.rows.right[index]._active ? false : true;
-		row._active = row._active ? false : true;
+		current.rows.left[index].checked = !current.rows.left[index].checked;
+		current.rows.left[index]._active = !current.rows.left[index]._active;
+		current.rows.right[index]._active = !current.rows.right[index]._active;
+		row._active = !row._active;
 		let k = current.rows.left.filter(item => item._active === false || item._active === undefined);
 		if (k.length > 0) {
 			let e = current.head.left.filter(item => item.type === "checkbox");
