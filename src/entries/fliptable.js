@@ -1,6 +1,6 @@
 import {dataset, root, StaticViewGroup, handler} from "adajs";
 import FlipTable from "./../table/fliptable";
-import {addIcon, closeIcon} from "./../table/icons/icon";
+import {addIcon, closeIcon} from "../table/icons/index";
 
 @root()
 class Root extends StaticViewGroup {
