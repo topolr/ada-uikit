@@ -1,95 +1,52 @@
 import {binder, dataset, view, ViewGroup, StaticViewGroup} from "adajs";
 import MixTable from "./mix";
-import MixService from "./datasets/mix";
-import FlipService from "./datasets/flip";
-import {navigateBeforeIcon, navigateNextIcon} from "./icons/icon";
+import FlipService from "./states/flip";
 
 class AppendTable extends StaticViewGroup {
-    @dataset(MixService)
-    tableDataSet;
-
-    oncreated() {
-        this.tableDataSet.setOption(() => this.option);
-        this.addChild(MixTable, {
-            container: this.getElement()
-        });
-    }
+	oncreated() {
+		this.tableDataSet.setOption(() => this.option);
+		this.addChild(MixTable, {
+			container: this.getElement()
+		});
+	}
 }
 
 @view({
-    className: "filptable",
-    template: "./template/fliptable.html",
-    style: "./style/fliptable.scss"
+	className: "filptable",
+	template: "./template/fliptable.html",
+	style: "./style/fliptable.scss",
+	dataset: {
+		service: FlipService
+	}
 })
 class Table extends ViewGroup {
 
-    @dataset(FlipService)
-    flipDataSet;
+	onready() {
+		this.gotoPage(1);
+	}
 
-    oncreated() {
-        this.state.tableOption = this.option.tableOption;
-        let {pageSize, pagesizeName, pageName, url} = this.option;
-        this.flipDataSet.setOption(() => {
-            return {pageSize, pagesizeName, pageName, url}
-        });
-    }
+	gotoPage(page) {
+		this.getDataSet().commit("goto", page);
+	}
 
-    onready() {
-        this.gotoPage(1);
-    }
+	tags() {
+		return {
+			thistable: AppendTable
+		}
+	}
 
-    defaultOption() {
-        return {
-            btns: [],
-            url: "",
-            pageSize: 10,
-            pagesizeName: "pagesize",
-            pageName: "page",
-            tableOption: {}
-        }
-    }
+	@binder("nextpage")
+	nextPage() {
+	}
 
-    defaultState() {
-        let {btns} = this.option;
-        return {
-            btns, icons: {
-                navigateBeforeIcon,
-                navigateNextIcon
-            }
-        };
-    }
+	@binder("prevpage")
+	prevPage() {
+	}
 
-    gotoPage(page) {
-        this.flipDataSet.commit("goto", page);
-    }
-
-    tags() {
-        return {
-            thistable: AppendTable
-        }
-    }
-
-    @binder("nextpage")
-    nextPage() {
-    }
-
-    @binder("prevpage")
-    prevPage() {
-    }
-
-    @binder("goto")
-    goto({page}) {
-        this.gotoPage(page.num);
-    }
-
-    computed(a){
-        console.log(a)
-        return a;
-    }
-
-    render(){
-        return super.render().then(()=> console.log("render fliptable"));
-    }
+	@binder("goto")
+	goto({page}) {
+		this.gotoPage(page.num);
+	}
 }
 
 export default Table;

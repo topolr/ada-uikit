@@ -1,5 +1,5 @@
 import {root, StaticViewGroup} from "adajs";
-import SimpleTable from "./../table/simple";
+import SimpleTable from "../table/index";
 
 @root()
 class Root extends StaticViewGroup {

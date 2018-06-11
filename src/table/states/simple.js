@@ -14,19 +14,11 @@ class SimpleService extends Service {
 		}
 	}
 
-	update(current, data) {
+	onupdate(current, data) {
 		let {head, rows} = util.simple(data.data, data.option);
 		current.head = head;
 		current.rows = rows;
 		current.option = data.option;
-		return current;
-	}
-
-	@action("set")
-	set(current, data) {
-		let {head, rows} = util.simple(data, current.option);
-		current.head = head;
-		current.rows = rows;
 		return current;
 	}
 }

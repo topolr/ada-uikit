@@ -1,5 +1,5 @@
 import {View, view} from "adajs";
-import SimpleService from "./datasets/simple";
+import SimpleService from "./states/simple";
 
 @view({
 	className: "simpletable",
