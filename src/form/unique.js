@@ -3,7 +3,7 @@ import UniqueService from "./state/unique";
 import Input from "./input";
 
 @view({
-	className: "unique",
+	className: "input",
 	template: "./template/input.html",
 	style: "./style/input.scss",
 	dataset: {
