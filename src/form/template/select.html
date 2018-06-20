@@ -1,0 +1,6 @@
+<div class="input">{{ data.value.value }}</div>
+<div class="list">
+    {{list data.list as item}}
+    <div class="item" onclick="{{ select(item) }}">{{ item.name }}</div>
+    {{/list}}
+</div>
