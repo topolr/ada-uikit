@@ -1,23 +1,21 @@
-import {dataset, root, StaticViewGroup} from "adajs";
-import SimpleForm from "../form/simpleform";
-import FormService from "./../form/datasets/form";
-import Input from "../form/input";
-import Textarea from "../form/textarea";
+import {root, StaticViewGroup} from "adajs";
+import Form from "./../form";
+import Input from "./../form/input";
+import Unique from "./../form/unique";
 
 @root()
 class Root extends StaticViewGroup {
-    @dataset(FormService)
-    formDataSet;
-
-    oncreated() {
-        this.addChild(SimpleForm).then(() => {
-            this.formDataSet.commit("set", [
-                {type: Input, name: "aa", value: "aa", label: "aa", required: true},
-                // {type: Input, name: "bb", value: "bb", label: "bb"},
-                {type: Textarea, name: "cc", value: "cc", label: "cc"}
-            ]);
-        });
-    }
+	oncreated() {
+		this.addChild(Form, {
+			parameter: {
+				fields: [
+					{type: Input, option: {label: "text", value: "test", name: "aa"}},
+					{type: Input, option: {label: "text", value: "test2", name: "bb"}},
+					{type: Unique, option: {label: "unique", value: "test3", name: "cc", url: "/mock/unique"}}
+				]
+			}
+		});
+	}
 }
 
 export default Root;

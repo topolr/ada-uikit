@@ -1,0 +1,16 @@
+{{if data.label}}
+<div class="label">{{ data.label }}</div>
+{{/if}}
+{{if data.desc}}
+<div class="desc">{{ data.desc }}</div>
+{{/if}}
+<div class="field">
+    {{if data.enable}}
+    <input type="{{ data.type }}" value="{{ data.value }}" data-find="input" onkeyup="{{ keyup() }}"/>
+    {{else}}
+    <input type="{{ data.type }}" value="{{ data.value }}" disabled="true" data-find="input" onkeyup="{{ keyup() }}"/>
+    {{/if}}
+</div>
+{{if data.error}}
+<div class="tip">{{ data.errorInfo }}</div>
+{{/if}}

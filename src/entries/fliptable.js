@@ -10,7 +10,7 @@ class Root extends StaticViewGroup {
 		document.body.appendChild(con);
 		this.addChild(FlipTable, {
 			parameter: {
-				url: "test.json",
+				url: "/mock/test.json",
 				btns: [
 					{"name": "add", icon: addIcon},
 					{"name": "remove", icon: closeIcon}
