@@ -1,4 +1,4 @@
-import {view, binder, handler, BondViewGroup, View} from "adajs";
+import {view, binder, handler, BondViewGroup} from "adajs";
 import MessageboxService from "./state";
 
 @view({

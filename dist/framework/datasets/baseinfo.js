@@ -1,1 +1,0 @@
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=void 0;var _adajs=require("adajs");class BaseInfoService extends _adajs.Service{defaultData(){return{user:{username:""},menu:[{name:"menu1",link:"/menu1",type:""}],app:{logo:"",name:"",copyright:""}}}}var _default=BaseInfoService;exports.default=_default;
