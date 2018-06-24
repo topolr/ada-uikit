@@ -1,0 +1,12 @@
+.rangegroup {
+    display: inline-block;
+    white-space: nowrap;
+    .left {
+        display: inline-block;
+        vertical-align: top;
+    }
+    .right {
+        display: inline-block;
+        vertical-align: top;
+    }
+}

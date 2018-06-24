@@ -77,6 +77,12 @@
                     border-radius: 50%;
                 }
             }
+            &.selectedin {
+                //.inner {
+                    background: #D7D7D7;
+                    color: white;
+                //}
+            }
         }
         .disablecol {
             width: 40px;

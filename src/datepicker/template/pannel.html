@@ -15,16 +15,16 @@
 <div class="row">
     {{list day as item}}
         {{if item.type==='current'}}
-        <div class="{{ item.selected?'col selected':'col' }}" onclick="{{ select(item) }}">
+        <div class="{{ item.selected?'col selected':(item.selectedin?'col selectedin':'col') }}" onclick="{{ select(item) }}">
             <div class="{{item.current?'inner current':'inner'}}">{{ item.day }}</div>
         </div>
         {{elseif item.type==='prev'}}
         <div class="disablecol" onclick="{{ prev() }}">
-            <div class="{{item.current?'inner current':'inner'}}">{{ item.day }}</div>
+            <div data-type="prev" class="{{item.current?'inner current':'inner'}}">{{ item.day }}</div>
         </div>
         {{else}}
         <div class="disablecol" onclick="{{ next() }}">
-            <div class="{{item.current?'inner current':'inner'}}">{{ item.day }}</div>
+            <div data-type="next" class="{{item.current?'inner current':'inner'}}">{{ item.day }}</div>
         </div>
         {{/if}}
     {{/list}}

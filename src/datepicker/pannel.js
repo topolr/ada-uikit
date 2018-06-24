@@ -12,27 +12,37 @@ import PannelService from "./state/pannel";
 class Pannel extends View {
     @binder("select")
     select({item}) {
-        this.getDataSet().commit("select", new Date(`${item.year}/${item.month + 1}/${item.day} 0:0:0`));
+        this.getDataSet().commit("select", new Date(`${item.year}/${item.month}/${item.day} 0:0:0`)).then(() => {
+            this.dispatchEvent("select", this.getCurrentState());
+        });
     }
 
     @binder("prev")
     prev() {
-        this.getDataSet().commit("prevmonth");
+        this.getDataSet().commit("prevmonth").then(() => {
+            this.dispatchEvent("change", this.getCurrentState());
+        });
     }
 
     @binder("next")
     next() {
-        this.getDataSet().commit("nextmonth");
+        this.getDataSet().commit("nextmonth").then(() => {
+            this.dispatchEvent("change", this.getCurrentState());
+        });
     }
 
     @binder("gotoyear")
     gotoYear({item}) {
-        this.getDataSet().commit("gotoyear", item.year);
+        this.getDataSet().commit("gotoyear", item.year).then(() => {
+            this.dispatchEvent("change", this.getCurrentState());
+        });
     }
 
     @binder("gotomonth")
     gotoMonth({item}) {
-        this.getDataSet().commit("gotomonth", item.month);
+        this.getDataSet().commit("gotomonth", item.month).then(() => {
+            this.dispatchEvent("change", this.getCurrentState());
+        });
     }
 
     @binder("showpannel")
@@ -48,7 +58,9 @@ class Pannel extends View {
 
     @binder("today")
     today() {
-        this.getDataSet().commit("today");
+        this.getDataSet().commit("today").then(() => {
+            this.dispatchEvent("change", this.getCurrentState());
+        });
     }
 
     focusScroll() {
@@ -58,8 +70,8 @@ class Pannel extends View {
         }
     }
 
-    render() {
-        return super.render().then(() => this.focusScroll());
+    onupdated() {
+        this.focusScroll();
     }
 }
 

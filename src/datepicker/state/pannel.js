@@ -15,7 +15,7 @@ class PannelService extends Service {
         } else {
             month = month - 1;
         }
-        return tool.extend(current, util.getFinalPannelDates(new Date(`${year}/${month}/1 0:0:0`), current.selectDates, current.range));
+        return tool.extend(current, util.getFinalPannelDates(new Date(`${year}/${month}/1 0:0:0`), current.selectDates, current.offset, current.hover));
     }
 
     @action("nextmonth")
@@ -27,27 +27,27 @@ class PannelService extends Service {
         } else {
             month = month + 1;
         }
-        return tool.extend(current, util.getFinalPannelDates(new Date(`${year}/${month}/1 0:0:0`), current.selectDates, current.range));
+        return tool.extend(current, util.getFinalPannelDates(new Date(`${year}/${month}/1 0:0:0`), current.selectDates, current.offset, current.hover));
     }
 
     @action("gotoyear")
     gotoYear(current, year) {
-        return tool.extend(current, util.getFinalPannelDates(new Date(`${year}/${current.current.month}/1 0:0:0`), current.selectDates, current.range));
+        return tool.extend(current, util.getFinalPannelDates(new Date(`${year}/${current.current.month}/1 0:0:0`), current.selectDates, current.offset, current.hover));
     }
 
     @action("gotomonth")
     gotoMonth(current, month) {
-        return tool.extend(current, util.getFinalPannelDates(new Date(`${current.current.year}/${month}/1 0:0:0`), current.selectDates, current.range));
+        return tool.extend(current, util.getFinalPannelDates(new Date(`${current.current.year}/${month}/1 0:0:0`), current.selectDates, current.offset, current.hover));
     }
 
     @action("gotodate")
     gotoDate(current, date) {
-        return tool.extend(current, util.getFinalPannelDates(date, current.selectDates, current.range));
+        return tool.extend(current, util.getFinalPannelDates(date, current.selectDates, current.offset, current.hover));
     }
 
     @action("today")
     today(current) {
-        return tool.extend(current, util.getFinalPannelDates(current.now, current.selectDates, current.range));
+        return tool.extend(current, util.getFinalPannelDates(current.now, current.selectDates, current.offset, current.hover));
     }
 
     @action("select")
@@ -57,10 +57,10 @@ class PannelService extends Service {
         return current;
     }
 
-    @action("setrange")
-    setRange(current, range) {
-        current.range = range;
-        util.setRange(current.current.year, current.current.month, current.days, current.range);
+    @action("setoffset")
+    setOffset(current, offset) {
+        current.offset = offset;
+        util.setOffset(current.current.year, current.current.month, current.days, current.offset);
         return current;
     }
 }
