@@ -25,24 +25,20 @@ class RangeGroupService extends Service {
     }
 
     @action("select")
-    select(current, {left, right}) {
-        if (left.selectDates.length === 1) {
-            current.hover.start = left.selectDates[0];
-            current.selectDates = [left.selectDates[0]];
-        }
-        if (right.selectDates.length === 1) {
-            current.hover.start = right.selectDates[0];
-            current.selectDates = [right.selectDates[0]];
-        }
-        if (left.selectDates.length > 1) {
-            current.hover.start = null;
-            current.hover.end = null;
-            current.selectDates = left.selectDates;
-        }
-        if (right.selectDates.length > 1) {
-            current.hover.start = null;
-            current.hover.end = null;
-            current.selectDates = right.selectDates;
+    select(current, {left, right, target}) {
+        let ls = left.selectDates, rs = right.selectDates;
+        if (target === "left") {
+            current.selectDates = ls;
+            current.hover.start = ls[0];
+            if (ls.length === 2) {
+                current.hover.start = null;
+            }
+        } else {
+            current.selectDates = rs;
+            current.hover.start = rs[0];
+            if (rs.length === 2) {
+                current.hover.start = null;
+            }
         }
         return current;
     }

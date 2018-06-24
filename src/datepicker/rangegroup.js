@@ -36,9 +36,12 @@ class RangeGroup extends ViewGroup {
 
     @handler("select")
     select(e) {
-        let left = this.getChildByName("left"), right = this.getChildByName("right");
-        let leftState = left.getCurrentState(), rightState = right.getCurrentState();
-        this.commit("select", {left: leftState, right: rightState});
+        let {name} = this.getTheOtherPannel(e.target);
+        this.commit("select", {
+            left: this.getChildByName("left").getCurrentState(),
+            right: this.getChildByName("right").getCurrentState(),
+            target: name === "left" ? "right" : "left"
+        });
     }
 
     @handler("sethoverend")

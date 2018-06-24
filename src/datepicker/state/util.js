@@ -169,13 +169,10 @@ const util = {
             return dayInfos;
         } else {
             if (selectDates.length === 1) {
-                let compares = selectDates.map(date => {
-                    return `${date.getFullYear()}${date.getMonth() + 1}${date.getDate()}`;
-                });
+                let _date = this.getSimpleDate(selectDates[0]).getTime();
                 dayInfos.forEach(dayInfo => {
                     dayInfo.forEach(k => {
-                        let a = `${k.year}${k.month}${k.day}`;
-                        k.selected = compares.indexOf(a) !== -1;
+                        k.selected = _date === this.getSimpleDate(k).getTime();
                     });
                 });
             } else if (selectDates.length === 2) {
@@ -210,12 +207,6 @@ const util = {
                     let time = this.getSimpleDate(day).getTime();
                     day.selectedin = time > start && time < end;
                     day.selected = time === start || time === end;
-                });
-            });
-        } else {
-            dayInfos.forEach(dayInfo => {
-                dayInfo.forEach(day => {
-                    day.selectedin = false;
                 });
             });
         }
@@ -281,12 +272,12 @@ const util = {
         end: null
     }) {
         let result = this.getPannelDates(dateObject);
-        this.setHover(result.current.year, result.current.month, result.days, hover);
         this.setSelected(result.current.year, result.current.month, result.days, selectDates);
+        this.setHover(result.current.year, result.current.month, result.days, hover);
         this.setOffset(result.current.year, result.current.month, result.days, offset);
         return this.setHeader(Object.assign({
             selectDates,
-            range: offset,
+            offset,
             hover,
             icons: {leftIcon, rightIcon, backIcon}
         }, result));

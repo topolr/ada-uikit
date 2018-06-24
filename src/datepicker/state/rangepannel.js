@@ -4,8 +4,7 @@ import util from "./util";
 
 class RangeService extends PannelService {
     onupdate(current, info) {
-        console.log(info.date.getMonth());
-        tool.extend(current, util.getFinalPannelDates(info.date, info.selectDates, undefined, info.hover));
+        tool.extend(current, util.getFinalPannelDates(info.date||new Date(), info.selectDates, undefined, info.hover));
         return current;
     }
 
