@@ -4,7 +4,7 @@ import util from "./util";
 
 class RangeService extends PannelService {
     onupdate(current, info) {
-        tool.extend(current, util.getFinalPannelDates(info.date||new Date(), info.selectDates, undefined, info.hover));
+        tool.extend(current, util.getFinalPannelDates(info.date || new Date(), info.selectDates, undefined, info.hover, true));
         return current;
     }
 
@@ -19,7 +19,7 @@ class RangeService extends PannelService {
             current.hover.end = null;
         }
         util.setHover(current.current.year, current.current.month, current.days, current.hover);
-        util.setSelected(current.current.year, current.current.month, current.days, current.selectDates);
+        util.setSelected(current.current.year, current.current.month, current.days, current.selectDates, true);
         return current;
     }
 

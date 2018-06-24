@@ -28,8 +28,8 @@
             text-align: center;
             font-size: 16px;
             position: absolute;
-            top:0;
-            right:30px;
+            top: 0;
+            right: 30px;
         }
         .desc {
             flex-grow: 1;
@@ -70,17 +70,59 @@
                     border-radius: 50%;
                 }
             }
-            &.selected {
+            &.selectedstart {
+                background: #90ad42;
+                border-radius: 10px 0 0 10px;
+                color:white;
                 .inner {
-                    background: darkolivegreen;
-                    color: white;
-                    border-radius: 50%;
+                    &:hover {
+                        background: transparent;
+                        border-radius: 0;
+                    }
+                    &.current {
+                        background: transparent;
+                        border-radius: 0;
+                    }
+                }
+            }
+            &.selectedend {
+                background: #90ad42;
+                border-radius: 0 10px 10px 0;
+                color:white;
+                .inner {
+                    &:hover {
+                        background: transparent;
+                        border-radius: 0;
+                    }
+                    &.current {
+                        background: transparent;
+                        border-radius: 0;
+                    }
+                }
+            }
+            &.selected {
+                background: darkolivegreen;
+                color: white;
+                .inner {
+                    &:hover {
+                        background: transparent;
+                        border-radius: 0;
+                    }
+                    &.current {
+                        background: transparent;
+                        border-radius: 0;
+                    }
+                }
+                &.cselectedstart {
+                    border-radius: 10px 0 0 10px;
+                }
+                &.cselectedend {
+                    border-radius: 0 10px 10px 0;
                 }
             }
             &.selectedin {
                 //.inner {
-                    background: #D7D7D7;
-                    color: white;
+                background: #f6f6f6;
                 //}
             }
         }
@@ -99,19 +141,19 @@
         left: 0;
         right: 0;
         bottom: 0;
-        .top{
-            line-height:30px;
+        .top {
+            line-height: 30px;
             display: flex;
             font-size: 12px;
-            background:white;
+            background: white;
             border-bottom: 1px solid #E9EEEE;
-            color:#D7D7D7;
-            .left{
+            color: #D7D7D7;
+            .left {
                 flex-grow: 1;
                 text-align: center;
             }
-            .right{
-                width:60px;
+            .right {
+                width: 60px;
                 text-align: center;
             }
         }
@@ -136,11 +178,11 @@
                     text-align: center;
                     .wrap {
                         &.current {
-                            color:goldenrod;
+                            color: goldenrod;
                         }
                     }
                     &.selected {
-                        .wrap{
+                        .wrap {
                             color: cornflowerblue;
                         }
                     }

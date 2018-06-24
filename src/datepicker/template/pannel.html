@@ -14,19 +14,20 @@
 {{list data.days as day}}
 <div class="row">
     {{list day as item}}
-        {{if item.type==='current'}}
-        <div class="{{ item.selected?'col selected':(item.selectedin?'col selectedin':'col') }}" onclick="{{ select(item) }}">
-            <div class="{{item.current?'inner current':'inner'}}">{{ item.day }}</div>
-        </div>
-        {{elseif item.type==='prev'}}
-        <div class="disablecol" onclick="{{ prev() }}">
-            <div data-type="prev" class="{{item.current?'inner current':'inner'}}">{{ item.day }}</div>
-        </div>
-        {{else}}
-        <div class="disablecol" onclick="{{ next() }}">
-            <div data-type="next" class="{{item.current?'inner current':'inner'}}">{{ item.day }}</div>
-        </div>
-        {{/if}}
+    {{if item.type==='current'}}
+    <div class="{{ item.selected?('col selected'+(item.selectedStart?' cselectedstart':'')+(item.selectedEnd?' cselectedend':'')):item.selectedin?'col selectedin':item.selectedStart?'selectedstart col':item.selectedEnd?'col selectedend':'col' }}"
+         onclick="{{ select(item) }}">
+        <div class="{{item.current?'inner current':'inner'}}">{{ item.day }}</div>
+    </div>
+    {{elseif item.type==='prev'}}
+    <div class="disablecol" onclick="{{ prev() }}">
+        <div data-type="prev" class="{{item.current?'inner current':'inner'}}">{{ item.day }}</div>
+    </div>
+    {{else}}
+    <div class="disablecol" onclick="{{ next() }}">
+        <div data-type="next" class="{{item.current?'inner current':'inner'}}">{{ item.day }}</div>
+    </div>
+    {{/if}}
     {{/list}}
 </div>
 {{/list}}
@@ -41,7 +42,9 @@
             <div class="row">
                 {{list year as item}}
                 <div class="{{ item.selected?'col selected':'col' }}">
-                    <div class="{{ item.current?'wrap current':'wrap' }}" onclick="{{ gotoyear(item) }}">{{ item.year }}</div>
+                    <div class="{{ item.current?'wrap current':'wrap' }}" onclick="{{ gotoyear(item) }}">{{ item.year
+                        }}
+                    </div>
                 </div>
                 {{/list}}
             </div>
@@ -52,7 +55,9 @@
             <div class="row">
                 {{list month as item}}
                 <div class="{{ item.selected?'col selected':'col' }}">
-                    <div class="{{ item.current?'wrap current':'wrap' }}" onclick="{{ gotomonth(item) }}">{{ item.month }}</div>
+                    <div class="{{ item.current?'wrap current':'wrap' }}" onclick="{{ gotomonth(item) }}">{{ item.month
+                        }}
+                    </div>
                 </div>
                 {{/list}}
             </div>

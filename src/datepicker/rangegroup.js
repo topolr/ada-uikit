@@ -18,6 +18,21 @@ class RangeGroup extends ViewGroup {
         }
     }
 
+    onready() {
+        let left = this.getChildByName("left");
+        left.onupdated = () => {
+            this.hideBtns();
+        };
+        this.hideBtns();
+    }
+
+    hideBtns(){
+        let left = this.getChildByName("left"), right = this.getChildByName("right");
+        [...left.getElement().querySelectorAll(".datepannel-btn")].pop().style.display = "none";
+        [...right.getElement().querySelectorAll(".datepannel-btn")].shift().style.display = "none";
+        [...left.getElement().querySelectorAll(".datepannel-btnin")].forEach(element => element.style.display = "none");
+    }
+
     @handler("change")
     change(e) {
         let date = new Date(`${e.data.current.year}/${e.data.current.month}/1 0:0:0`);

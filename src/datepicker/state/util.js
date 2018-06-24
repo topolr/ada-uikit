@@ -164,7 +164,7 @@ const util = {
             days: result
         };
     },
-    setSelected(year, month, dayInfos, selectDates) {
+    setSelected(year, month, dayInfos, selectDates, ishover) {
         if (!selectDates || selectDates.length <= 0) {
             return dayInfos;
         } else {
@@ -173,6 +173,9 @@ const util = {
                 dayInfos.forEach(dayInfo => {
                     dayInfo.forEach(k => {
                         k.selected = _date === this.getSimpleDate(k).getTime();
+                        if (k.selected) {
+                            k.selectedStart = ishover;
+                        }
                     });
                 });
             } else if (selectDates.length === 2) {
@@ -187,6 +190,11 @@ const util = {
                     dayInfo.forEach(day => {
                         let time = this.getSimpleDate(day).getTime();
                         day.selected = time === start || time === end;
+                        if (time === start) {
+                            day.selectedStart = true;
+                        } else if (time === end) {
+                            day.selectedEnd = true;
+                        }
                         day.selectedin = time > start && time < end;
                     });
                 });
@@ -205,8 +213,13 @@ const util = {
             dayInfos.forEach(dayInfo => {
                 dayInfo.forEach(day => {
                     let time = this.getSimpleDate(day).getTime();
+                    // day.selected = time === start || time === end;
+                    if (time === start) {
+                        day.selectedStart = true;
+                    } else if (time === end) {
+                        day.selectedEnd = true;
+                    }
                     day.selectedin = time > start && time < end;
-                    day.selected = time === start || time === end;
                 });
             });
         }
@@ -270,9 +283,9 @@ const util = {
     getFinalPannelDates(dateObject, selectDates = [], offset = {before: null, after: null}, hover = {
         start: null,
         end: null
-    }) {
+    }, ishover = false) {
         let result = this.getPannelDates(dateObject);
-        this.setSelected(result.current.year, result.current.month, result.days, selectDates);
+        this.setSelected(result.current.year, result.current.month, result.days, selectDates, ishover);
         this.setHover(result.current.year, result.current.month, result.days, hover);
         this.setOffset(result.current.year, result.current.month, result.days, offset);
         return this.setHeader(Object.assign({
