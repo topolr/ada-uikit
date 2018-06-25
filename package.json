@@ -31,7 +31,7 @@
     "@babel/preset-env": "^7.0.0-beta.49",
     "@babel/preset-typescript": "^7.0.0-beta.49",
     "@babel/runtime": "^7.0.0-beta.49",
-    "ada-pack": "git+https://github.com/topolr/ada-pack.git#connector",
+    "ada-pack": "git+https://github.com/topolr/ada-pack.git#prelease",
     "autoprefixer": "^8.6.0",
     "body-parser": "^1.18.3",
     "cookie-parser": "^1.4.3",
