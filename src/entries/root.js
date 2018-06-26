@@ -6,6 +6,7 @@ import Photocutter from "../photocutter/index";
 import Toast from "./../toast";
 import Datapicker from "./../datepicker";
 import Lazyimage from "./../lazyimage";
+import Tab from "./../tab";
 
 @root
 class Root extends StaticViewGroup {
@@ -19,15 +20,24 @@ class Root extends StaticViewGroup {
 		//        ]
 		// 	}
 		// });
-		let e = document.createElement("div");
-		e.style.cssText = "height:800px;";
-		this.getElement().appendChild(e);
-		this.addChild(Lazyimage, {
+		// let e = document.createElement("div");
+		// e.style.cssText = "height:800px;";
+		// this.getElement().appendChild(e);
+		// this.addChild(Lazyimage, {
+		// 	parameter: {
+		// 		url: "https://static.npmjs.com/images/enterprise/pressure-tested-02.svg"
+		// 	},
+		// 	container: this.getElement()
+		// })
+		this.addChild(Tab, {
 			parameter: {
-				url: "https://static.npmjs.com/images/enterprise/pressure-tested-02.svg"
-			},
-			container: this.getElement()
-		})
+				tabs: [
+					{title: "tab1", content: "xxxxx", type: "text"},
+					{title: "tab2", content: Datapicker, type: "view"},
+					{title: "tab3", content: "xxxxxeeeee", type: "text"}
+				]
+			}
+		});
 	}
 }
 
