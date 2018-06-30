@@ -10,6 +10,7 @@ class FlipService extends Service {
             pageSize: 10,
             pagesizeName: "",
             pageName: "",
+            parameters:{},
             url: ""
         };
     }
@@ -32,6 +33,7 @@ class FlipService extends Service {
         let paras = {};
         paras[this.option.pageName] = this.option.from + (page - 1) * this.option.pageSize;
         paras[this.option.pagesizeName] = this.option.pageSize;
+        Object.assign(paras,this.option.parameters);
         return paras;
     }
 
