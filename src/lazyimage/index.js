@@ -14,7 +14,7 @@ import "./../style/base.scss";
 class Lazyimage extends View {
     oncreated() {
         eventDispatcher.observe(this);
-        this.scroll();
+		setTimeout(() => this.scroll());
     }
 
     @subscribe("scroll")
