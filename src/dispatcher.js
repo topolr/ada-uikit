@@ -3,7 +3,7 @@ import {Dispatcher} from "adajs";
 class EventDispatcher extends Dispatcher {
     constructor() {
         super();
-        window.document.body.addEventListener("scroll", e => {
+        window.addEventListener("scroll", e => {
             window.requestAnimationFrame(() => {
                 this.dispatch("scroll", e);
             });
