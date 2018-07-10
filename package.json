@@ -12,7 +12,7 @@
     "url": "https://github.com/topolr/ada-template.git"
   },
   "dependencies": {
-    "adajs": "git+https://github.com/topolr/ada.git#prelease"
+    "adajs": "git+https://github.com/topolr/ada.git"
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0-beta.49",
