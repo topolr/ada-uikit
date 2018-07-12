@@ -8,4 +8,4 @@ let app = {
 	entry_path: "./test/",
 	entry_auto: false
 };
-export default app;
+module.exports=app;
