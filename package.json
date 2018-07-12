@@ -4,7 +4,7 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "ada":"node ./node_modules/.bin/adajs",
+        "ada": "node ./node_modules/.bin/adajs",
         "dev": "node ./node_modules/ada-pack/bin/develop.js",
         "publish": "node ./node_modules/ada-pack/bin/publish.js"
     },
