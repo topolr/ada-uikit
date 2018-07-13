@@ -7,13 +7,12 @@
     background:#F6F8F8;
     .head{
         line-height:60px;
-        border-bottom: 1px solid #E0E5E6;
-        border-top:5px solid #2F3240;
-        background-color:#fff;
-        padding:0 30px 0 30px;
+        //border-bottom: 1px solid #E0E5E6;
+        //background-color:#fff;
+        padding:30px 30px 20px 30px;
         box-sizing: border-box;
         position: relative;
-        box-shadow: 0 0 10px #D7D7D7;
+        //box-shadow: 0 0 10px #D7D7D7;
         z-index: 99999;
         .logo{
             height:60px;
@@ -42,31 +41,22 @@
                 font-size: 12px;
             }
         }
-        .navs{
-            position: absolute;
-            top:0;
-            left:240px;
-            bottom:0;
-            .nav{
-                padding:0 20px 0 20px;
-                display: inline-block;
-                vertical-align: top;
-                cursor: default;
-            }
-        }
+        width:240px;
     }
     .left{
         position: absolute;
         left:0;
-        top:67px;
+        top:0;
         bottom:0;
         width:240px;
         background-color: #FBFBFB;
+        z-index: 99999999;
     }
     .right{
+        border-top:5px solid #2F3240;
         position:absolute;
         left:240px;
-        top:67px;
+        top:0;
         right:0;
         bottom:0;
         overflow: auto;
@@ -117,6 +107,7 @@
             left:0;
             bottom:0;
             width:180px;
+            background: #fafafa;
         }
     }
 }

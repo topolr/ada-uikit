@@ -1,9 +1,16 @@
 .submenu{
   .list{
-    padding:20px 0 20px 0;
+    padding:30px 20px 20px 20px;
+    cursor: default;
     .item{
       line-height:30px;
-      padding:0 20px 0 20px;
+      border-bottom:1px dashed #E0E5E6;
+      &:last-child{
+        border-bottom: 0;
+      }
+      &:hover{
+        color:#2F3240;
+      }
     }
   }
 }
