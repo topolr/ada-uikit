@@ -1,5 +1,8 @@
 import {view,ViewGroup} from "adajs";
 import ContainerService from "./state.js";
+import Content from "./../content";
+import Submenu from "./../submenu";
+import Menu from "./../menu";
 
 @view({
     className:"container",
@@ -10,6 +13,13 @@ import ContainerService from "./state.js";
     }
 })
 class Container extends ViewGroup{
+    tags(){
+        return {
+            content:Content,
+            submenu:Submenu,
+            menu:Menu
+        }
+    }
 }
 
 export default Container;
