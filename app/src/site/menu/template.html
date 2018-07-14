@@ -1,22 +1,14 @@
 <div class="list">
+    {{list data.menu as item}}
     <div class="item">
         <div class="item-title">
-            <div class="name">table</div>
-            <div class="arrow"><@icon class="icon" id="{{ data.menuIcon }}"/></div>
+            <div class="name">{{ item.name }}</div>
         </div>
         <div class="sublist">
-            <div class="subitem">single table</div>
-            <div class="subitem">mix table</div>
+            {{list item.list as sub}}
+            <div class="subitem">{{ sub.name }}</div>
+            {{/list}}
         </div>
     </div>
-    <div class="item">
-        <div class="item-title">
-            <div class="name">list</div>
-            <div class="arrow"><@icon class="icon" id="{{ data.menuIcon }}"/></div>
-        </div>
-        <div class="sublist">
-            <div class="subitem">single list</div>
-            <div class="subitem">mix list</div>
-        </div>
-    </div>
+    {{/list}}
 </div>

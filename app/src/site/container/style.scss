@@ -84,13 +84,18 @@
                 line-height: 35px;
                 padding: 0 15px 0 15px;
                 border-radius: 20px;
+                margin:5px 0 5px 0;
                 &:hover{
+                    background:#2AA3EF;
+                    color:white;
+                }
+                &.active{
                     background:#2AA3EF;
                     color:white;
                 }
             }
         }
-        &:hover{
+        &.open{
             .items{
                 display: block;
             }
