@@ -1,14 +1,32 @@
 .menu {
   font-size: 12px;
   cursor: default;
+  .icon {
+    display: inline-block;
+    vertical-align: middle;
+    width: 1em;
+    height: 1em;
+    stroke-width: 0;
+    stroke: currentColor;
+    fill: currentColor;
+    font-size: 18px;
+  }
   .list {
-    padding:20px;
+    padding:0 20px;
     .item {
       .item-title {
         line-height:35px;
         border-bottom:1px dashed #E0E5E6;
         font-size: 15px;
         font-weight: 400;
+        display: flex;
+        .name{
+          flex: 1;
+        }
+        .arrow{
+          width:20px;
+          text-align: center;
+        }
       }
       .sublist {
         .subitem {

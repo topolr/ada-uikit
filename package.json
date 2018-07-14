@@ -3,17 +3,25 @@
     "version": "1.0.0",
     "description": "",
     "main": "index.js",
+    "ada-develop": {
+        "port": "80",
+        "appPath": "./app/app-develop.js"
+    },
+    "ada-publish": {
+        "appPath": "./app/app-publish.js"
+    },
     "scripts": {
         "ada": "node ./node_modules/.bin/adajs",
         "dev": "node ./node_modules/ada-pack/bin/develop.js",
-        "publish": "node ./node_modules/ada-pack/bin/publish.js"
+        "publish": "node ./node_modules/ada-pack/bin/publish.js",
+        "parse": "node ./app/parser/parsedocs.js"
     },
     "repository": {
         "type": "git",
         "url": "https://github.com/topolr/ada-template.git"
     },
     "dependencies": {
-        "adajs": "file:../ada"
+        "adajs": "git+https://github.com/topolr/ada.git"
     },
     "devDependencies": {
         "@babel/cli": "^7.0.0-beta.52",
@@ -32,6 +40,7 @@
         "@babel/preset-env": "^7.0.0-beta.52",
         "@babel/preset-typescript": "^7.0.0-beta.52",
         "@babel/runtime": "^7.0.0-beta.52",
+        "marked": "git+https://github.com/topolr/marked.git",
         "ada-pack": "git+https://github.com/topolr/ada-pack.git",
         "autoprefixer": "^8.6.5",
         "express": "^4.16.2",

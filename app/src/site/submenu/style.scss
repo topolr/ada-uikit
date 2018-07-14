@@ -1,6 +1,10 @@
 .submenu{
+  .title{
+    padding:30px 20px 10px 20px;
+    color:#cccccc;
+  }
   .list{
-    padding:30px 20px 20px 20px;
+    padding:0 20px 20px 20px;
     cursor: default;
     .item{
       line-height:30px;

@@ -1,8 +1,11 @@
 import {Service} from "adajs";
+import menuIcon from "./icons/arrow.icon";
 
 class MenuService extends Service{
 	defaultData(){
-		return {};
+		return {
+			menuIcon
+		};
 	}
 	
 	onupdate(current,data){
