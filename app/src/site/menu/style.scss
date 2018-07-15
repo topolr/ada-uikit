@@ -19,7 +19,7 @@
         line-height:35px;
         border-bottom:1px dashed #E0E5E6;
         font-size: 15px;
-        font-weight: 400;
+        font-weight: 500;
         display: flex;
         .name{
           flex: 1;
@@ -31,7 +31,7 @@
       }
       .sublist {
         .subitem {
-          line-height:35px;
+          line-height:30px;
           &:hover{
             color:#474F6E;
             font-weight: 500;
