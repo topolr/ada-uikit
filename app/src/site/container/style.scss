@@ -5,6 +5,16 @@
     right: 0;
     bottom: 0;
     background: #F6F8F8;
+    .icon {
+        display: inline-block;
+        vertical-align: middle;
+        width: 1em;
+        height: 1em;
+        stroke-width: 0;
+        stroke: currentColor;
+        fill: currentColor;
+        font-size: 15px;
+    }
     .head {
         width: 240px;
         line-height: 60px;
@@ -58,6 +68,22 @@
                 color:white;
                 font-size: 12px;
             }
+        }
+        .git{
+            line-height: 18px;
+            position: absolute;
+            right:45px;
+            top:0;
+        }
+        .npm{
+            line-height: 18px;
+            position: absolute;
+            right:20px;
+            top:0;
+        }
+        a{
+            text-decoration: none;
+            color:#474F6E;
         }
     }
     .list {

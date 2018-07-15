@@ -1,5 +1,7 @@
 import {action, compute, util, Service} from "adajs";
 import menu from "./../../menu.json";
+import gitIcon from "./icons/git.icon";
+import npmIcon from "./icons/npm.icon";
 
 function getLinks(list) {
 	let r = [];
@@ -21,6 +23,8 @@ class ContainerService extends Service {
 		menuinfo[0].list[0].active = true;
 		menuinfo[0].list[0].list[0].active = true;
 		return {
+			gitIcon,
+			npmIcon,
 			menu:menuinfo,
 			current: menuinfo[0],
 			submenu: []
