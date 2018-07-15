@@ -13,8 +13,4 @@
 
 ## Contributors
 
-<div class="ada-module" data-type="entries/contributor.js"></div>
-
 ## Sponsors
-
-<div class="ada-module" data-type="entries/sponsors.js"></div>

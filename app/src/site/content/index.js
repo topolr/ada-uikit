@@ -40,8 +40,25 @@ class Content extends StaticViewGroup {
 				}
 			});
 			prism.highlightAllUnder(this.getElement());
+			this.autoLoadModule();
 			this.dispatchEvent("setsubmenu", h2s);
 		});
+	}
+
+	autoLoadModule() {
+		[...this.getElement().querySelectorAll(".ada-module")].reduce((a, element) => {
+			return a.then(() => {
+				let type = element.dataset.type,
+					option = element.dataset.option ? JSON.parse(element.dataset.option) : {};
+				console.log(element)
+				return import(type).then(module => {
+					this.addChild(module, {
+						parameter: option,
+						container: element
+					});
+				});
+			});
+		}, Promise.resolve());
 	}
 }
 

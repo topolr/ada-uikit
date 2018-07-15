@@ -1,0 +1,35 @@
+.tab {
+  .titles {
+    line-height: 30px;
+    display: flex;
+    border-bottom: 1px solid #D7D7D7;
+    cursor: default;
+    padding-left: 10px;
+    padding-top:10px;
+    background:#FBFBFB;
+    .title {
+      padding: 0 20px 0 20px;
+      margin-bottom: -1px;
+      border: 1px solid transparent;
+      border-radius: 3px 3px 0 0;
+      font-size: 12px;
+      color: #9a9a9a;
+      &.active {
+        border: 1px solid #D7D7D7;
+        border-bottom: 1px solid white;
+        color: #07070f;
+        background:#fff;
+      }
+    }
+  }
+  .contents {
+    .content {
+      display: none;
+      position: relative;
+      min-height: 300px;
+      &.active {
+        display: block;
+      }
+    }
+  }
+}
