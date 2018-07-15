@@ -1,4 +1,4 @@
-import {Service, action, View, ViewConnector} from "adajs";
+import {Service, action, View, ViewConnector,util} from "adajs";
 
 class TabService extends Service {
 	defaultData() {
@@ -10,7 +10,7 @@ class TabService extends Service {
 	}
 
 	onupdate(current, data) {
-		current.tabs = data.tabs.slice();
+		current.tabs = util.clone(data.tabs);
 		current.tabs.forEach(tab => {
 			if (!tab.type) {
 				tab.type = "text";
