@@ -129,7 +129,7 @@
         }
     }
     .left {
-        position: absolute;
+        position: fixed;
         left: 0;
         top: 0;
         bottom: 0;
@@ -149,7 +149,7 @@
     }
     .right {
         border-top: 5px solid #2F3240;
-        position: absolute;
+        position: fixed;
         left: 240px;
         top: 0;
         right: 0;
@@ -174,15 +174,6 @@
                 left: -2px;
             }
         }
-        .content {
-            position: absolute;
-            left: 200px;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            background: white;
-            overflow: auto;
-        }
         .menu {
             position: absolute;
             top: 0;
@@ -191,5 +182,11 @@
             width: 200px;
             background: #fafafa;
         }
+    }
+    .content {
+        position: relative;
+        background: white;
+        width:calc(100% - 440px);
+        float:right;
     }
 }
