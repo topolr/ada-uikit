@@ -7,7 +7,9 @@
             <div class="a">ada-uikit</div>
             <div class="b">ui toolkit for ada</div>
         </div>
-        <div class="version"><div class="num">version 2.0</div></div>
+        <div class="version">
+            <div class="num">version 2.0</div>
+        </div>
     </div>
     <div class="list" data-find="list">
         <div class="current" onclick="{{ openmenu() }}">{{ data.current.name }}</div>
@@ -23,9 +25,9 @@
 <div class="right">
     <div class="mask"></div>
     <div class="menu">
-        <submenu></submenu>
+        <submenu @parameter="{{ {info:data.submenu} }}"></submenu>
     </div>
     <div class="content">
-        <content></content>
+        <content @parameter="{{ {info:data.current} }}"></content>
     </div>
 </div>

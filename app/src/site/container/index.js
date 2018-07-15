@@ -57,6 +57,11 @@ class Container extends ViewGroup {
 	flip({data}) {
 		this.router.open(data.link);
 	}
+
+	@handler("setsubmenu")
+	setSubMenu(e) {
+		this.commit("setsubmenu", e.data);
+	}
 }
 
 export default Container;

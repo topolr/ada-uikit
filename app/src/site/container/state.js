@@ -1,4 +1,4 @@
-import {action, compute, Service} from "adajs";
+import {action, compute, util, Service} from "adajs";
 import menu from "./../../menu.json";
 
 function getLinks(list) {
@@ -16,12 +16,14 @@ function getLinks(list) {
 
 class ContainerService extends Service {
 	defaultData() {
-		menu[0].active = true;
-		menu[0].list[0].active = true;
-		menu[0].list[0].list[0].active = true;
+		let menuinfo = util.clone(menu);
+		menuinfo[0].active = true;
+		menuinfo[0].list[0].active = true;
+		menuinfo[0].list[0].list[0].active = true;
 		return {
-			menu,
-			current: menu[0]
+			menu:menuinfo,
+			current: menuinfo[0],
+			submenu: []
 		};
 	}
 
@@ -86,6 +88,12 @@ class ContainerService extends Service {
 		let paths = this.activeLink(current.menu, item);
 		paths.forEach(item => item.active = true);
 		current.current = paths[0];
+		return current;
+	}
+
+	@action("setsubmenu")
+	setSubMenu(current, menu) {
+		current.submenu = menu;
 		return current;
 	}
 }

@@ -1,12 +1,15 @@
-import {Service,util} from "adajs";
+import {Service} from "adajs";
 
-class SubmenuService extends Service{
-	defaultData(){
-		return {};
+class SubmenuService extends Service {
+	defaultData() {
+		return {
+			info: []
+		};
 	}
 
-	onupdate(current,data){
-		return util.extend(current,data);
+	onupdate(current, data) {
+		current.info = data.info;
+		return current;
 	}
 }
 
