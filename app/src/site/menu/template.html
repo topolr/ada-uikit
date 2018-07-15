@@ -6,7 +6,7 @@
         </div>
         <div class="sublist">
             {{list item.list as sub}}
-            <div class="subitem">{{ sub.name }}</div>
+            <div class="{{ sub.active?'subitem active':'subitem' }}" onclick="{{ flip(sub) }}">{{ sub.name }}</div>
             {{/list}}
         </div>
     </div>

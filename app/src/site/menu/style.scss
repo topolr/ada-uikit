@@ -13,6 +13,7 @@
   }
   .list {
     padding:0 20px;
+    color:#9c9c9c;
     .item {
       .item-title {
         line-height:35px;
@@ -32,6 +33,10 @@
         .subitem {
           line-height:35px;
           &:hover{
+            color:#474F6E;
+            font-weight: 500;
+          }
+          &.active{
             color:#474F6E;
             font-weight: 500;
           }
