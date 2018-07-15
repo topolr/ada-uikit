@@ -62,6 +62,16 @@ class Container extends ViewGroup {
 	setSubMenu(e) {
 		this.commit("setsubmenu", e.data);
 	}
+
+	@binder("openmenuc")
+	openMenu(){
+		this.getElement().classList.add(this.getThisClassName("open"));
+	}
+
+	@binder("closemenuc")
+    closemenuc(){
+        this.getElement().classList.remove(this.getThisClassName("open"));
+	}
 }
 
 export default Container;

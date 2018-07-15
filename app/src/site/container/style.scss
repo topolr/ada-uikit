@@ -18,12 +18,9 @@
     .head {
         width: 240px;
         line-height: 60px;
-        //border-bottom: 1px solid #E0E5E6;
-        //background-color:#fff;
-        padding: 30px;
+        padding: 30px 30px 0 30px;
         box-sizing: border-box;
         position: relative;
-        //box-shadow: 0 0 10px #D7D7D7;
         z-index: 99999;
         .logo {
             height: 60px;
@@ -52,42 +49,44 @@
                 font-size: 12px;
             }
         }
-        .version{
+        .version {
             text-align: center;
             cursor: default;
-            position: absolute;
-            left:0;
-            right:0;
-            line-height:20px;
-            .num{
+            line-height: 20px;
+            .num {
                 display: inline-block;
-                line-height:20px;
-                padding:0 15px 0 15px;
+                line-height: 20px;
+                padding: 0 15px 0 15px;
                 border-radius: 15px;
                 background: #00b400;
-                color:white;
+                color: white;
                 font-size: 12px;
             }
         }
-        .git{
-            line-height: 18px;
+        .links {
+            text-align: center;
+            line-height: 19px;
             position: absolute;
-            right:45px;
-            top:0;
-        }
-        .npm{
-            line-height: 18px;
-            position: absolute;
-            right:20px;
-            top:0;
-        }
-        a{
-            text-decoration: none;
-            color:#474F6E;
+            top: 43px;
+            right: 36px;
+            width: 20px;
+            .git {
+                vertical-align: top;
+                display: inline-block;
+            }
+            .npm {
+                vertical-align: top;
+                display: inline-block;
+            }
+            a {
+                text-decoration: none;
+                color: #474F6E;
+            }
         }
     }
     .list {
         position: relative;
+        margin-top: 10px;
         .current {
             line-height: 35px;
             margin: 0 10px 10px 10px;
@@ -104,27 +103,41 @@
             box-shadow: 0 3px 15px #cccccc;
             right: 10px;
             border-radius: 10px;
-            padding:10px 5px 10px 5px;
+            padding: 10px 5px 10px 5px;
             display: none;
+            z-index: 999;
             .item {
                 line-height: 35px;
                 padding: 0 15px 0 15px;
                 border-radius: 20px;
-                margin:5px 0 5px 0;
-                transition:all ease-in-out .3s;
-                &:hover{
-                    background:#2AA3EF;
-                    color:white;
+                margin: 5px 0 5px 0;
+                transition: all ease-in-out .3s;
+                &:hover {
+                    background: #2AA3EF;
+                    color: white;
                 }
-                &.active{
-                    background:#2AA3EF;
-                    color:white;
+                &.active {
+                    background: #2AA3EF;
+                    color: white;
                 }
             }
         }
-        &.open{
-            .items{
+        .arrow {
+            position: absolute;
+            top: 0;
+            right: 10px;
+            width: 35px;
+            line-height: 35px;
+            text-align: center;
+            transform: rotate(-90deg);
+            transition: ease-in-out .3s;
+        }
+        &.open {
+            .items {
                 display: block;
+            }
+            .arrow {
+                transform: rotate(90deg);
             }
         }
     }
@@ -136,25 +149,25 @@
         width: 240px;
         background-color: #FBFBFB;
         z-index: 99999999;
-        .copyright{
-            line-height:25px;
+        .copyright {
+            line-height: 25px;
             font-size: 12px;
-            color:#cccccc;
-            padding:0 20px 0 20px;
+            color: #cccccc;
+            padding: 0 20px 0 20px;
             position: absolute;
-            left:0;
-            right:0;
-            bottom:0;
+            left: 0;
+            right: 0;
+            bottom: 0;
         }
-    }
-    .right {
-        border-top: 5px solid #2F3240;
-        position: fixed;
-        left: 240px;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        overflow: auto;
+        .con{
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            background: white;
+            z-index: 99;
+        }
         .mask {
             position: absolute;
             left: 0;
@@ -171,23 +184,102 @@
                 box-shadow: 0 0 20px black;
                 z-index: 99;
                 border-radius: 50%;
-                left: -2px;
+                right: 0;
             }
         }
+    }
+    .right {
+        border-top: 5px solid #2F3240;
+        position: fixed;
+        left: 240px;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        overflow: auto;
         .menu {
             position: absolute;
             top: 0;
-            left: 0;
+            right: 0;
             bottom: 0;
             width: 200px;
             background: #fafafa;
+            z-index: 99999;
         }
+    }
+    .gmask {
+        position: fixed;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, .1);
+        z-index: 9999999;
+        display: none;
+    }
+    .menucon {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 20px;
+        top: 160px;
+        overflow: auto;
     }
     .content {
         border-top: 5px solid #2F3240;
         position: relative;
         background: white;
-        width:calc(100% - 440px);
-        float:right;
+        width: calc(100% - 440px);
+        margin-left:240px;
+        border-right:1px solid #f3f0f0;
+        .menu {
+            font-size: 20px;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            display: block;
+        }
+        .top {
+            height: 5px;
+            position: fixed;
+            left: 0;
+            top: 0;
+            right: 0;
+            background-color: #2F3240;
+            z-index: 9999999;
+        }
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .container {
+        .head{
+            width:300px;
+            text-align: center;
+        }
+        .left {
+            width: 300px;
+            transform: translateX(-330px);
+            transition: all ease-in-out .3s;
+        }
+        .right {
+            .menu {
+                display: none;
+            }
+        }
+        .content {
+            width: 100%;
+            margin-left: 0;
+            .menu {
+                display: block;
+            }
+        }
+        &.open {
+            .left {
+                transform: translateX(0);
+            }
+            .gmask {
+                display: block;
+            }
+        }
     }
 }
