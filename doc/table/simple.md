@@ -19,7 +19,7 @@ import SimpleTable from "ada-uikit/src/table";
  - `align`String - 数据在列中的对齐方式
    - `left` - 左对齐
    - `center`- 居中对齐
-   - `right` - 右duiqi
+   - `right` - 右对齐
 - `data`Array - 表格数据
 
 ```javascript
