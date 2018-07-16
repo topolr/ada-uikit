@@ -1,9 +1,9 @@
 [
   {"name":"Module","list":[
     {"name":"Table","list":[
-      {"name":"Simple Table","link":"/docs/module/table/simple.html","source":"./table/simple.md"},
-      {"name":"bb","link":"/docs/module/table/single.html","source":"./about.md"},
-      {"name":"cc","link":"/docs/module/table/single.html","source":"./about.md"}
+      {"name":"SimpleTable","link":"/docs/module/table/simple.html","source":"./table/simple.md"},
+      {"name":"MixTable","link":"/docs/module/table/mix.html","source":"./table/mix.md"},
+      {"name":"FlipTable","link":"/docs/module/table/flip.html","source":"./table/flip.md"}
     ]},
     {"name":"list","list":[
       {"name":"dd","link":"/docs/module/table/single.html","source":"./about.md"},

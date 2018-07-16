@@ -1,8 +1,8 @@
-## SimpleTable
+## MixTable
 
 简单表格，只用于数据展示
 
-<div class="ada-module" data-type="entries/simpletable.js"></div>
+<div class="ada-module" data-type="entries/mixtable.js"></div>
 
 ## Basic
 

@@ -41,5 +41,5 @@
 <div class="content">
     <div class="top"></div>
     <div class="menu" onclick="{{ openmenuc() }}"><@icon class="icon" id="{{ data.menuIcon }}"/></div>
-    <content @parameter="{{ {info:data.current} }}"></content>
+    <content @parameter="{{ {info:data.current} }}" @name="{{ data.currentLeaf.name }}"></content>
 </div>

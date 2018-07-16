@@ -1,4 +1,4 @@
-import {binder, view, handler, subscribe, config, ViewGroup} from "adajs";
+import {binder, config, handler, subscribe, view, ViewGroup} from "adajs";
 import ContainerService from "./state.js";
 import Content from "./../content";
 import Submenu from "./../submenu";
@@ -7,71 +7,71 @@ import router from "ada-uikit/src/router";
 import dispatcher from "ada-uikit/src/dispatcher";
 
 @view({
-	className: "container",
-	template: "./template.html",
-	style: "./style.scss",
-	dataset: {
-		service: ContainerService
-	}
+    className: "container",
+    template: "./template.html",
+    style: "./style.scss",
+    dataset: {
+        service: ContainerService
+    }
 })
 class Container extends ViewGroup {
-	onready() {
-		dispatcher.observe(this);
-		let site = config.get().basePath;
-		let _router = this.router = router(`${window.location.protocol}//${window.location.host}${site.substring(0, site.length - 1)}`);
-		this.getDataSet().getComputeData("links").forEach(item => {
-			_router.bind(item.link === "/" ? "/" : item.link, (e) => {
-				this.commit("flip", item);
-			});
-		});
-		this.router.run();
-	}
+    onready() {
+        dispatcher.observe(this);
+        let site = config.basePath;
+        let _router = this.router = router(`${window.location.protocol}//${window.location.host}${site.substring(0, site.length - 1)}`);
+        this.getDataSet().getComputeData("links").forEach(item => {
+            _router.bind(item.link === "/" ? "/" : item.link, (e) => {
+                this.commit("flip", item);
+            });
+        });
+        this.router.run();
+    }
 
-	tags() {
-		return {
-			content: Content,
-			submenu: Submenu,
-			menu: Menu
-		}
-	}
+    tags() {
+        return {
+            content: Content,
+            submenu: Submenu,
+            menu: Menu
+        }
+    }
 
-	@subscribe("click")
-	click({target}) {
-		if (!this.finder("list").getElement().contains(target)) {
-			this.finder("list").getElement().classList.remove(this.getThisClassName("open"));
-		}
-	}
+    @subscribe("click")
+    click({target}) {
+        if (!this.finder("list").getElement().contains(target)) {
+            this.finder("list").getElement().classList.remove(this.getThisClassName("open"));
+        }
+    }
 
-	@binder("open")
-	open({item}) {
-		this.finder("list").getElement().classList.remove(this.getThisClassName("open"));
-		this.commit("open", item);
-	}
+    @binder("open")
+    open({item}) {
+        this.finder("list").getElement().classList.remove(this.getThisClassName("open"));
+        this.commit("open", item);
+    }
 
-	@binder("openmenu")
-	openmenu() {
-		this.finder("list").getElement().classList.add(this.getThisClassName("open"));
-	}
+    @binder("openmenu")
+    openmenu() {
+        this.finder("list").getElement().classList.add(this.getThisClassName("open"));
+    }
 
-	@handler("flip")
-	flip({data}) {
-		this.router.open(data.link);
-	}
+    @handler("flip")
+    flip({data}) {
+        this.router.open(data.link);
+    }
 
-	@handler("setsubmenu")
-	setSubMenu(e) {
-		this.commit("setsubmenu", e.data);
-	}
+    @handler("setsubmenu")
+    setSubMenu(e) {
+        this.commit("setsubmenu", e.data);
+    }
 
-	@binder("openmenuc")
-	openMenu(){
-		this.getElement().classList.add(this.getThisClassName("open"));
-	}
+    @binder("openmenuc")
+    openMenu() {
+        this.getElement().classList.add(this.getThisClassName("open"));
+    }
 
-	@binder("closemenuc")
-    closemenuc(){
+    @binder("closemenuc")
+    closemenuc() {
         this.getElement().classList.remove(this.getThisClassName("open"));
-	}
+    }
 }
 
 export default Container;
