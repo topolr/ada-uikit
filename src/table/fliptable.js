@@ -2,15 +2,6 @@ import {binder, dataset, view, ViewGroup, StaticViewGroup} from "adajs";
 import MixTable from "./mix";
 import FlipService from "./states/flip";
 
-class AppendTable extends StaticViewGroup {
-	oncreated() {
-		this.tableDataSet.setOption(() => this.option);
-		this.addChild(MixTable, {
-			container: this.getElement()
-		});
-	}
-}
-
 @view({
 	className: "filptable",
 	template: "./template/fliptable.html",
@@ -31,7 +22,7 @@ class Table extends ViewGroup {
 
 	tags() {
 		return {
-			thistable: AppendTable
+			thistable: MixTable
 		}
 	}
 
