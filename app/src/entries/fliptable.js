@@ -2,7 +2,7 @@ import {config, StaticViewGroup, view} from "adajs";
 import SimpleTable from "ada-uikit/src/table/fliptable";
 import Tab from "./../site/tab";
 import Code from "./../site/code";
-import {addIcon, closeIcon} from "./icons";
+import {addIcon, closeIcon,checkBoxIcon,checkBoxOutlineBlankIcon} from "./icons";
 
 const code = `{
 	url: "/mock/test.json",
@@ -24,12 +24,13 @@ const code = `{
 })
 class Table extends StaticViewGroup {
     oncreated() {
+        console.log("--->",config);
         this.addChild(Tab, {
             parameter: {
                 tabs: [
                     {
                         title: "Demo", content: SimpleTable, option: {
-                            url: `${config.basePath}mock/table.json`,
+                            url: `${config().basePath}mock/table.json`,
                             btns: [
                                 {"name": "add", icon: addIcon},
                                 {"name": "remove", icon: closeIcon}
@@ -39,7 +40,24 @@ class Table extends StaticViewGroup {
                                     {name: "Name", key: "name", width: 120, align: "center", append: "middle"},
                                     {name: "Sex", key: "sex", width: 120, align: "center", append: "middle"},
                                     {name: "Age", key: "age", width: 120, align: "center", append: "middle"}
-                                ]
+                                ],
+                                actions: [
+                                    {
+                                        display: true,
+                                        width: 40,
+                                        align: "center",
+                                        name: "remove",
+                                        icon: closeIcon
+                                    }
+                                ],
+                                checkbox: {
+                                    display: true,
+                                    width: 40,
+                                    align: "center",
+                                    checkedIcon: checkBoxIcon,
+                                    uncheckedIcon: checkBoxOutlineBlankIcon
+                                },
+                                unique: "aa"
                             }
                         }, active: true, type: "module"
                     },
