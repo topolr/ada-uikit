@@ -6,16 +6,12 @@
       {"name":"FlipTable","link":"/module/table/flip.html","source":"./table/flip.md"}
     ]},
     {"name":"list","list":[
-      {"name":"dd","link":"/module/table/single.html","source":"./about.md"},
       {"name":"ee","link":"/module/table/single.html","source":"./about.md"}
     ]}
   ]},
   {"name":"Util","list":[
     {"name":"util-aa","list":[
       {"name":"ff","link":"/module/table/single.html","source":"./about.md"}
-    ]},
-    {"name":"util-bb","list":[
-      {"name":"gg","link":"/module/table/single.html","source":"./about.md"}
     ]}
   ]}
 ]

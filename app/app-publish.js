@@ -1,11 +1,11 @@
 let parser = require("./parser/index");
 let app = {
-    name: "Ada Structure-oriented Web Framework",
+    name: "UI Toolkit For Web Framework",
     site_url: "/dist/",
     source_path: "./src/",
     dist_path: "./../dist/",
     index_path: "./../dist/index.html",
-    description: "Ada Structure-oriented Web Framework",
+    description: "UI Toolkit For Web Framework",
     main: "./src/root.js",
     entry_path: "./src/entries/",
     ada_autobundle: false,
@@ -23,6 +23,9 @@ let app = {
     },
     onbeforebundle() {
         return parser.output();
+    },
+    onbundled() {
+        return parser.editPage();
     }
 };
 module.exports = app;

@@ -76,5 +76,18 @@ module.exports = {
             path: Path.resolve(__dirname, "./../../doc/"),
             distpatch: Path.resolve(__dirname, "./../../dist")
         });
+    },
+    editPage() {
+        console.log("");
+        console.log(" [EDIT PAGES]");
+        let basepath = Path.resolve(__dirname, "./../../dist/docs/");
+        let e = new File(basepath + "/").scan().map(path => {
+            let a = path.substring(basepath.length);
+            let b = a.split("/");
+            b.shift();
+            return `<a href="/dist/docs${a}">${b.join("-")}</a>`;
+        }).join("");
+        let c = new File(Path.resolve(__dirname, "./../../index.html")).readSync().replace(/<body[\s\S]*?(<\/body>)/, () => `<body>${e}</body>`);
+        return new File(Path.resolve(__dirname, "./../../index.html")).write(c);
     }
 };
