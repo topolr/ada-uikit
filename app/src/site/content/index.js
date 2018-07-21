@@ -17,7 +17,6 @@ class Content extends StaticViewGroup {
         return this.addChild(Loading, {
             container: this.getElement()
         }).then(loading => {
-            this.removeChild(loading);
             this.commit("get").then(() => {
                 let h2s = [];
                 [...this.getElement().querySelectorAll("h2")].forEach(element => {
@@ -47,6 +46,7 @@ class Content extends StaticViewGroup {
                 prism.highlightAllUnder(this.getElement());
                 this.autoLoadModule();
                 this.dispatchEvent("setsubmenu", h2s);
+                this.removeChild(loading);
             });
         });
     }
