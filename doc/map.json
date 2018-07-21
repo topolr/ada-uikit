@@ -17,14 +17,5 @@
     {"name":"util-bb","list":[
       {"name":"gg","link":"/module/table/single.html","source":"./about.md"}
     ]}
-  ]},
-  {"name":"Test","list":[
-    {"name":"test-aa","list":[
-      {"name":"hh","link":"/module/table/single.html","source":"./about.md"}
-    ]},
-    {"name":"test-bb","list":[
-      {"name":"mm","link":"/module/table/single.html","source":"./about.md"},
-      {"name":"qq","link":"/module/table/single.html","source":"./about.md"}
-    ]}
   ]}
 ]

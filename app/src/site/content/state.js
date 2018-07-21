@@ -1,4 +1,4 @@
-import {Service, util, action, get} from "adajs";
+import {Service, action, get,config} from "adajs";
 
 class ContentService extends Service {
 	defaultData() {
@@ -32,7 +32,7 @@ class ContentService extends Service {
 
 	@action("get")
 	get(current) {
-		return get(`/docs/${current.link.link}`).then(content => {
+		return get(`${config().basePath}docs/${current.link.link}`).then(content => {
 			current.content = content;
 			return current;
 		});
