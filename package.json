@@ -21,8 +21,8 @@
         "url": "https://github.com/topolr/ada-template.git"
     },
     "dependencies": {
-        "ada-uikit": "git+https://github.com/topolr/ada-uikit.git",
-        "adajs": "git+https://github.com/topolr/ada.git"
+        "ada-uikit": "file:../../git/ada-uikit",
+        "adajs": "file:../ada"
     },
     "devDependencies": {
         "@babel/cli": "^7.0.0-beta.52",

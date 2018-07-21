@@ -32,7 +32,7 @@ class ContentService extends Service {
 
 	@action("get")
 	get(current) {
-		return get(current.link.link).then(content => {
+		return get(`/docs/${current.link.link}`).then(content => {
 			current.content = content;
 			return current;
 		});

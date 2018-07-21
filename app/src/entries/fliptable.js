@@ -2,7 +2,7 @@ import {config, StaticViewGroup, view} from "adajs";
 import SimpleTable from "ada-uikit/src/table/fliptable";
 import Tab from "./../site/tab";
 import Code from "./../site/code";
-import {addIcon, closeIcon,checkBoxIcon,checkBoxOutlineBlankIcon} from "./icons";
+import {addIcon, checkBoxIcon, checkBoxOutlineBlankIcon, closeIcon} from "./icons";
 
 const code = `{
 	url: "/mock/test.json",
@@ -24,7 +24,7 @@ const code = `{
 })
 class Table extends StaticViewGroup {
     oncreated() {
-        console.log("--->",config);
+        console.log("--->", config());
         this.addChild(Tab, {
             parameter: {
                 tabs: [
