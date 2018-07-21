@@ -1,0 +1,1 @@
+<div class="list">    {{list data.menu as item}}    <div class="item"><div class="item-title"><div class="name">{{ item.name }}</div></div><div class="sublist">            {{list item.list as sub}}            <div class="{{ sub.active?'subitem active':'subitem' }}" onclick="{{ flip(sub) }}">{{ sub.name }}</div>            {{/list}}        </div></div>    {{/list}}</div>
