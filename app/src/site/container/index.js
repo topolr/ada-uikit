@@ -55,6 +55,7 @@ class Container extends ViewGroup {
 
     @handler("flip")
     flip({data}) {
+        this.closemenuc();
         this.router.open(data.link);
     }
 
