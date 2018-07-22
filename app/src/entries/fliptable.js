@@ -41,7 +41,6 @@ const code = `{
 })
 class Table extends StaticViewGroup {
     oncreated() {
-        console.log("--->", config());
         this.addChild(Tab, {
             parameter: {
                 tabs: [
