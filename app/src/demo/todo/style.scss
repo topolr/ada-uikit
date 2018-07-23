@@ -1,0 +1,16 @@
+.todo {
+    .head {
+        line-height: 30px;
+        input {
+            height: 30px;
+            width: 100%;
+        }
+    }
+    .list {
+        line-height: 35px;
+        .item {
+            border-bottom: 1px solid #D7D7D7;
+            padding: 0 10px 0 10px;
+        }
+    }
+}

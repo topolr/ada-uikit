@@ -4,6 +4,8 @@
 
 <div class="ada-module" data-type="entries/simpletable.js"></div>
 
+<div class="ada-module" data-type="entries/timetravel.js"></div>
+
 ## Basic
 
 ### import

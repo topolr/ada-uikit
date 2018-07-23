@@ -1,0 +1,8 @@
+<div class="head">
+    <div><input type="text" onkeyup="{{ add() }}"/></div>
+</div>
+<div class="list">
+    {{list data.list as item}}
+    <div class="item">{{ item.name }}</div>
+    {{/list}}
+</div>
