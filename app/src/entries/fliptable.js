@@ -46,7 +46,7 @@ class Table extends StaticViewGroup {
                 tabs: [
                     {
                         title: "Demo", content: SimpleTable, option: {
-                            url: `${config().basePath}mock/table.json`,
+                            url: `${config.base().basePath}mock/table.json`,
                             btns: [
                                 {"name": "add", icon: addIcon},
                                 {"name": "remove", icon: closeIcon}

@@ -17,7 +17,7 @@ import dispatcher from "ada-uikit/src/dispatcher";
 class Container extends ViewGroup {
     onready() {
         dispatcher.observe(this);
-        let site = config().basePath;
+        let site = config.base().basePath;
         let _router = this.router = router(`${window.location.protocol}//${window.location.host}${site.substring(0, site.length - 1)}`);
         this.getDataSet().getComputeData("links").forEach(item => {
             _router.bind(item.link === "/" ? "/" : item.link, (e) => {
