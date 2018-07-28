@@ -1,7 +1,7 @@
 <div class="btns">
     {{list data.btns as btn}}
     <div class="btn">
-        <div class="iconc"><@icon id="{{ btn.icon }}" class="icon"/></div>
+        <div class="iconc"><icon id="{{ btn.icon }}" class="icon"/></div>
         <div class="name">{{ btn.name }}</div>
     </div>
     {{/list}}
@@ -15,7 +15,7 @@
         {{list data.pages as page}}
         {{if page.name==='prev'}}
         <div class="page" onclick="{{ prevpage() }}">
-            <@icon id="{{ data.icons.navigateBeforeIcon }}" class="icon"/>
+            <icon id="{{ data.icons.navigateBeforeIcon }}" class="icon"/>
         </div>
         {{elseif page.name==='btn'}}
         <div class="page" onclick="{{ goto(page) }}">
@@ -25,7 +25,7 @@
         <div class="dot">...</div>
         {{else}}
         <div class="page" onclick="{{ nextpage() }}">
-            <@icon id="{{ data.icons.navigateNextIcon }}" class="icon"/>
+            <icon id="{{ data.icons.navigateNextIcon }}" class="icon"/>
         </div>
         {{/if}}
         {{/list}}

@@ -4,9 +4,9 @@
             {{if item.type==='checkbox'}}
                 <div class="cell" style="width:{{ item.width }}px" onclick="{{ toggleAll() }}">
                     {{if item.checked}}
-                    <@icon id="{{ item.checkedIcon }}" class="icon"/>
+                    <icon id="{{ item.checkedIcon }}" class="icon"/>
                     {{else}}
-                    <@icon id="{{ item.uncheckedIcon }}" class="icon"/>
+                    <icon id="{{ item.uncheckedIcon }}" class="icon"/>
                     {{/if}}
                 </div>
             {{else}}
@@ -23,7 +23,7 @@
         {{list data.head.right as item}}
             {{if item.type==='action'}}
             <div class="cell" style="width:{{ item.width }}px">
-                <@icon id="{{ item.icon }}" class="icon"/>
+                <icon id="{{ item.icon }}" class="icon"/>
             </div>
             {{else}}
             <div class="cell" style="width:{{ item.width }}px">{{ item.name }}</div>
@@ -37,9 +37,9 @@
             {{if item.type==='checkbox'}}
                 <div class="{{ item._active?'cell active':'cell' }}" style="width:{{ item.width }}px;text-align:{{ item.align }}">
                     {{if item.checked}}
-                    <@icon id="{{ item.checkedIcon }}" class="icon"/>
+                    <icon id="{{ item.checkedIcon }}" class="icon"/>
                     {{else}}
-                    <@icon id="{{ item.uncheckedIcon }}" class="icon"/>
+                    <icon id="{{ item.uncheckedIcon }}" class="icon"/>
                     {{/if}}
                 </div>
             {{else}}
@@ -62,7 +62,7 @@
             <div class="{{ item._active?'actions active':'actions' }}" onclick="{{ action(action,index) }}">
                 {{list item.actions as action}}
                 <div class="action" style="width:{{ action.width }}px;text-align:{{ action.align }}" title="{{ item.value }}">
-                    <@icon id="{{ action.icon }}" class="icon"/>
+                    <icon id="{{ action.icon }}" class="icon"/>
                 </div>
                 {{/list}}
             </div>

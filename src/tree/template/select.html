@@ -3,15 +3,15 @@
     <div class="{{item._opened?'item opened':'item'}}">
         <div class="{{ item._actived?'head active':'head' }}">
             {{if item.list.length>0}}
-            <div class="arrow" onclick="{{toggle(item)}}"><@icon class='icon' id="{{ data.icons.triangleRight }}"/></div>
+            <div class="arrow" onclick="{{toggle(item)}}"><icon class='icon' id="{{ data.icons.triangleRight }}"/></div>
             {{else}}
             <div class="noarrow"></div>
             {{/if}}
             <div class="checkbox" onclick="{{toggleselect(item)}}">
                 {{if item._selected}}
-                <@icon class='icon' id="{{ data.icons.checkBoxIcon }}"/>
+                <icon class='icon' id="{{ data.icons.checkBoxIcon }}"/>
                 {{else}}
-                <@icon class='icon' id="{{ data.icons.checkBoxOutline }}"/>
+                <icon class='icon' id="{{ data.icons.checkBoxOutline }}"/>
                 {{/if}}
             </div>
             <div class="name" onclick="{{active(item)}}">{{item.name}}</div>
