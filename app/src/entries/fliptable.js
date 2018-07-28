@@ -73,7 +73,7 @@ class Table extends StaticViewGroup {
                                     checkedIcon: checkBoxIcon,
                                     uncheckedIcon: checkBoxOutlineBlankIcon
                                 },
-                                unique: "aa"
+                                unique: "name"
                             }
                         }, active: true, type: "module"
                     },

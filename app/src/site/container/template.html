@@ -20,7 +20,7 @@
         </div>
         <div class="list" data-find="list">
             <div class="current" onclick="{{ openmenu() }}">{{ data.current.name }}</div>
-            <div class="arrow"><@icon id="{{ data.arrowIcon }}" class="icon"/></div>
+            <div class="arrow"><icon id="{{ data.arrowIcon }}" class="icon"/></div>
             <div class="items">
                 {{list data.menu as item}}
                 <div class="{{ item.active?'item active':'item' }}" onclick="{{ open(item) }}">{{ item.name }}</div>
@@ -40,6 +40,6 @@
 </div>
 <div class="content">
     <div class="top"></div>
-    <div class="menu" onclick="{{ openmenuc() }}"><@icon class="icon" id="{{ data.menuIcon }}"/></div>
+    <div class="menu" onclick="{{ openmenuc() }}"><icon class="icon" id="{{ data.menuIcon }}"/></div>
     <content @parameter="{{ {info:data.current} }}" @name="{{ data.currentLeaf.name }}"></content>
 </div>
