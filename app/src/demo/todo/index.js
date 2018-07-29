@@ -29,6 +29,17 @@ class Todo extends View {
         let value = e.target.value;
         this.getDataSet().travel(value);
     }
+
+    @binder("toggle")
+    toggle({item}) {
+        this.commit("toggle", item);
+    }
+
+    @binder("remove")
+    remove({e, item}) {
+        this.commit("remove", item);
+        e.stopPropagation();
+    }
 }
 
 export default Todo;
