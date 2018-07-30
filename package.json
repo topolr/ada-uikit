@@ -14,6 +14,7 @@
         "ada": "node ./node_modules/.bin/adajs",
         "dev": "node ./node_modules/ada-pack/bin/develop.js",
         "publish": "node ./node_modules/ada-pack/bin/publish.js",
+        "run": "node ./node_modules/ada-pack/bin/run.js",
         "parse": "node ./app/parser/parsedocs.js"
     },
     "repository": {
