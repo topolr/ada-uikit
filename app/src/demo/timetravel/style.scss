@@ -1,1 +1,34 @@
-.timetravel{}
+.timetravel {
+    .todolist {
+    }
+    .range {
+        padding:0 10px 0 10px;
+        position: relative;
+        margin-top:30px;
+        input {
+            width: 100%;
+        }
+        &:before{
+            content: attr(min);
+            display: block;
+            position: absolute;
+            left:0;
+            bottom:100%;
+            line-height:20px;
+            padding:0 10px 0 10px;
+            border-radius: 3px;
+            border:1px solid #d7d7d7;
+        }
+        &:after{
+            content: attr(max);
+            display: block;
+            position: absolute;
+            right:0;
+            bottom:100%;
+            line-height:20px;
+            padding:0 10px 0 10px;
+            border-radius: 3px;
+            border:1px solid #d7d7d7;
+        }
+    }
+}

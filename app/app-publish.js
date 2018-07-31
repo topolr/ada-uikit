@@ -1,11 +1,11 @@
 let parser = require("./parser/index");
 let app = {
-    name: "UI Toolkit For Web Framework",
+    name: "UI Toolkit For Ada Web Framework",
     site_url: "/dist/",
     source_path: "./src/",
     dist_path: "./../dist/",
     index_path: "./../dist/index.html",
-    description: "UI Toolkit For Web Framework",
+    description: "UI Toolkit For Ada Web Framework",
     main: "./src/root.js",
     entry_path: "./src/entries/",
     ada_autobundle: false,

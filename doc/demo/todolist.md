@@ -1,8 +1,8 @@
-## SimpleTable
+## Todo List
 
-简单表格，只用于数据展示
+演示Todo List
 
-<div class="ada-module" data-type="entries/simpletable.js"></div>
+<div class="ada-module" data-type="entries/todolist.js"></div>
 
 ## Basic
 

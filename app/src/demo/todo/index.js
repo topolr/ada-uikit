@@ -11,6 +11,10 @@ import TodoService from "./state.js";
     }
 })
 class Todo extends View {
+    oncommited() {
+        this.dispatchEvent("commit", this.getDataSet().getTransactionList().length);
+    }
+
     @binder("add")
     add({e}) {
         if (e.keyCode === 13) {
@@ -19,15 +23,19 @@ class Todo extends View {
                 e.target.value = '';
                 e.target.focus();
                 this.commit("add", {name: value});
-                this.dispatchEvent("commit", this.getDataSet().getTransactionList().length);
             }
         }
     }
 
-    @binder("change")
-    change({e}) {
-        let value = e.target.value;
-        this.getDataSet().travel(value);
+    @binder("toggle")
+    toggle({item}) {
+        this.commit("toggle", item);
+    }
+
+    @binder("remove")
+    remove({e, item}) {
+        this.commit("remove", item);
+        e.stopPropagation();
     }
 }
 
