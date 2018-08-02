@@ -10,7 +10,7 @@ const util = {
         return ((y % 4 == 0 && y % 100 != 0) || y % 400 == 0);
     },
     getMonthDays(year, month) {
-        return [31, (28 + (this.isLeap(year) ? 0 : 1)), 31, 30, 31, 31, 30, 31, 30, 31, 30, 31][month - 1];
+        return [31, (28 + (this.isLeap(year) ? 0 : 1)), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31][month - 1];
     },
     getSimpleDate(date) {
         if (date instanceof Date) {
@@ -116,7 +116,7 @@ const util = {
                 month: prevMonth
             });
         }
-        for (let i = 1; i < days; i++) {
+        for (let i = 1; i <= days; i++) {
             currents.push({
                 type: "current",
                 day: i,
