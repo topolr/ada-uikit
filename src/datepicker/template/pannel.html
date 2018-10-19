@@ -1,9 +1,9 @@
 <div class="info">
-    <div class="btn" onclick="{{ prev() }}"><@icon class='icon' id="{{ data.icons.leftIcon }}"/></div>
+    <div class="btn" onclick="{{ prev() }}"><icon class='icon' id="{{ data.icons.leftIcon }}"/></div>
     <div class="desc" onclick="{{ showpannel() }}">{{ data.current.year }}/{{ data.current.month }}</div>
-    <div class="btn" onclick="{{ next() }}"><@icon class='icon' id="{{ data.icons.rightIcon }}"/></div>
+    <div class="btn" onclick="{{ next() }}"><icon class='icon' id="{{ data.icons.rightIcon }}"/></div>
     {{if !data.isToday}}
-    <div class="btnin" onclick="{{ today() }}"><@icon class='icon' id="{{ data.icons.backIcon }}"/></div>
+    <div class="btnin" onclick="{{ today() }}"><icon class='icon' id="{{ data.icons.backIcon }}"/></div>
     {{/if}}
 </div>
 <div class="header">
