@@ -16,7 +16,11 @@ class Lazyimage extends View {
 		if (this.context.isBrowser) {
 			eventDispatcher.observe(this);
 			setTimeout(() => this.scroll());
-		} else {
+		}
+	}
+
+	onready() {
+		if (!this.context.isBrowser) {
 			this.finder("image").getElement().innerHTML = `<img src="${this.getCurrentState().url}"/>`;
 		}
 	}
