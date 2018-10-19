@@ -197,7 +197,7 @@ class Router {
 class History {
 	constructor(context) {
 		this._context = context;
-		this.url = this._context.window.location.protocol + "//" + this._context.window.location.host;
+		this.url = this._context.window.location.origin;
 		this._stack = [1];
 		this._currentIndex = 0;
 		this._handler = {};
