@@ -1,5 +1,5 @@
 <div class="btns">
-    {{list data.btns as btn}}
+    {{list btns as btn}}
     <div class="btn">
         <div class="iconc"><icon id="{{ btn.icon }}" class="icon"/></div>
         <div class="name">{{ btn.name }}</div>
@@ -7,15 +7,15 @@
     {{/list}}
 </div>
 <div class="body">
-    <thistable @parameter="{{ {option:data.tableOption,data:data.list} }}"></thistable>
+    <thistable @parameter="{{ tableOption }}"></thistable>
 </div>
 <div class="foot">
-    <div class="info">{{ data.current }}/{{ data.totalPage }}</div>
+    <div class="info">{{ current }}/{{ totalPage }}</div>
     <div class="pages">
-        {{list data.pages as page}}
+        {{list pages as page}}
         {{if page.name==='prev'}}
         <div class="page" onclick="{{ prevpage() }}">
-            <icon id="{{ data.icons.navigateBeforeIcon }}" class="icon"/>
+            <icon id="{{ icons.navigateBeforeIcon }}" class="icon"/>
         </div>
         {{elseif page.name==='btn'}}
         <div class="page" onclick="{{ goto(page) }}">
@@ -25,7 +25,7 @@
         <div class="dot">...</div>
         {{else}}
         <div class="page" onclick="{{ nextpage() }}">
-            <icon id="{{ data.icons.navigateNextIcon }}" class="icon"/>
+            <icon id="{{ icons.navigateNextIcon }}" class="icon"/>
         </div>
         {{/if}}
         {{/list}}

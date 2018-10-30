@@ -13,8 +13,16 @@ import "./../style/base.scss";
 })
 class Lazyimage extends View {
     oncreated() {
-        eventDispatcher.observe(this);
-		setTimeout(() => this.scroll());
+        if (this.context.isBrowser) {
+            eventDispatcher.observe(this);
+            setTimeout(() => this.scroll());
+        }
+    }
+
+    onready() {
+        if (!this.context.isBrowser) {
+            this.finder("image").getElement().innerHTML = `<img src="${this.getCurrentState().url}"/>`;
+        }
     }
 
     @subscribe("scroll")
@@ -39,6 +47,11 @@ class Lazyimage extends View {
             });
             image.setAttribute("src", state.url);
         }
+    }
+
+    onrecover() {
+        eventDispatcher.observe(this);
+        setTimeout(() => this.scroll());
     }
 }
 

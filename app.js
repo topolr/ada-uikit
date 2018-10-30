@@ -8,4 +8,4 @@ let app = {
 	entry_path: "./test/",
 	entry_auto: false
 };
-module.exports=app;
+module.exports = app;
