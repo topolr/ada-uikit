@@ -12,7 +12,7 @@
     "url": "https://github.com/topolr/ada-template.git"
   },
   "dependencies": {
-    "adajs": "git+https://github.com/topolr/ada.git#homogeneous"
+    "adajs": "git+https://github.com/topolr/ada.git"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.2",
@@ -32,7 +32,7 @@
     "@babel/register": "^7.0.0",
     "@babel/runtime": "^7.1.2",
     "@babel/runtime-corejs2": "^7.1.2",
-    "ada-pack": "git+https://github.com/topolr/ada-pack.git#homogeneous",
+    "ada-pack": "git+https://github.com/topolr/ada-pack.git",
     "autoprefixer": "^8.6.0",
     "body-parser": "^1.18.3",
     "cookie-parser": "^1.4.3",
