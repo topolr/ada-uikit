@@ -8,7 +8,7 @@
             <i class="{{ ':'+btn.icon }}"></i>
         </div>
         {{else}}
-        <div class="tool" onclick="{{ action(btn) }}"><i class="{{ ':'+btn.icon }}"></i></div>
+        <div class="tool" onclick="{{ action(btn) }}"><i class="{{ ':'+btn.icon }}"></i>{{ btn.action }}</div>
         {{/if}}
     {{/list}}
 </div>

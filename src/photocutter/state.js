@@ -9,7 +9,14 @@ class PhotocutterService extends Service {
 			zoomoffset: 50,
 			size: 5,
 			mask: true,
-			btns:[]
+			btns: [
+				{ action: 'open', icon: '' },
+				{ action: 'rotateLeft', icon: '' },
+				{ action: 'rotateRight', icon: '' },
+				{ action: 'zoomIn', icon: '' },
+				{ action: 'zoomOut', icon: '' },
+				{ action: 'reset', icon: '' }
+			]
 		}
 	}
 

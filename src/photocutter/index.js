@@ -305,7 +305,7 @@ class Cutter {
 class Photocutter extends View {
 	onready() {
 		let dom = this.getDDM().finder("cutter").getElement();
-		let { size, picWidth, picHeight } = this.getDataSet().getData();
+		let { size, picWidth, picHeight, zoomoffset, rotateoffset } = this.getDataSet().getData();
 		let { width, height } = dom.getBoundingClientRect();
 		this.cutter = new Cutter({
 			size: size * 1024 * 1024,
@@ -313,12 +313,30 @@ class Photocutter extends View {
 			sceneWidth: width,
 			picWidth,
 			picHeight,
+			rotateoffset: rotateoffset,
+			zoomoffset: zoomoffset,
 			dom
 		});
 	}
 
+	@binder('action')
+	action({ btn, e }) {
+		let { action } = btn;
+		if (this[action]) {
+			this[action](e);
+		}
+	}
+
 	@binder("change")
 	change({ e }) {
+		let files = e.target.files || e.dataTransfer.files;
+		new File(files[0]).getImageElement().then(image => {
+			this.cutter.setImage(image);
+			this.commit('hide-mask');
+		});
+	}
+
+	open(e) {
 		let files = e.target.files || e.dataTransfer.files;
 		new File(files[0]).getImageElement().then(image => {
 			this.cutter.setImage(image);
