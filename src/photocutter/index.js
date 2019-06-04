@@ -1,5 +1,5 @@
-import {view, View, binder} from "adajs";
-import {Sprite, Scene} from "../displayer";
+import { view, View, binder } from "adajs";
+import { Sprite, Scene } from "../displayer";
 import File from "../file";
 import PhotocutterService from "./state";
 
@@ -304,23 +304,25 @@ class Cutter {
 })
 class Photocutter extends View {
 	onready() {
-		let ops = this.getDataSet().getData();
-		let box = this.getDDM().finder("cutter").getElement();
-		let boxInfo = box.getBoundingClientRect();
-		ops.dom = box;
-		ops.sceneHeight = boxInfo.height;
-		ops.sceneWidth = boxInfo.width;
-		ops.size = ops.size * 1024 * 1024;
-		this.cutter = new Cutter(ops);
+		let dom = this.getDDM().finder("cutter").getElement();
+		let { size, picWidth, picHeight } = this.getDataSet().getData();
+		let { width, height } = dom.getBoundingClientRect();
+		this.cutter = new Cutter({
+			size: size * 1024 * 1024,
+			sceneHeight: height,
+			sceneWidth: width,
+			picWidth,
+			picHeight,
+			dom
+		});
 	}
 
 	@binder("change")
-	change({e}) {
+	change({ e }) {
 		let files = e.target.files || e.dataTransfer.files;
 		new File(files[0]).getImageElement().then(image => {
 			this.cutter.setImage(image);
-			this.state.none = false;
-			this.render();
+			this.commit('hide-mask');
 		});
 	}
 

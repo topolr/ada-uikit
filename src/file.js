@@ -12,7 +12,7 @@ class File {
         } else if (Array.isArray(filex)) {
             _file = new Blob(filex, { type: (type || "text/plain") });
         }
-        this.file = _file;
+        this._file = _file;
     }
 
     static getBlobFromURI(dataURL) {
@@ -51,44 +51,33 @@ class File {
     }
 
     get file() {
-        return this.file;
+        return this._file;
     }
 
     get name() {
         return this.file ? this.file.name : "";
     }
 
-    get size(type, size) {
-        let a = this.file.size;
-        if (type === "MB") {
-            a = this.file.size / (1024 * 1024);
-        } else if (type === "KB") {
-            a = this.file.size / 1024;
-        } else if (type === "GB") {
-            a = this.file.size / (1024 * 1024 * 1024);
-        }
-        if (arguments.length === 2) {
-            a = a.toFixed(size) / 1;
-        }
-        return a;
-    }
-
     get type() {
         return this.file ? this.file.type : "";
     }
 
+    get size() {
+        return this.file.size;
+    }
+
     get uri() {
-        let ps = $.promise();
-        if (this._uri) {
-            ps.resolve(this._uri);
-        } else {
-            let reader = new FileReader();
-            reader.onload = function (e) {
-                ps.resolve(e.target.result);
-            };
-            reader.readAsDataURL(this.file);
-        }
-        return ps;
+        return new Promise(resolve => {
+            if (this._uri) {
+                resolve(this._uri);
+            } else {
+                let reader = new FileReader();
+                reader.onload = function (e) {
+                    resolve(e.target.result);
+                };
+                reader.readAsDataURL(this.file);
+            }
+        });
     }
 
     get url() {
@@ -111,18 +100,32 @@ class File {
     isSame(file) {
         let t = file;
         if (file.file) {
-            t = file.getFile();
+            t = file.file;
         }
         return this.file.lastModified === t.lastModified && this.file.size === t.size && this.file.type === t.type && this.file.name === t.name;
     }
 
     isSuffixWith(suffix) {
-        return suffix === this.getSuffix();
+        return suffix === this.suffix;
     }
 
     isTypeOf(type) {
-        let typet = this.getFileType();
-        return typet === type;
+        return this.type === type;
+    }
+
+    getFileSize(type, size) {
+        let a = this.file.size;
+        if (type === "MB") {
+            a = this.file.size / (1024 * 1024);
+        } else if (type === "KB") {
+            a = this.file.size / 1024;
+        } else if (type === "GB") {
+            a = this.file.size / (1024 * 1024 * 1024);
+        }
+        if (arguments.length === 2) {
+            a = a.toFixed(size) / 1;
+        }
+        return a;
     }
 
     getFileSizeAuto(radmon) {
@@ -154,7 +157,7 @@ class File {
                 image.addEventListener("error", function (e) {
                     reject(e);
                 });
-                image.src = this.getFileURL();
+                image.src = this.url;
             } else {
                 reject();
             }

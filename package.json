@@ -4,15 +4,20 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "node ./node_modules/ada-pack/bin/develop.js",
-    "ada": "node ./node_modules/.bin/adajs"
+    "ada": "node node_modules/adajs/bin/cli",
+    "pack": "node node_modules/ada-pack/bin/cli",
+    "dev": "node node_modules/ada-pack/bin/cli dev || true"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/topolr/ada-template.git"
   },
+  "ada": {
+    "develop": "./app.js",
+    "publish": "./app.js"
+  },
   "dependencies": {
-    "adajs": "git+https://github.com/topolr/ada.git"
+    "adajs": "latest"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.2",
@@ -32,13 +37,15 @@
     "@babel/register": "^7.0.0",
     "@babel/runtime": "^7.1.2",
     "@babel/runtime-corejs2": "^7.1.2",
-    "ada-pack": "git+https://github.com/topolr/ada-pack.git",
+    "ada-pack": "latest",
     "autoprefixer": "^8.6.0",
     "body-parser": "^1.18.3",
     "cookie-parser": "^1.4.3",
     "express": "^4.16.2",
     "express-session": "^1.15.6",
     "html-minifier": "^3.5.16",
+    "koa": "^2.7.0",
+    "koa-static": "^5.0.0",
     "less": "^3.0.4",
     "node-sass": "^4.9.0",
     "uglify-es": "^3.3.9",
