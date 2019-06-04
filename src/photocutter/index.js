@@ -348,14 +348,6 @@ class Photocutter extends View {
 	reset() {
 		this.cutter.reset();
 	}
-
-	@binder("upload")
-	upload() {
-		new File(this.cutter.getImageBlob()).uploadAsForm({
-			url: "/movie/upload"
-		});
-	}
-
 }
 
 export default Photocutter;

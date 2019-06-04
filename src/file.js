@@ -1,18 +1,16 @@
-import {ajax} from "adajs";
-
 class File {
     constructor(filex, type) {
         let _file = filex;
         this._uri = "";
         if (typeof filex === "string") {
             if (type) {
-                _file = new Blob([filex], {type: type});
+                _file = new Blob([filex], { type: type });
             } else {
                 this._url = filex;
                 _file = File.getBlobFromURI(filex);
             }
         } else if (Array.isArray(filex)) {
-            _file = new Blob(filex, {type: (type || "text/plain")});
+            _file = new Blob(filex, { type: (type || "text/plain") });
         }
         this.file = _file;
     }
@@ -23,7 +21,7 @@ class File {
             let parts = dataURL.split(',');
             let contentType = parts[0].split(':')[1];
             let raw = parts[1];
-            return new Blob([raw], {type: contentType});
+            return new Blob([raw], { type: contentType });
         }
         let parts = dataURL.split(BASE64_MARKER);
         let contentType = parts[0].split(':')[1];
@@ -33,7 +31,7 @@ class File {
         for (let i = 0; i < byteString.length; i++) {
             ia[i] = byteString.charCodeAt(i);
         }
-        return new Blob([ab], {type: contentType});
+        return new Blob([ab], { type: contentType });
     }
 
     static saveAs(blob, filename) {
@@ -52,79 +50,15 @@ class File {
         t.dispatchEvent(event);
     }
 
-    static uploadAsForm(option) {
-        let formdata = new FormData();
-        formdata.append((option.name || "file"), option.file);
-        for (let _p in option.data) {
-            formdata.append(_p, option.data[_p]);
-        }
-        return ajax({
-            url: option.url || null,
-            data: formdata,
-            method: "post",
-            dataType: "json",
-            timeout: option.timeout,
-            query: option.query,
-            headers: option.headers || {},
-            events: {
-                load: function (e) {
-                    let status = e.target.status;
-                    if ((status >= 200 && status < 300) || status === 304 || status === 0) {
-                        if (option.success) {
-                            let a = this.response.responseText;
-                            if (option.dataType === "json") {
-                                try {
-                                    a = window.JSON.parse(a);
-                                } catch (e) {
-                                    a = {};
-                                }
-                            }
-                            option.success(a);
-                        }
-                    } else {
-                        if (option.error)
-                            option.error(e);
-                    }
-                },
-                progress: function (e) {
-                    if (option.progress) {
-                        option.progress({
-                            total: e.total,
-                            loaded: e.loaded,
-                            percent: Math.round(e.loaded * 100 / e.total)
-                        });
-                    }
-                },
-                error: function (e) {
-                    if (option.error)
-                        option.error(e);
-                },
-                abort: function () {
-                    if (option.abort) {
-                        option.abort();
-                    }
-                }
-            }
-        });
-    }
-
-    isSame(file) {
-        let t = file;
-        if (file.file) {
-            t = file.getFile();
-        }
-        return this.file.lastModified === t.lastModified && this.file.size === t.size && this.file.type === t.type && this.file.name === t.name;
-    }
-
-    getFile() {
+    get file() {
         return this.file;
     }
 
-    getFileName() {
+    get name() {
         return this.file ? this.file.name : "";
     }
 
-    getFileSize(type, size) {
+    get size(type, size) {
         let a = this.file.size;
         if (type === "MB") {
             a = this.file.size / (1024 * 1024);
@@ -137,6 +71,58 @@ class File {
             a = a.toFixed(size) / 1;
         }
         return a;
+    }
+
+    get type() {
+        return this.file ? this.file.type : "";
+    }
+
+    get uri() {
+        let ps = $.promise();
+        if (this._uri) {
+            ps.resolve(this._uri);
+        } else {
+            let reader = new FileReader();
+            reader.onload = function (e) {
+                ps.resolve(e.target.result);
+            };
+            reader.readAsDataURL(this.file);
+        }
+        return ps;
+    }
+
+    get url() {
+        return window.URL.createObjectURL(this.file);
+    }
+
+    get suffix() {
+        if (this.getFileName()) {
+            let name = this.getFileName().split(".");
+            if (name.length > 1) {
+                return name[name.length - 1];
+            } else {
+                return "";
+            }
+        } else {
+            return "";
+        }
+    }
+
+    isSame(file) {
+        let t = file;
+        if (file.file) {
+            t = file.getFile();
+        }
+        return this.file.lastModified === t.lastModified && this.file.size === t.size && this.file.type === t.type && this.file.name === t.name;
+    }
+
+    isSuffixWith(suffix) {
+        return suffix === this.getSuffix();
+    }
+
+    isTypeOf(type) {
+        let typet = this.getFileType();
+        return typet === type;
     }
 
     getFileSizeAuto(radmon) {
@@ -156,50 +142,6 @@ class File {
             unit = "B";
         }
         return v + unit;
-    }
-
-    getFileType() {
-        return this.file ? this.file.type : "";
-    }
-
-    getFileURI() {
-        let ps = $.promise();
-        if (this._uri) {
-            ps.resolve(this._uri);
-        } else {
-            let reader = new FileReader();
-            reader.onload = function (e) {
-                ps.resolve(e.target.result);
-            };
-            reader.readAsDataURL(this.file);
-        }
-        return ps;
-    }
-
-    getFileURL() {
-        return window.URL.createObjectURL(this.file);
-    }
-
-    getSuffix() {
-        if (this.getFileName()) {
-            let name = this.getFileName().split(".");
-            if (name.length > 1) {
-                return name[name.length - 1];
-            } else {
-                return "";
-            }
-        } else {
-            return "";
-        }
-    }
-
-    isSuffixWith(suffix) {
-        return suffix === this.getSuffix();
-    }
-
-    isTypeOf(type) {
-        let typet = this.getFileType();
-        return typet === type;
     }
 
     getImageElement() {
@@ -311,11 +253,6 @@ class File {
 
     saveAs(filename) {
         File.saveAs(this.file, filename);
-    }
-
-    uploadAsForm(option) {
-        option.file = this.file;
-        return File.uploadAsForm(option);
     }
 }
 
