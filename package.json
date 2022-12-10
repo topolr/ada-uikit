@@ -41,7 +41,7 @@
     "autoprefixer": "^8.6.0",
     "body-parser": "^1.18.3",
     "cookie-parser": "^1.4.3",
-    "express": "^4.16.2",
+    "express": "^4.17.3",
     "express-session": "^1.15.6",
     "html-minifier": "^3.5.16",
     "koa": "^2.7.0",
